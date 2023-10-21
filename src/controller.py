@@ -1,27 +1,14 @@
+import configparser
+import drawer
+
+class Controller:
+  def __init__(self):
+    self.config = configparser.ConfigParser()
+    self.config.read('config.ini')
+
+    drawer = drawer.Drawer()
+
 """
-The fishing class creates an instance of pygame, helping the player.. well, play the game! The init of this
-class begins pygame, and draws the background for our game.
-
-The update function then checks for the mouse and see what we clicked, as well as draw the map as we should
-considering our game state
-
-The ret_val of the update function returns any significant action taken by the player. These are as follows
-
-*1. Game Start (0) : Player, Territory : Player has chosen a starting territory
-*2. Purchase (1) : Player, Territory, Unit : Player has purchased Unit at Territory
-*3. Move (2) : Player, Territory, Unit : Player has move Unit to Territory
-*4. Attack (3) : Player, Territory, Unit : Player has attacked Territory with Unit
-*5. Arial Attack (4) : Player, Location, Plane : Player has Arial Attacked Location with Plane
-*6. Embark (5) : Player, Ship, Unit : Player has order Unit to Embark onto Ship
-*7. Disembark (6) : Player, Ship, Unit : Player has ordered Unit to Disembark from Ship
-*9. End Turn (7)
-"""
-import pygame
-import time
-import data
-from classes import player, location, unit
-
-
 class FishingGame:
     def __init__(self, player_count, player_num):
         # Create containers for our players, locations, and units
@@ -728,3 +715,4 @@ class FishingGame:
             self.embark(self.players[msg[1]], self.players[msg[1]].getUnits()[msg[2]], self.players[msg[1]].getUnits()[msg[3]])
         elif msg[0] == 6:
             self.disembark(self.players[msg[1]], self.players[msg[1]].getUnits()[msg[2]], self.players[msg[1]].getUnits()[msg[3]])
+"""

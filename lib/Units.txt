@@ -16,7 +16,7 @@ Capacity : The amount of power a unit can hold within it.
  - When this unit moves, anything held within it moves with it without expending movement
  - Embarking and Disembarking a unit with capacity requires 1 unit of movement
 
-Naval : Only Naval units can initiate combat with other Aquatic units
+Naval : Only Naval units can initiate combat with other Sea units
 
 Range : Units with range may use one movement to attack a territory in Range without
   losing power or moving into the territory.

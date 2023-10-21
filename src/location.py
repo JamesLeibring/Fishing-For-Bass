@@ -2,59 +2,11 @@
 
 class Location:
     # Constructor
-    def __init__(self, name, neighbors, center):
-        self.owner = None
+    def __init__(self, name):
         self.name = name
-        self.center = center
-        self.neighbors = neighbors
+        
         self.power = 0
         self.units = []
-
-    # Getters/Setters
-    def getOwner(self):
-        return self.owner
-
-    def getName(self):
-        return self.name
-
-    def getCenter(self):
-        return self.center
-
-    def getNeighbors(self):
-        return self.neighbors
-
-    def getPower(self):
-        return self.power
-
-    def getUnits(self):
-        return self.units
-
-    # Draw the units for the territory, if unit is specified it means that units turn is up.
-    def draw(self, screen, un=None, blink=False):
-        black = (0, 0, 0)
-        grey = (100, 100, 100)
-        font = pygame.font.Font('freesansbold.ttf', 9)
-        # Now we draw the power indicator
-        power = font.render(roman(self.power), True, black, grey)
-        txt_rect = power.get_rect()
-        txt_rect.center = (self.center[0] - 16, self.center[1] - 16)
-        pygame.draw.circle(screen, black, txt_rect.center, 13)
-        pygame.draw.circle(screen, grey, txt_rect.center, 11)
-        screen.blit(power, txt_rect)
-        # If there is more than one unit, then also show the power and size of the stack
-        if len(self.units) > 1:
-            # Draw the number showing how many units there are in the stack
-            mul = font.render("x" + str(len(self.units)), True, black, grey)
-            txt_rect = mul.get_rect()
-            txt_rect.center = (self.center[0] + 15, self.center[1] - 16)
-            pygame.draw.circle(screen, black, txt_rect.center, 11)
-            pygame.draw.circle(screen, grey, txt_rect.center, 9)
-            screen.blit(mul, txt_rect)
-        # Drawing the actual unit.
-        if un in self.units:
-            un.draw(screen, self.center, blink)
-        else:
-            self.units[0].draw(screen, self.center)
 
     # ACTIONS : Sometimes even our territory values must be changed when Actions occur, we do this in these functions
     # -----------------------------------------------------------------------

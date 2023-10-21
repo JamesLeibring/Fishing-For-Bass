@@ -2,17 +2,26 @@
 
 class Unit:
     def __init__(self):
-        pass
+        self.power = 0
+        self.movement = 0
 
 class DefensiveUnit(Unit):
     def __init__(self):
         super().__init__()
-        pass
+
+        self.defense = 0
 
 class CapacityUnit(Unit):
     def __init__(self):
         super().__init__()
-        pass
+        
+        self.capacity = 0
+
+class RangedUnit(Unit):
+    def __init__(self):
+        super().__init__()
+
+        self.range = 0
 
 class LandUnit(Unit):
     def __init__(self):
@@ -28,4 +37,3 @@ class AirUnit(Unit):
     def __init__(self):
         super().__init__()
         pass
-
