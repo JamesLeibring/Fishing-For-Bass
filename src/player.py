@@ -1,6 +1,4 @@
-import pygame.draw
-from classes import unit, location
-
+# The Player Class
 
 class Player:
     def __init__(self, player_number):
@@ -30,24 +28,6 @@ class Player:
         else:
             self.color = (100, 100, 100)
             self.highlight = (100, 100, 100, 3)
-
-    def getTerritories(self):
-        return self.territories
-
-    def getCoasts(self):
-        return self.coasts
-
-    def getResources(self):
-        return self.resources
-
-    def getUnits(self):
-        return self.units
-
-    def getColor(self):
-        return self.color
-
-    def getHighlight(self):
-        return self.highlight
 
     # Draws in any units or territories owned by this player
     def draw(self, screen, turn, un=None, blink=False):

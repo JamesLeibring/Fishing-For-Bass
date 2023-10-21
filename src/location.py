@@ -1,5 +1,4 @@
-import pygame.font
-
+3 # The Location Class
 
 class Location:
     # Constructor
