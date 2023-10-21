@@ -1,0 +1,52 @@
+Hello Play Testers!
+
+This File is made to help you give me feedback on the game, here are just some things to consider to help me make
+the game fun and intuitive!
+
+Visuals : How does the game look?
+    Is the loading screen Ugly? Any ideas on how to make it look better?
+
+    Is the background to the Map and Shop Ugly?
+
+    Is the Shop Ugly?
+
+    Are the Information Boxes Ugly? Any Ideas on how they could look better?
+
+    Is the Art for the Units/Map Ugly?
+
+Intuitiveness : How easy is it to know whats going on?
+    Is the Loading Screen easy to Navigate?
+
+    Is the Game Info Screen (Top Right of Map) useful? What is it Missing?
+
+    Is it clear which Units/Territories belong to who?
+
+    When Purchasing a Unit, is the process intuitive? Does the Visual Process of buying the Unit make Sense?
+
+    Does the Info Box (Under Shop) give Useful Info on the Territory/Unit? What could be more clear? Anything Missing?
+
+    Does the Unit Info Box (Bottom Left of Map) give Useful Info? What could be more clear? Anything Missing?
+
+    When representing territories, is it clear how many/how powerful the territory is? Do you think this is a
+    useful and clear representation for the territory? What else do you think the player should see?
+
+    When representing Seas/Coasts, is it clear how many/how powerful Units are? Same as with territories really...
+
+    When representing Units with other Units Embarked onto them, is clear to the player? What could be done better?
+
+    General Intuitiveness, when you play, what doesn't make sense?
+
+Gameplay : What is Broken/Underpowered, as well as what is not working as it should? Gameplay Bugs.
+    WARNING : Because this is a new game, please don't just decide something is Overpowered/Underpowered immediately!
+    I would like to see a few game splayed and allow players to see what works as well as try different strategies
+    before changing the game!
+
+    Any Bugs? Is a Unit not working how it should?
+
+    Does a Unit interact in an unintuitive way? Maybe a trade worked differently than how you expected or how
+    you think it should. Let me know!
+
+    Does something seem blatantly Over/Under powered? We want to make sure each Unit is healthy to the game.
+
+NOTE : Visuals and Intuitiveness are by far the most important to notice here! Balancing the game usually requires
+	changing one line of code!

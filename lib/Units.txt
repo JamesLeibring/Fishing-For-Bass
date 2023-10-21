@@ -1,0 +1,66 @@
+Key
+-----------------------------------
+Power : The strength of a unit
+ - If a unit with 1 Power fights a unit with 3 Power, 
+    the 1 Power will die and the 3 Power will be reduced to 2 Power
+Movement : The amount of territories/coasts the unit can travel in one turn
+
+Defensive : A defensive unit cannot initiate combat
+
+Land : Units capable only of travelling via territories
+Ships : Units capable only of travelling via coasts
+Planes : Units capable of Arial Attacking territories in Range
+
+Capacity : The amount of power a unit can hold within it.
+ - This can only be used to hold land units
+ - When this unit moves, anything held within it moves with it without expending movement
+ - Embarking and Disembarking a unit with capacity requires 1 unit of movement
+
+Naval : Only Naval units can initiate combat with other Aquatic units
+
+Range : Units with range may use one movement to attack a territory in Range without
+  losing power or moving into the territory.
+
+
+Land Units
+-----------------------------------
+Warrior : 1 Power, 1 Movement
+Horseman : 1 Power, 2 Movement
+
+Swordsman : 2 Power, 1 Movement
+Knight : 2 Power, 2 Movement
+
+Musketman : 3 Power, 1 Movement
+Cavalrly : 3 Power, 2 Movement
+
+Infantry : 5 Power, 1 Movement
+Tank : 10 Power, 1 Movement
+
+Archer : 2 Power, 1 Movement, Defensive
+Cannon : 4 Power, 1 Movement, Defensive
+Artillery : 7 Power, 1 Movement, Defensive
+
+Anti-Air Gun : 4 Power, 1 Movement, Defensive
+ - Special : Trades Power with Ranged Attackers
+
+Ships
+-----------------------------------
+Trireme : 1 Power, 2 Movement, 2 Capacity
+
+Caravel : 2 Power, 3 Movement, 5 Capacity, Naval
+Battleship : 5 Power, 4 Movement, 6 Capacity, Naval
+
+Aircraft Carrier : 10 Power, 2 Movement, 12 Capacity, Defensive
+ - Special : Arial units can embark this unit. Additionally, Arial
+    units embarked on this may make Arial strikes against territories in range
+
+Planes
+------------------------------------
+Fighter : 1 Power, 1 Movement, 1 Range
+Bomber : 2 Power, 1 Movement, 1 Range
+Jet Fighter : 3 Power, 1 Movement, 2 Range
+
+Helicopter : 1 Power, 1 Movement, 2 Range
+ - Special : I have a capacity of 5. When I make Arial attacks,
+    any units embarked disembark (if they can) and attack the territory
+    this unit is Arial Attacking
