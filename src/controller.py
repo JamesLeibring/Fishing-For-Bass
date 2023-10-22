@@ -1,7 +1,6 @@
 import config
 import drawer
 import player
-import location
 
 class Controller:
     def __init__(self, player_count):
@@ -12,6 +11,7 @@ class Controller:
 
         # The Players for this game
         self.players = [player.Player(i) for i in range(player_count)]
+        self.pc = 0
 
         # The territories for this game
         #self.territories = [location.Territory(ter) for ter in self.config['Territories']]
@@ -21,20 +21,29 @@ class Controller:
 
         # The item the users mouse is hovering over
         self.hov = None
-    
+
+    def gameLoop(self):
+        self.drawer.drawBackground(self.pc)
+
+        # Boolean for when the game is running
+        running = True
+
+        while running:
+            self.draw()
+
+            input()
+
+            running = False
+
     # Draw the game state
     def draw(self):
         # Draw varying information on the Sidebar
         self.drawer.drawTurn(self.turn)
-        self.drawer.drawResources(self.players[0].resources)
-        self.drawer.drawShop(self.players[0].color)
-        # Determine what info to give the drawer
-        #if self.hov in self.territories:
-        #    self.drawer.drawTerritoryInfo(self.hov)
-        #elif self.hov in self.units:
-        #    self.drawer.drawUnitInfo(self.hov)
-        #elif self.hov in self.players:
-        #    self.drawer.drawPlayerInfo(self.hov)
+        self.drawer.drawResources(self.players[self.pc].resources)
+        self.drawer.drawShop(self.pc)
+
+        # Draw everything on the map
+        self.drawer.drawMap(len(self.players))
 
         self.drawer.flip()
 
@@ -52,19 +61,6 @@ class Controller:
                 if rect.collidepoint(x, y):
                     return self.boardableUnits[i]
         return None
-
-    def gameLoop(self):
-        self.drawer.drawBackground(self.players[0].color)
-        # Boolean for when the game is running
-        running = True
-
-        while running:
-            self.draw()
-
-            input()
-
-            running = False
-            
 """
     # Draws any variable visuals to the game, that is, anything that is often changing or variable
     def drawGame(self, hov, time_lapsed, player_up):

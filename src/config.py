@@ -12,18 +12,18 @@ config['Drawer'] = {
   },
   'Colors': {
     'white': (255, 255, 255),
+    'gray': (193,193,193),
     'black': (0, 0, 0),
-    'brown': (153, 76, 0),
-    'dark_brown': (102, 51, 0),
-    'grey': (128, 128, 128),
-    'light_grey': (192, 192, 192),
-    'dark_grey': (100, 100, 100),
-    'blue': (51, 51, 255),
-    'red': (230, 30, 30),
-    'green': (0, 153, 0),
-    'purple': (153, 0, 153),
-    'dirt': (148, 107, 37),
-    'fill': (104, 107, 37)
+    'brown': (139,115,85),
+    'cornsilk': (205,200,177),
+    'cornsilk2': (139,136,120),
+    'burntsienna': (138,54,15),
+    'cobaltgreen': (61,145,64),
+    'skyblue': (0,104,139),
+    'firebrick': (205,38,38),
+    'darkorange': (238,118,0),
+    'yellow': (238,238,0),
+    'Player': ['skyblue', 'cobaltgreen', 'firebrick', 'darkorange', 'yellow', 'gray']
   },
   'Images': {
     'Map': {
@@ -86,7 +86,7 @@ config['Drawer'] = {
       'start': (20, 20),
       'width': 1120,
       'height': 710,
-      'color': 'red'
+      'color': 'white'
     },
     'Side': {
       'start': (1150, 20), 
@@ -129,6 +129,13 @@ config['Drawer'] = {
       'width': 60,
       'height': 60,
       'color': 'black'
+    },
+    'PlayerBoxes': {
+      'start': [25, 25],
+      'width': 40,
+      'height': 40,
+      'color': 'black'
     }
   }
 }
+

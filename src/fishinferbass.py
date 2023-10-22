@@ -2,6 +2,6 @@
 import controller
 
 if __name__ == "__main__":
-  FishingForBass = controller.Controller(2)
+  FishingForBass = controller.Controller(6)
 
   FishingForBass.gameLoop()
