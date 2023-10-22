@@ -27,14 +27,52 @@ config['Drawer'] = {
   },
   'Images': {
     'Map': {
-      'name': r'..\lib\images\map.jpg',
+      'name': 'Map',
+      'image': r'..\lib\images\map.jpg',
       'width': 1120,
       'height': 710
     },
     'Target': {
-      'name': r'..\lib\images\misc\bullseye.png',
+      'name': 'Target',
+      'image': r'..\lib\images\misc\bullseye.png',
       'width': 32,
       'height': 32
+    },
+    'Units': {
+      'name': {
+        'Warrior': r'..\lib\images\Units\Land\warrior.png',
+        'Horseman': r'..\lib\images\Units\Land\horseman.png',
+        'Swordsman': r'..\lib\images\Units\Land\swordsman.png',
+        'Knight': r'..\lib\images\Units\Land\knight.png',
+        'Musketman': r'..\lib\images\Units\Land\musketman.png',
+        'Cavalry': r'..\lib\images\Units\Land\cavalry.png',
+        'Infantry': r'..\lib\images\Units\Land\infantry.png',
+        'Tank': r'..\lib\images\Units\Land\tank.png',
+        'Archer': r'..\lib\images\Units\Land\archer.png',
+        'Cannon': r'..\lib\images\Units\Land\cannon.png',
+        'Artillery': r'..\lib\images\Units\Land\artillery.png',
+        'Anti-Air Gun': r'..\lib\images\Units\Land\anti-air gun.png',
+        'Trireme': r'..\lib\images\Units\Sea\trireme.png',
+        'Caravel': r'..\lib\images\Units\Sea\caravel.png',
+        'Battleship': r'..\lib\images\Units\Sea\battleship.png',
+        'Aircraft Carrier': r'..\lib\images\Units\Sea\aircraft carrier.png',
+        'Fighter': r'..\lib\images\Units\Air\fighter.png',
+        'Bomber': r'..\lib\images\Units\Air\bomber.png',
+        'Jet Fighter': r'..\lib\images\Units\Air\jet fighter.png',
+        'Helicopter': r'..\lib\images\Units\Air\helicopter.png'
+      },
+      'width': 50,
+      'height': 50
+    },
+    'Resources': {
+      'name': {
+        'Food': r'..\lib\images\Resources\food.png',
+        'Metal': r'..\lib\images\Resources\metal.png',
+        'Oil': r'..\lib\images\Resources\oil.png',
+        'Wood': r'..\lib\images\Resources\wood.png'
+      },
+      'width': 40,
+      'height': 40
     }
   },
   'Rects': {
@@ -84,6 +122,12 @@ config['Drawer'] = {
       'start': (1160, 170),
       'width': 310,
       'height': 410,
+      'color': 'black'
+    },
+    'ShopBoxes': {
+      'start': [1175, 185],
+      'width': 60,
+      'height': 60,
       'color': 'black'
     }
   }

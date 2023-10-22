@@ -1,8 +1,7 @@
 import config
 import drawer
 import player
-import pygame
-import time
+import location
 
 class Controller:
     def __init__(self, player_count):
@@ -14,85 +13,59 @@ class Controller:
         # The Players for this game
         self.players = [player.Player(i) for i in range(player_count)]
 
+        # The territories for this game
+        #self.territories = [location.Territory(ter) for ter in self.config['Territories']]
+
         # The turn the game is on
         self.turn = 0
+
+        # The item the users mouse is hovering over
+        self.hov = None
     
+    # Draw the game state
+    def draw(self):
+        # Draw varying information on the Sidebar
+        self.drawer.drawTurn(self.turn)
+        self.drawer.drawResources(self.players[0].resources)
+        self.drawer.drawShop(self.players[0].color)
+        # Determine what info to give the drawer
+        #if self.hov in self.territories:
+        #    self.drawer.drawTerritoryInfo(self.hov)
+        #elif self.hov in self.units:
+        #    self.drawer.drawUnitInfo(self.hov)
+        #elif self.hov in self.players:
+        #    self.drawer.drawPlayerInfo(self.hov)
+
+        self.drawer.flip()
+
+    # Hover function determines if you are hovering a unit or territory and returns it
+    def hover(self, x, y):
+        for ter in self.territories:
+            if ter.button.collidepoint(x, y):
+                return ter
+        if not self.boardableUnits:
+            for i, rect in enumerate(self.shopChoices):
+                if rect.collidepoint(x, y):
+                    return self.units[i]
+        else:
+            for i, rect in enumerate(self.shopChoices):
+                if rect.collidepoint(x, y):
+                    return self.boardableUnits[i]
+        return None
+
     def gameLoop(self):
         self.drawer.drawBackground(self.players[0].color)
         # Boolean for when the game is running
         running = True
 
         while running:
-            self.drawer.draw()
+            self.draw()
 
             input()
 
             running = False
             
 """
-        self.resourceNames = [r'\food', r'\wood', r'\metal', r'\oil']
-        self.hov = None
-
-        # Draw the background for our , saving some important rectangles
-        self.map, self.mapRect, self.infoRect, self.turnRect, self.resourceRect, self.shopRect = \
-            self.drawBackground(self.pc.getColor())
-        self.shopChoices = self.drawShop(self.pc.getColor())
-        self.drawTurn(0)
-        self.drawResources(self.resourceNames, self.pc.getResources(), self.resourceRect)
-        self.inInfo = False
-        self.wikiRect = pygame.Rect(self.mapRect.right - 30, self.mapRect.top + 10, 20, 20)
-
-        self.startTime = time.time()
-
-    def drawShop(self, color):
-        pygame.draw.rect(self.screen, self.c["black"], self.shopRect)
-        unit_boxes = []
-        unit_border = pygame.Rect(self.shopRect.left + 10, self.shopRect.top + 10, 60, 60)
-        for i, un in enumerate(data.unit_info):
-            name = r'.\images' + data.unit_info[un] + r'.png'
-            pygame.draw.rect(self.screen, self.c["dark_grey"], unit_border)
-            unit_ = pygame.Rect((unit_border.left + 5, unit_border.top + 5), (50, 50))
-            unit_boxes.append(unit_)
-            pygame.draw.rect(self.screen, color, unit_)
-            img = pygame.image.load(name)
-            img = pygame.transform.scale(img, (50, 50))
-            self.screen.blit(img, unit_)
-            unit_border.left = unit_border.right + 11
-            if (i + 1) % 4 == 0:
-                unit_border.left = self.shopRect.left + 10
-                unit_border.top = unit_border.bottom + 11
-        return unit_boxes
-
-    def drawTurn(self, player_up):
-        pygame.draw.rect(self.screen, self.c["light_grey"], self.turnRect)
-        turn_text = self.med_font.render("Turn : " + str(self.turn), True, self.c["black"], self.c["light_grey"])
-        turn_text_rect = turn_text.get_rect()
-        turn_text_rect.center = self.turnRect.center
-        turn_text_rect.left -= 20
-        self.screen.blit(turn_text, turn_text_rect)
-        current_turn = pygame.Rect(self.turnRect.right - self.turnRect.height + 5, self.turnRect.top + 5, self.turnRect.height - 10, self.turnRect.height - 10)
-        pygame.draw.rect(self.screen, self.c["black"], current_turn)
-        current_turn = pygame.Rect(current_turn.left + 4, current_turn.top + 4, current_turn.width - 8, current_turn.height - 8)
-        pygame.draw.rect(self.screen, self.players[player_up].getColor(), current_turn)
-
-    def drawResources(self, resource_names, resources, rect):
-        pygame.draw.rect(self.screen, self.c["light_grey"], self.resourceRect)
-        for i, res in enumerate(resource_names):
-            pic = pygame.image.load(r'.\images' + res + '.png')
-            pic = pygame.transform.scale(pic, (35, 35))
-            self.screen.blit(pic, (rect.left + 0.25 * i * rect.width, rect.top))
-            txt = self.sml_font.render(str(resources[i]), True, self.c["black"], self.c["light_grey"])
-            self.screen.blit(txt, (rect.left + 35 + 0.25 * i * rect.width, rect.centery - 8))
-
-    def drawStats(self, resource_names, resources, rect):
-        for i, res in enumerate(resource_names):
-            pic = pygame.image.load(r'.\images' + res + '.png')
-            pic = pygame.transform.scale(pic, (25, 25))
-            self.screen.blit(pic, (rect.left + 0.25 * i * rect.width + 5, rect.top))
-            if resources[i] is not None:
-                txt = self.sml_font.render(str(resources[i]), True, self.c["black"], self.c["light_grey"])
-                self.screen.blit(txt, (rect.left + 35 + 0.25 * i * rect.width, rect.centery - 13))
-
     # Draws any variable visuals to the game, that is, anything that is often changing or variable
     def drawGame(self, hov, time_lapsed, player_up):
         self.drawTurn(player_up)
@@ -178,18 +151,6 @@ class Controller:
             for brd in unit_drawn.getBoarded():
                 brd.draw(self.screen, (x, y))
                 x += 15
-
-    # Draws the Fishing Wikipedia!
-    def drawWiki(self):
-        pygame.draw.rect(self.screen, self.c["black"], self.mapRect)
-        pygame.draw.rect(self.screen, self.c["light_grey"], (self.mapRect.left + 5, self.mapRect.top + 5, self.mapRect.width - 10, self.mapRect.height - 10))
-
-    def drawWikiCirc(self):
-        pygame.draw.circle(self.screen, self.c["dirt"], self.wikiRect.center, 10)
-        i = self.sml_font.render("i", True, self.c["black"], self.c["dirt"])
-        i_r = i.get_rect()
-        i_r.center = self.wikiRect.center
-        self.screen.blit(i, i_r)
 
     # Redraws the shop to show any Boarding units
     def drawBoarding(self):
@@ -322,21 +283,6 @@ class Controller:
 
         # Return our action, weather it be None or something of importance
         return ret_val
-
-    # Hover function determines if you are hovering a unit or territory and returns it
-    def hover(self, x, y):
-        for ter in self.territories:
-            if ter.getButton().collidepoint(x, y):
-                return ter
-        if not self.boardableUnits:
-            for i, rect in enumerate(self.shopChoices):
-                if rect.collidepoint(x, y):
-                    return self.units[i]
-        else:
-            for i, rect in enumerate(self.shopChoices):
-                if rect.collidepoint(x, y):
-                    return self.boardableUnits[i]
-        return None
 
     # BOOLEANS : Helper Booleans to determine what action the user is taking
     # -----------------------------------------------------------------------
