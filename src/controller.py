@@ -1,61 +1,35 @@
-import configparser
+import config
 import drawer
+import player
+import pygame
+import time
 
 class Controller:
-  def __init__(self):
-    self.config = configparser.ConfigParser()
-    self.config.read('config.ini')
+    def __init__(self, player_count):
+        self.config = config.config
 
-    drawer = drawer.Drawer()
+        # The Drawer draws everything we need on the screen
+        self.drawer = drawer.Drawer(self.config['Drawer'])
 
-"""
-class FishingGame:
-    def __init__(self, player_count, player_num):
-        # Create containers for our players, locations, and units
+        # The Players for this game
         self.players = [player.Player(i) for i in range(player_count)]
-        self.territories = [location.Territory(ter, data.loc_info[ter]) for ter in data.loc_info]
-        self.coasts = [ter.getCoast() for ter in self.territories]
-        self.units = [unit.make_unit(un) for un in data.unit_info]
-        # The pc is the player that coincides with the client playing the game
-        self.pc = self.players[player_num]
-        self.playerNum = player_num
 
-        # Start up pygame
-        pygame.init()
-
-        # Create our initial screens, the first is normal, the second has the ability to create opaque objects
-        self.width, self.height = 1500, 750
-        self.screen = pygame.display.set_mode((self.width, self.height))
-        self.clear_screen = pygame.Surface((self.width - 360, self.height - 20), pygame.SRCALPHA)
-        pygame.display.set_caption('Fishing For Bass')
-
-        # Fonts and colors are initialized here
-        self.lrg_font = pygame.font.Font('freesansbold.ttf', 35)
-        self.med_font = pygame.font.Font('freesansbold.ttf', 25)
-        self.sml_font = pygame.font.Font('freesansbold.ttf', 20)
-        self.c = {
-            "white": (255, 255, 255),
-            "black": (0, 0, 0),
-            "brown": (153, 76, 0),
-            "dark_brown": (102, 51, 0),
-            "grey": (128, 128, 128),
-            "light_grey": (192, 192, 192),
-            "dark_grey": (100, 100, 100),
-            "blue": (51, 51, 255),
-            "red": (230, 30, 30),
-            "green": (0, 153, 0),
-            "purple": (153, 0, 153),
-            "dirt": (148, 107, 37)
-        }
-        self.target = pygame.image.load(r'.\images\bullseye.png')
-        self.target = pygame.transform.scale(self.target, (32, 32))
-
-        # Some important game info for the player
+        # The turn the game is on
         self.turn = 0
-        self.unitPurchased = None
-        self.unitBoarding = None
-        self.boardableUnits = None
-        self.unitQueue = []
+    
+    def gameLoop(self):
+        self.drawer.drawBackground(self.players[0].color)
+        # Boolean for when the game is running
+        running = True
+
+        while running:
+            self.drawer.draw()
+
+            input()
+
+            running = False
+            
+"""
         self.resourceNames = [r'\food', r'\wood', r'\metal', r'\oil']
         self.hov = None
 
@@ -69,43 +43,6 @@ class FishingGame:
         self.wikiRect = pygame.Rect(self.mapRect.right - 30, self.mapRect.top + 10, 20, 20)
 
         self.startTime = time.time()
-
-    # Helper function for the init. Draws any static parts of the screen, returning important rectangles for the game
-    def drawBackground(self, color):
-        # Draw our map in
-        self.screen.fill((148, 107, 37))
-        map_ = pygame.image.load(r'.\images\map.jpg')
-        map_ = pygame.transform.scale(map_, (self.width - 380, self.height - 40))
-        map_border = pygame.draw.rect(self.screen, self.c["black"], (15, 15, self.width - 370, self.height - 30))
-        # Now for our sidebar
-        sidebar_border = pygame.Rect(map_border.right + 15, map_border.top, self.width - map_border.width - 45, self.height - 30)
-        pygame.draw.rect(self.screen, self.c["black"], sidebar_border)
-        sidebar = pygame.Rect(sidebar_border.left + 5, sidebar_border.top + 5, sidebar_border.width - 10, sidebar_border.height - 10)
-        pygame.draw.rect(self.screen, self.c["brown"], sidebar)
-        # The information bar is drawn here
-        info_border = pygame.Rect(sidebar.left + 10, sidebar.bottom - 130, sidebar.width - 20, 120)
-        pygame.draw.rect(self.screen, self.c["black"], info_border)
-        info = pygame.Rect(info_border.left + 5, info_border.top + 5, info_border.width - 10, info_border.height - 10)
-        pygame.draw.rect(self.screen, self.c["light_grey"], info)
-        # The turn button is drawn in
-        turn_border = pygame.Rect(sidebar.left + 10, sidebar.top + 10, sidebar.width // 2, 50)
-        pygame.draw.rect(self.screen, self.c["black"], turn_border)
-        turn = pygame.Rect(turn_border.left + 5, turn_border.top + 5, turn_border.width - 10, turn_border.height - 10)
-        pygame.draw.rect(self.screen, self.c["light_grey"], turn)
-        # Now for the color box (indicates which player you are)
-        color_border = pygame.Rect(turn_border.right + 10, turn_border.top, sidebar.width - 30 - turn_border.width, turn_border.height)
-        pygame.draw.rect(self.screen, self.c["black"], color_border)
-        color_ = pygame.Rect(color_border.left + 5, color_border.top + 5, color_border.width - 10, color_border.height - 10)
-        pygame.draw.rect(self.screen, color, color_)
-        # Drawing the resource border
-        resource_border = pygame.Rect(turn_border.left, turn_border.bottom + 10, sidebar.width - 20, 45)
-        pygame.draw.rect(self.screen, self.c["black"], resource_border)
-        resource = pygame.Rect(resource_border.left + 5, resource_border.top + 5, resource_border.width - 10, resource_border.height - 10)
-        pygame.draw.rect(self.screen, self.c["light_grey"], resource)
-        # Drawing the shop now
-        shop_border = pygame.Rect(resource_border.left, resource_border.bottom + 15, resource_border.width, 435)
-        pygame.draw.rect(self.screen, self.c["black"], shop_border)
-        return map_, map_border, info, turn, resource, shop_border
 
     def drawShop(self, color):
         pygame.draw.rect(self.screen, self.c["black"], self.shopRect)

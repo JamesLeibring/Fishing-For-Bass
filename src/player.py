@@ -3,6 +3,7 @@
 class Player:
     def __init__(self, player):
         self.player = player
+        self.color = 'blue'
 
         self.territories = []
         self.coasts = []
