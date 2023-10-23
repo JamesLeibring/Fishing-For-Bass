@@ -20,9 +20,9 @@ class Drawer:
 
     # Fonts to be used in drawings
     self.fonts = {
-      'lrg': pygame.font.Font('freesansbold.ttf', 35),
-      'med': pygame.font.Font('freesansbold.ttf', 30),
-      'sml': pygame.font.Font('freesansbold.ttf', 20)
+      'lrg': pygame.font.Font('freesansbold.ttf', 33),
+      'med': pygame.font.Font('freesansbold.ttf', 25),
+      'sml': pygame.font.Font('freesansbold.ttf', 15)
     }
 
     # A dictionary of images
@@ -50,10 +50,15 @@ class Drawer:
   def drawBorder(self, outer, color, border):
     return pygame.draw.rect(self.screen, self.config['Colors'][color], (outer.left + border, outer.top + border, outer.width - 2*border, outer.height - 2*border))
   
-  def drawText(self, text, size, rect):
+  def drawText(self, text, size, rect, align='center'):
     t = self.fonts[size].render(text, True, self.config['Colors']['black'], self.config['Colors']['cornsilk'])
     tRect = t.get_rect()
-    tRect.center = rect.center
+    
+    if align == 'center':
+      tRect.center = rect.center
+    elif align == 'left':
+      tRect.midleft = rect.midleft
+    
     self.screen.blit(t, tRect)
 
   # Draws the background for the game (1 time draw)
@@ -114,7 +119,7 @@ class Drawer:
   # Draw the turn
   def drawTurn(self, turn):
     rect = self.drawBorder(self.turnRect, 'cornsilk', 5)
-    self.drawText('Turn: ' + str(turn), 'med', rect)
+    self.drawText('Turn: ' + str(turn), 'lrg', rect)
 
   # Draw the resource values at the top of the screen
   def drawResources(self, resources):
@@ -124,16 +129,32 @@ class Drawer:
     self.drawStats(imgs, resources, rect)
 
   # Draws the info box
-  def drawTerritoryInfo(self, name, resources):
+  def drawInfo(self, info=None):
     rect = self.drawBorder(self.infoRect, 'cornsilk', 5)
-    imgs = [self.images['Food'], self.images['Wood'], self.images['Metal'], self.images['Oil']] # TODO: Tmp
 
-    self.drawStats(imgs, resources, rect)
+    if info is not None:   
+      name = info[0]
+      color = self.config['Colors']['Player'][info[1] - 1]
+      resources = info[2]
+      images = [self.images[img] for img in info[3]]
+
+      # Draw the name
+      self.drawText(name, 'med', pygame.Rect(rect.left + 10, rect.top + 5, rect.width / 2 - 5, rect.height / 2 - 5), 'left')
+
+      # Draw the color of the owner
+      colorRect = pygame.draw.rect(self.screen, self.config['Colors']['black'], (rect.right - 50, rect.top + 10, 40, 40))
+      self.drawBorder(colorRect, color, 5)
+
+      # The divider
+      pygame.draw.line(self.screen, self.config['Colors']['black'], (rect.left + 5, rect.centery), (rect.right - 5, rect.centery), 3)
+
+      # The resources
+      self.drawStats(images, resources, pygame.Rect(rect.left, rect.top + 65, rect.width, rect.height))
 
   # Draws 4 stats
   def drawStats(self, imgs, values, rect):
-    left = rect.left + 10
-    top = rect.top + 5
+    left = rect.left
+    top = rect.top
 
     for i in range(4):
       self.screen.blit(imgs[i], (left, top))
@@ -142,7 +163,7 @@ class Drawer:
 
       self.drawText(str(values[i]), 'sml', pygame.Rect(left, top, 25, self.config['Images']['Resources']['height']))
 
-      left += 30
+      left += 25
 
   # Flip the screen to the current drawn status
   def flip(self):

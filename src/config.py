@@ -71,8 +71,8 @@ config['Drawer'] = {
         'Oil': r'..\lib\images\Resources\oil.png',
         'Wood': r'..\lib\images\Resources\wood.png'
       },
-      'width': 40,
-      'height': 40
+      'width': 50,
+      'height': 50
     }
   },
   'Rects': {
@@ -150,97 +150,97 @@ config['Drawer'] = {
         'color': 'black'
       },
       'Musketman': {
-        'start': (1175, 265),
+        'start': (1175, 255),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Cavalry': {
-        'start': (1245, 265),
+        'start': (1245, 255),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Infantry': {
-        'start': (1325, 265),
+        'start': (1325, 255),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Tank': {
-        'start': (1395, 265),
+        'start': (1395, 255),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Archer': {
-        'start': (1175, 335),
+        'start': (1175, 325),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Cannon': {
-        'start': (1245, 335),
+        'start': (1245, 325),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Artillery': {
-        'start': (1325, 335),
+        'start': (1325, 325),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Anti-Air Gun': {
-        'start': (1395, 335),
+        'start': (1395, 325),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Trireme': {
-        'start': (1175, 425),
+        'start': (1175, 415),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Caravel': {
-        'start': (1245, 425),
+        'start': (1245, 415),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Battleship': {
-        'start': (1325, 425),
+        'start': (1325, 415),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Aircraft Carrier': {
-        'start': (1395, 425),
+        'start': (1395, 415),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Fighter': {
-        'start': (1175, 515),
+        'start': (1175, 505),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Bomber': {
-        'start': (1245, 515),
+        'start': (1245, 505),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Jet Fighter': {
-        'start': (1325, 515),
+        'start': (1325, 505),
         'width': 60,
         'height': 60,
         'color': 'black'
       },
       'Helicopter': {
-        'start': (1395, 515),
+        'start': (1395, 505),
         'width': 60,
         'height': 60,
         'color': 'black'

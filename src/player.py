@@ -25,3 +25,7 @@ class Player:
     # Returns true if the point is on the button
     def inside(self, x, y):
         return self.button.collidepoint(x, y)
+    
+    # Returns information for when this is hoverd
+    def info(self):
+        return [self.name, self.player, self.resources, ['Food', 'Wood', 'Metal', 'Oil']]

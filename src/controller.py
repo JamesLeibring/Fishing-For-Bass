@@ -1,9 +1,12 @@
 import config
 import drawer
 import player
+import location
+import unit
+import pygame
 
 class Controller:
-    def __init__(self, player_count):
+    def __init__(self, players, pc):
         self.config = config.config
 
         # The buttons for the game
@@ -13,11 +16,15 @@ class Controller:
         self.drawer = drawer.Drawer()
 
         # The Players for this game
-        self.players = [player.Player(i) for i in range(player_count)]
-        self.pc = 0
+        self.players = [player.Player(i + 1, players[i]) for i in range(len(players))]
+        self.pc = pc
 
         # The territories for this game
-        #self.territories = [location.Territory(ter) for ter in self.config['Territories']]
+        # self.territories = [location.Territory(ter) for ter in self.config['Locations']['Territories']]
+        # self.coasts = [location.Coast(coast) for coast in self.config['Locations']['Coasts']]
+
+        # The different units to be used (these are only used to project info)
+        # self.units = [unit.makeUnit(un) for un in self.config['Units']]
 
         # The turn the game is on
         self.turn = 0
@@ -32,11 +39,14 @@ class Controller:
         running = True
 
         while running:
+            # Get the position of our mouse for this frame
+            self.hov = self.hover(pygame.mouse.get_pos())
+
             self.draw()
 
-            input()
-
-            running = False
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
 
     # Draw the game state
     def draw(self):
@@ -48,21 +58,27 @@ class Controller:
         # Draw everything on the map
         self.drawer.drawMap(len(self.players))
 
+        if self.hov:
+            self.drawer.drawInfo(self.hov.info())
+        else:
+            self.drawer.drawInfo()
+
         self.drawer.flip()
 
     # Hover function determines if you are hovering a unit or territory and returns it
-    def hover(self, x, y):
-        for ter in self.territories:
-            if ter.button.collidepoint(x, y):
-                return ter
-        if not self.boardableUnits:
-            for i, rect in enumerate(self.shopChoices):
-                if rect.collidepoint(x, y):
-                    return self.units[i]
-        else:
-            for i, rect in enumerate(self.shopChoices):
-                if rect.collidepoint(x, y):
-                    return self.boardableUnits[i]
+    def hover(self, loc):
+        x = loc[0]
+        y = loc[1]
+
+        for ply in self.players:
+            if ply.inside(x, y):
+                return ply
+        #for ter in self.territories:
+        #    if ter.inside(x, y):
+        #        return ter
+        #for un in self.units:
+        #    if un.inside(x, y):
+        #        return un
         return None
 """
     # Draws any variable visuals to the game, that is, anything that is often changing or variable
@@ -192,9 +208,6 @@ class Controller:
         # This parses your opponents turns! Anything they do will be run here :)
         if msg is not None:
             self.parseMessage(msg)
-
-        # Get the position of our mouse for this frame
-        x, y = pygame.mouse.get_pos()
 
         # Find how much time has lapsed so far
         time_lapsed = time.time() - self.startTime
