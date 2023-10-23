@@ -6,8 +6,11 @@ class Controller:
     def __init__(self, player_count):
         self.config = config.config
 
+        # The buttons for the game
+        self.buttonInfo = self.config['Buttons']
+
         # The Drawer draws everything we need on the screen
-        self.drawer = drawer.Drawer(self.config['Drawer'])
+        self.drawer = drawer.Drawer()
 
         # The Players for this game
         self.players = [player.Player(i) for i in range(player_count)]

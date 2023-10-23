@@ -1,33 +1,22 @@
 import pygame
+import config as config_
 
 class Drawer:
-  def __init__(self, config):
-    # Information about the main screen
-    self.screenInfo = config['Screen']
-
-    # Information about the main surface
-    self.surfaceInfo = config['Surface']
-
-    # Color information
-    self.colorInfo = config['Colors']
-
-    # Image information
-    self.imageInfo = config['Images']
-
-    # Rectangle Dimension Information
-    self.rectInfo = config['Rects']
+  def __init__(self):
+    # Config Information
+    self.config = config_.config['Drawer']
 
     # Start up pygame
     pygame.init()
 
     # Create our initial screens, the first is normal, the second has the ability to create opaque objects
-    self.screen = pygame.display.set_mode((self.screenInfo['width'], self.screenInfo['height']))
-    self.screen.fill(self.colorInfo['burntsienna'])
+    self.screen = pygame.display.set_mode((self.config['Screen']['width'], self.config['Screen']['height']))
+    self.screen.fill(self.config['Colors']['burntsienna'])
 
     pygame.display.set_caption('Fishing For Bass')
 
     # The surface is used as a way to print opaque objects
-    self.surface = pygame.Surface((self.surfaceInfo['width'], self.surfaceInfo['height']), pygame.SRCALPHA)
+    self.surface = pygame.Surface((self.config['Surface']['width'], self.config['Surface']['height']), pygame.SRCALPHA)
 
     # Fonts to be used in drawings
     self.fonts = {
@@ -40,11 +29,11 @@ class Drawer:
     self.images = {}
 
     # The map and target images
-    self.makeImage(self.imageInfo['Map']),
+    self.makeImage(self.config['Images']['Map']),
 
     # The Unit and Resource Images
-    self.makeImages(self.imageInfo['Units'])
-    self.makeImages(self.imageInfo['Resources'])
+    self.makeImages(self.config['Images']['Units'])
+    self.makeImages(self.config['Images']['Resources'])
   
   # Creates an image to be drawn
   def makeImage(self, info):
@@ -56,13 +45,13 @@ class Drawer:
       self.images[name] = pygame.transform.scale(pygame.image.load(info['name'][name]), (info['width'], info['height']))
 
   def drawRect(self, info):
-    return pygame.draw.rect(self.screen, self.colorInfo[info['color']], (info['start'][0], info['start'][1], info['width'], info['height']))
+    return pygame.draw.rect(self.screen, self.config['Colors'][info['color']], (info['start'][0], info['start'][1], info['width'], info['height']))
   
   def drawBorder(self, outer, color, border):
-    return pygame.draw.rect(self.screen, self.colorInfo[color], (outer.left + border, outer.top + border, outer.width - 2*border, outer.height - 2*border))
+    return pygame.draw.rect(self.screen, self.config['Colors'][color], (outer.left + border, outer.top + border, outer.width - 2*border, outer.height - 2*border))
   
   def drawText(self, text, size, rect):
-    t = self.fonts[size].render(text, True, self.colorInfo['black'], self.colorInfo['cornsilk'])
+    t = self.fonts[size].render(text, True, self.config['Colors']['black'], self.config['Colors']['cornsilk'])
     tRect = t.get_rect()
     tRect.center = rect.center
     self.screen.blit(t, tRect)
@@ -70,55 +59,55 @@ class Drawer:
   # Draws the background for the game (1 time draw)
   def drawBackground(self, playerNum):
     # Draw the border
-    self.borderRect = self.drawRect(self.rectInfo['Border'])
+    self.borderRect = self.drawRect(self.config['Rects']['Border'])
 
     # Draw the map
-    self.mapRect = self.drawRect(self.rectInfo['Map'])
+    self.mapRect = self.drawRect(self.config['Rects']['Map'])
 
     # Draw the sidebar
-    self.sideRect = self.drawRect(self.rectInfo['Side'])
+    self.sideRect = self.drawRect(self.config['Rects']['Side'])
 
     # Draw the info box
-    self.infoRect = self.drawRect(self.rectInfo['Info'])
+    self.infoRect = self.drawRect(self.config['Rects']['Info'])
     self.drawBorder(self.infoRect, 'cornsilk', 5)
 
     # Draw the turn box
-    self.turnRect = self.drawRect(self.rectInfo['Turn'])
+    self.turnRect = self.drawRect(self.config['Rects']['Turn'])
     self.drawBorder(self.turnRect, 'cornsilk', 5)
 
     # Draw the color box (indicates which player you are)
-    self.colorRect = self.drawRect(self.rectInfo['Color'])
-    self.drawBorder(self.colorRect, self.colorInfo['Player'][playerNum], 5)
+    self.colorRect = self.drawRect(self.config['Rects']['Color'])
+    self.drawBorder(self.colorRect, self.config['Colors']['Player'][playerNum], 5)
 
     # Draw the resources box
-    self.resourceRect = self.drawRect(self.rectInfo['Resources'])
+    self.resourceRect = self.drawRect(self.config['Rects']['Resources'])
     self.drawBorder(self.resourceRect, 'cornsilk', 5)
 
     # Draw the shop border
-    self.shopRect = self.drawRect(self.rectInfo['Shop'])
+    self.shopRect = self.drawRect(self.config['Rects']['Shop'])
     self.drawBorder(self.shopRect, 'white', 5)
 
   # Draws the Map
   def drawMap(self, playerNum):
     self.screen.blit(self.images['Map'], self.drawBorder(self.mapRect, 'white', 0))
 
-    info = self.rectInfo['PlayerBoxes']
+    info = self.config['Rects']['PlayerBoxes']
 
     for i in range(playerNum):
       rect = self.drawRect(info[i+1])
-      self.drawBorder(rect, self.colorInfo['Player'][i], 5)
+      self.drawBorder(rect, self.config['Colors']['Player'][i], 5)
 
   # Draw the shop
   def drawShop(self, playerNum, selectedUnit=None):
     self.drawBorder(self.shopRect, 'cornsilk2', 5)
 
-    for name in self.rectInfo['ShopBoxes']:
-      rect = self.drawRect(self.rectInfo['ShopBoxes'][name])
+    for name in self.config['Rects']['ShopBoxes']:
+      rect = self.drawRect(self.config['Rects']['ShopBoxes'][name])
 
       if name == selectedUnit:
         color = 'cornsilk'
       else:
-        color = self.colorInfo['Player'][playerNum]
+        color = self.config['Colors']['Player'][playerNum]
 
       self.screen.blit(self.images[name], self.drawBorder(rect, color, 5))
   
@@ -149,9 +138,9 @@ class Drawer:
     for i in range(4):
       self.screen.blit(imgs[i], (left, top))
 
-      left += self.imageInfo['Resources']['width']
+      left += self.config['Images']['Resources']['width']
 
-      self.drawText(str(values[i]), 'sml', pygame.Rect(left, top, 25, self.imageInfo['Resources']['height']))
+      self.drawText(str(values[i]), 'sml', pygame.Rect(left, top, 25, self.config['Images']['Resources']['height']))
 
       left += 30
 
