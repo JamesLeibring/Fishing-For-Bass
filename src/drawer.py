@@ -105,39 +105,22 @@ class Drawer:
     info = self.rectInfo['PlayerBoxes']
 
     for i in range(playerNum):
-      rect = self.drawRect(info)
+      rect = self.drawRect(info[i+1])
       self.drawBorder(rect, self.colorInfo['Player'][i], 5)
-
-      info['start'][0] += 45
 
   # Draw the shop
   def drawShop(self, playerNum, selectedUnit=None):
-      self.drawBorder(self.shopRect, 'cornsilk2', 5)
+    self.drawBorder(self.shopRect, 'cornsilk2', 5)
 
-      info = self.rectInfo['ShopBoxes']
+    for name in self.rectInfo['ShopBoxes']:
+      rect = self.drawRect(self.rectInfo['ShopBoxes'][name])
 
-      for i, name in enumerate(self.imageInfo['Units']['name']):
-        unitRect = self.drawRect(info)
+      if name == selectedUnit:
+        color = 'cornsilk'
+      else:
+        color = self.colorInfo['Player'][playerNum]
 
-        if name == selectedUnit:
-          color = 'cornsilk'
-        else:
-          color = self.colorInfo['Player'][playerNum]
-
-        self.screen.blit(self.images[name], self.drawBorder(unitRect, color, 5))
-
-        if (i+1) % 4 == 0:
-          info['start'][0] = 1175
-          
-          if (i+1) % 12 == 0 or (i+1) % 16 == 0:
-            info['start'][1] += 90
-          else:
-            info['start'][1] += 70
-
-        elif (i+1) % 2 == 0:
-          info['start'][0] += 80
-        else:
-          info['start'][0] += 70
+      self.screen.blit(self.images[name], self.drawBorder(rect, color, 5))
   
   # Draw the turn
   def drawTurn(self, turn):

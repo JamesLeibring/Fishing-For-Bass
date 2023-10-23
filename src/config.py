@@ -125,17 +125,208 @@ config['Drawer'] = {
       'color': 'black'
     },
     'ShopBoxes': {
-      'start': [1175, 185],
-      'width': 60,
-      'height': 60,
-      'color': 'black'
+      'Warrior': {
+        'start': (1175, 185),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Horseman': {
+        'start': (1245, 185),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Swordsman': {
+        'start': (1325, 185),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Knight': {
+        'start': (1395, 185),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Musketman': {
+        'start': (1175, 265),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Cavalry': {
+        'start': (1245, 265),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Infantry': {
+        'start': (1325, 265),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Tank': {
+        'start': (1395, 265),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Archer': {
+        'start': (1175, 335),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Cannon': {
+        'start': (1245, 335),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Artillery': {
+        'start': (1325, 335),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Anti-Air Gun': {
+        'start': (1395, 335),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Trireme': {
+        'start': (1175, 425),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Caravel': {
+        'start': (1245, 425),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Battleship': {
+        'start': (1325, 425),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Aircraft Carrier': {
+        'start': (1395, 425),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Fighter': {
+        'start': (1175, 515),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Bomber': {
+        'start': (1245, 515),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Jet Fighter': {
+        'start': (1325, 515),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
+      'Helicopter': {
+        'start': (1395, 515),
+        'width': 60,
+        'height': 60,
+        'color': 'black'
+      },
     },
     'PlayerBoxes': {
-      'start': [25, 25],
-      'width': 40,
-      'height': 40,
-      'color': 'black'
+      1: {
+        'start': (25, 25),
+        'width': 40,
+        'height': 40,
+        'color': 'black'
+      },
+      2: {
+        'start': (70, 25),
+        'width': 40,
+        'height': 40,
+        'color': 'black'
+      },
+      3: {
+        'start': (115, 25),
+        'width': 40,
+        'height': 40,
+        'color': 'black'
+      },
+      4: {
+        'start': (160, 25),
+        'width': 40,
+        'height': 40,
+        'color': 'black'
+      },
+      5: {
+        'start': (205, 25),
+        'width': 40,
+        'height': 40,
+        'color': 'black'
+      },
+      6: {
+        'start': (250, 25),
+        'width': 40,
+        'height': 40,
+        'color': 'black'
+      }
     }
   }
 }
 
+config['Buttons'] = {
+  'Players': {
+    'start': {
+      1: (25, 25),
+      2: (70, 25),
+      3: (115, 25),
+      4: (160, 25),
+      5: (205, 25),
+      6: (250, 25)
+    },
+    'width': 40,
+    'height': 40
+  },
+  'Units': {
+    'start': {
+      'Warrior': (1175, 185),
+      'Horseman': (1245, 185),
+      'Swordsman': (1325, 185),
+      'Knight': (1395, 185),
+      'Musketman': (1175, 265),
+      'Cavalry': (1245, 265),
+      'Infantry': (1325, 265),
+      'Tank': (1395, 265),
+      'Archer': (1175, 335),
+      'Cannon': (1245, 335),
+      'Artillery': (1325, 335),
+      'Anti-Air Gun': (1395, 335),
+      'Trireme': (1175, 425),
+      'Caravel': (1245, 425),
+      'Battleship': (1325, 425),
+      'Aircraft Carrier': (1395, 425),
+      'Fighter': (1175, 515),
+      'Bomber': (1245, 515),
+      'Jet Fighter': (1325, 515),
+      'Helicopter': (1395, 515)
+    },
+    'width': 60,
+    'height': 60
+  },
+  'Territories': {
+
+  }
+}
