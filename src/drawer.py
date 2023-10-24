@@ -2,8 +2,6 @@ import pygame
 import config as config_
 
 from player import Player
-from unit import Unit
-from location import Territory
 
 class Drawer:
   def __init__(self):
@@ -55,14 +53,14 @@ class Drawer:
   def drawBorder(self, outer, color, border):
     return pygame.draw.rect(self.screen, self.config['Colors'][color], (outer.left + border, outer.top + border, outer.width - 2*border, outer.height - 2*border))
   
-  def drawText(self, text, size, rect, align='center'):
+  def drawText(self, text, size, rect, left=False):
     t = self.fonts[size].render(text, True, self.config['Colors']['black'], self.config['Colors']['cornsilk'])
     tRect = t.get_rect()
     
-    if align == 'center':
-      tRect.center = rect.center
-    elif align == 'left':
+    if left:
       tRect.midleft = rect.midleft
+    else:
+      tRect.center = rect.center
     
     self.screen.blit(t, tRect)
 
@@ -138,7 +136,7 @@ class Drawer:
     if x is None: return
 
     # Draw the name
-    self.drawText(x.name, 'med', pygame.Rect(rect.left + 10, rect.top + 5, rect.width / 2 - 5, rect.height / 2 - 5), 'left')
+    self.drawText(x.name, 'med', pygame.Rect(rect.left + 10, rect.top + 5, rect.width / 2 - 5, rect.height / 2 - 5), left=True)
 
     # Find the color to draw in the top right
     if type(x) == Player:  
