@@ -1,6 +1,10 @@
 import pygame
 import config as config_
 
+from player import Player
+from unit import Unit
+from location import Territory
+
 class Drawer:
   def __init__(self):
     # Config Information
@@ -34,6 +38,7 @@ class Drawer:
     # The Unit and Resource Images
     self.makeImages(self.config['Images']['Units'])
     self.makeImages(self.config['Images']['Resources'])
+    self.makeImages(self.config['Images']['Attributes'])
   
   # Creates an image to be drawn
   def makeImage(self, info):
@@ -122,48 +127,63 @@ class Drawer:
     self.drawText('Turn: ' + str(turn), 'lrg', rect)
 
   # Draw the resource values at the top of the screen
-  def drawResources(self, resources):
+  def drawResources(self, stats):
     rect = self.drawBorder(self.resourceRect, 'cornsilk', 5)
-    imgs = [self.images['Food'], self.images['Wood'], self.images['Metal'], self.images['Oil']]
-
-    self.drawStats(imgs, resources, rect)
+    self.drawStats(stats, rect)
 
   # Draws the info box
-  def drawInfo(self, info=None):
+  def drawInfo(self, x):
     rect = self.drawBorder(self.infoRect, 'cornsilk', 5)
 
-    if info is not None:   
-      name = info[0]
-      color = self.config['Colors']['Player'][info[1] - 1]
-      resources = info[2]
-      images = [self.images[img] for img in info[3]]
+    if x is None: return
 
-      # Draw the name
-      self.drawText(name, 'med', pygame.Rect(rect.left + 10, rect.top + 5, rect.width / 2 - 5, rect.height / 2 - 5), 'left')
+    # Draw the name
+    self.drawText(x.name, 'med', pygame.Rect(rect.left + 10, rect.top + 5, rect.width / 2 - 5, rect.height / 2 - 5), 'left')
 
-      # Draw the color of the owner
-      colorRect = pygame.draw.rect(self.screen, self.config['Colors']['black'], (rect.right - 50, rect.top + 10, 40, 40))
-      self.drawBorder(colorRect, color, 5)
+    # Find the color to draw in the top right
+    if type(x) == Player:  
+      playerNum = x.playerNum
+    else:
+      playerNum = x.player.playerNum
 
-      # The divider
-      pygame.draw.line(self.screen, self.config['Colors']['black'], (rect.left + 5, rect.centery), (rect.right - 5, rect.centery), 3)
+    color = self.config['Colors']['Player'][playerNum]
 
-      # The resources
-      self.drawStats(images, resources, pygame.Rect(rect.left, rect.top + 65, rect.width, rect.height))
+    # Draw the color of the owner
+    colorRect = pygame.draw.rect(self.screen, self.config['Colors']['black'], (rect.right - 50, rect.top + 10, 40, 40))
+    self.drawBorder(colorRect, color, 5)
+    
+    # The divider
+    pygame.draw.line(self.screen, self.config['Colors']['black'], (rect.left + 5, rect.centery), (rect.right - 5, rect.centery), 3)
+
+    # The resources
+    self.drawStats(x.stats, pygame.Rect(rect.left, rect.top + 65, rect.width, rect.height))
 
   # Draws 4 stats
-  def drawStats(self, imgs, values, rect):
-    left = rect.left
-    top = rect.top
+  def drawStats(self, stats, rect):
+    # Create a new Rect to draw our shapes
+    rect = pygame.Rect(rect.left, rect.top, 50, 50)
+    
+    # Loop through each stat, drawing it
+    for stat in stats:
+      # Format the image
+      img = self.images[stat]
+      imgRect = img.get_rect()
+      imgRect.center = rect.center
 
-    for i in range(4):
-      self.screen.blit(imgs[i], (left, top))
+      self.screen.blit(img, imgRect)
 
-      left += self.config['Images']['Resources']['width']
+      rect.left += 50
 
-      self.drawText(str(values[i]), 'sml', pygame.Rect(left, top, 25, self.config['Images']['Resources']['height']))
+      # Format the text
+      text = str(stats[stat])
+      if len(text) < 3:
+        size = 'med'
+      else:
+        size = 'sml'
 
-      left += 25
+      self.drawText(text, size, pygame.Rect(rect.left, rect.top, 25, 50))
+
+      rect.left += 25
 
   # Flip the screen to the current drawn status
   def flip(self):

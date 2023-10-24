@@ -1,9 +1,33 @@
 # The Unit Class : Describes a unit in its entirity
+import config
+import pygame
 
 class Unit:
-    def __init__(self):
-        self.power = 0
-        self.movement = 0
+    def __init__(self, id, player):        
+        self.buttonInfo = config.config['Buttons']['Units']
+
+        self.statInfo = config.config['Units']
+
+        # The name of the unit
+        self.name = None
+
+        # The units unique id
+        self.id = id
+
+        # The units stats
+        self.stats = None
+
+        # The button
+        self.button = None
+        
+        # The player owner
+        self.player = player
+    
+    def makeButton(self, name):
+        return pygame.Rect(self.buttonInfo['start'][name][0], self.buttonInfo['start'][name][1], self.buttonInfo['width'], self.buttonInfo['height'])
+    
+    def inside(self, x, y):
+        return self.button.collidepoint(x, y)
 
 class DefensiveUnit(Unit):
     def __init__(self):
@@ -23,17 +47,23 @@ class RangedUnit(Unit):
 
         self.range = 0
 
-class LandUnit(Unit):
-    def __init__(self):
-        super().__init__()
-        pass
+# Specific units start here
 
-class SeaUnit(Unit):
-    def __init__(self):
-        super().__init__()
-        pass
+class Warrior(Unit):
+    def __init__(self, id, player):
+        super().__init__(id, player)
 
-class AirUnit(Unit):
-    def __init__(self):
-        super().__init__()
-        pass
+        self.name = 'Warrior'
+
+        self.stats = self.statInfo['Warrior']
+
+        self.power = self.stats['Power']
+        self.movement = self.stats['Movement']
+
+        self.button = self.makeButton(self.name)
+
+def makeUnit(name, player):
+    if name == 'Warrior':
+        return Warrior(0, player)
+    else:
+        return None

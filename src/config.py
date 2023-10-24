@@ -73,6 +73,25 @@ config['Drawer'] = {
       },
       'width': 50,
       'height': 50
+    },
+    'Attributes': {
+      'name': {
+        'Anti-air': r'..\lib\images\Attributes\anti-air.png',
+        'Aquadef': r'..\lib\images\Attributes\aquadef.png',
+        'Aquatic': r'..\lib\images\Attributes\aquatic.png',
+        'Arial': r'..\lib\images\Attributes\arial.png',
+        'Capacity': r'..\lib\images\Attributes\capacity.png',
+        'Carrier': r'..\lib\images\Attributes\carrier.png',
+        'Defense': r'..\lib\images\Attributes\defense.png',
+        'Hover': r'..\lib\images\Attributes\hover.png',
+        'Movement': r'..\lib\images\Attributes\movement.png',
+        'Naval': r'..\lib\images\Attributes\naval.png',
+        'Pollutant': r'..\lib\images\Attributes\pollutant.png',
+        'Power': r'..\lib\images\Attributes\power.png',
+        'Range': r'..\lib\images\Attributes\range.png'
+      },
+      'width': 36,
+      'height': 36
     }
   },
   'Rects': {
@@ -290,12 +309,12 @@ config['Drawer'] = {
 config['Buttons'] = {
   'Players': {
     'start': {
-      1: (25, 25),
-      2: (70, 25),
-      3: (115, 25),
-      4: (160, 25),
-      5: (205, 25),
-      6: (250, 25)
+      0: (25, 25),
+      1: (70, 25),
+      2: (115, 25),
+      3: (160, 25),
+      4: (205, 25),
+      5: (250, 25)
     },
     'width': 40,
     'height': 40
@@ -328,5 +347,12 @@ config['Buttons'] = {
   },
   'Territories': {
 
+  }
+}
+
+config['Units'] = {
+  'Warrior': {
+    'Power': 1,
+    'Movement': 1
   }
 }

@@ -6,7 +6,7 @@ import unit
 import pygame
 
 class Controller:
-    def __init__(self, players, pc):
+    def __init__(self, playerNames, pc):
         self.config = config.config
 
         # The buttons for the game
@@ -16,7 +16,7 @@ class Controller:
         self.drawer = drawer.Drawer()
 
         # The Players for this game
-        self.players = [player.Player(i + 1, players[i]) for i in range(len(players))]
+        self.players = [player.Player(i, playerNames[i]) for i in range(len(playerNames))]
         self.pc = pc
 
         # The territories for this game
@@ -24,7 +24,7 @@ class Controller:
         # self.coasts = [location.Coast(coast) for coast in self.config['Locations']['Coasts']]
 
         # The different units to be used (these are only used to project info)
-        # self.units = [unit.makeUnit(un) for un in self.config['Units']]
+        self.units = [unit.makeUnit(un, self.players[self.pc]) for un in self.config['Units']]
 
         # The turn the game is on
         self.turn = 0
@@ -52,16 +52,13 @@ class Controller:
     def draw(self):
         # Draw varying information on the Sidebar
         self.drawer.drawTurn(self.turn)
-        self.drawer.drawResources(self.players[self.pc].resources)
+        self.drawer.drawResources(self.players[self.pc].stats)
         self.drawer.drawShop(self.pc)
 
         # Draw everything on the map
         self.drawer.drawMap(len(self.players))
 
-        if self.hov:
-            self.drawer.drawInfo(self.hov.info())
-        else:
-            self.drawer.drawInfo()
+        self.drawer.drawInfo(self.hov)
 
         self.drawer.flip()
 
@@ -73,6 +70,9 @@ class Controller:
         for ply in self.players:
             if ply.inside(x, y):
                 return ply
+        for un in self.units:
+            if un.inside(x, y):
+                return un
         #for ter in self.territories:
         #    if ter.inside(x, y):
         #        return ter
