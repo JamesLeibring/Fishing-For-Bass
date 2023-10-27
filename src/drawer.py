@@ -28,24 +28,22 @@ class Drawer:
     }
 
     # A dictionary of images
-    self.images = {}
-
-    # The map and target images
-    self.makeImage(self.config['Images']['Map']),
-
-    # The Unit and Resource Images
-    self.makeImages(self.config['Images']['Units'])
-    self.makeImages(self.config['Images']['Resources'])
-    self.makeImages(self.config['Images']['Attributes'])
+    self.images = self.makeImages()
   
-  # Creates an image to be drawn
-  def makeImage(self, info):
-    self.images[info['name']] = pygame.transform.scale(pygame.image.load(info['image']), (info['width'], info['height']))
-
   # Createa a set of images to be drawn
-  def makeImages(self, info):
-    for name in info['name']:
-      self.images[name] = pygame.transform.scale(pygame.image.load(info['name'][name]), (info['width'], info['height']))
+  def makeImages(self):
+    imgDict = {}
+
+    for imgName in self.config['Images']:
+      info = self.config['Images'][imgName]
+
+      if type(info['image']) == str:
+        imgDict[imgName] = pygame.transform.scale(pygame.image.load(info['image']), (info['width'], info['height']))
+      else:
+        for img in info['image']:
+          imgDict[img] = pygame.transform.scale(pygame.image.load(info['image'][img]), (info['width'], info['height']))
+    
+    return imgDict
 
   def drawRect(self, info):
     return pygame.draw.rect(self.screen, self.config['Colors'][info['color']], (info['start'][0], info['start'][1], info['width'], info['height']))
@@ -99,10 +97,8 @@ class Drawer:
   def drawMap(self, playerNum):
     self.screen.blit(self.images['Map'], self.drawBorder(self.mapRect, 'white', 0))
 
-    info = self.config['Dimensions']['PlayerBoxes']
-
     for i in range(playerNum):
-      rect = self.drawRect(info[i+1])
+      rect = self.drawRect(self.config['Dimensions']['PlayerBoxes'][i])
       self.drawBorder(rect, self.config['Colors']['Player'][i], 5)
 
   # Draw the shop

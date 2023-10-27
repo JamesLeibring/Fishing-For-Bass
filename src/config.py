@@ -27,19 +27,17 @@ config['Drawer'] = {
   },
   'Images': {
     'Map': {
-      'name': 'Map',
       'image': r'..\lib\images\map.jpg',
       'width': 1120,
       'height': 710
     },
     'Target': {
-      'name': 'Target',
       'image': r'..\lib\images\misc\bullseye.png',
       'width': 32,
       'height': 32
     },
     'Units': {
-      'name': {
+      'image': {
         'Warrior': r'..\lib\images\Units\Land\warrior.png',
         'Horseman': r'..\lib\images\Units\Land\horseman.png',
         'Swordsman': r'..\lib\images\Units\Land\swordsman.png',
@@ -65,7 +63,7 @@ config['Drawer'] = {
       'height': 50
     },
     'Resources': {
-      'name': {
+      'image': {
         'Food': r'..\lib\images\Resources\food.png',
         'Metal': r'..\lib\images\Resources\metal.png',
         'Oil': r'..\lib\images\Resources\oil.png',
@@ -75,7 +73,7 @@ config['Drawer'] = {
       'height': 50
     },
     'Attributes': {
-      'name': {
+      'image': {
         'Anti-air': r'..\lib\images\Attributes\anti-air.png',
         'Aquadef': r'..\lib\images\Attributes\aquadef.png',
         'Aquatic': r'..\lib\images\Attributes\aquatic.png',
@@ -266,37 +264,37 @@ config['Drawer'] = {
       },
     },
     'PlayerBoxes': {
-      1: {
+      0: {
         'start': (25, 25),
         'width': 40,
         'height': 40,
         'color': 'black'
       },
-      2: {
+      1: {
         'start': (70, 25),
         'width': 40,
         'height': 40,
         'color': 'black'
       },
-      3: {
+      2: {
         'start': (115, 25),
         'width': 40,
         'height': 40,
         'color': 'black'
       },
-      4: {
+      3: {
         'start': (160, 25),
         'width': 40,
         'height': 40,
         'color': 'black'
       },
-      5: {
+      4: {
         'start': (205, 25),
         'width': 40,
         'height': 40,
         'color': 'black'
       },
-      6: {
+      5: {
         'start': (250, 25),
         'width': 40,
         'height': 40,
