@@ -67,39 +67,39 @@ class Drawer:
   # Draws the background for the game (1 time draw)
   def drawBackground(self, playerNum):
     # Draw the border
-    self.borderRect = self.drawRect(self.config['Rects']['Border'])
+    self.borderRect = self.drawRect(self.config['Dimensions']['Border'])
 
     # Draw the map
-    self.mapRect = self.drawRect(self.config['Rects']['Map'])
+    self.mapRect = self.drawRect(self.config['Dimensions']['Map'])
 
     # Draw the sidebar
-    self.sideRect = self.drawRect(self.config['Rects']['Side'])
+    self.sideRect = self.drawRect(self.config['Dimensions']['Side'])
 
     # Draw the info box
-    self.infoRect = self.drawRect(self.config['Rects']['Info'])
+    self.infoRect = self.drawRect(self.config['Dimensions']['Info'])
     self.drawBorder(self.infoRect, 'cornsilk', 5)
 
     # Draw the turn box
-    self.turnRect = self.drawRect(self.config['Rects']['Turn'])
+    self.turnRect = self.drawRect(self.config['Dimensions']['Turn'])
     self.drawBorder(self.turnRect, 'cornsilk', 5)
 
     # Draw the color box (indicates which player you are)
-    self.colorRect = self.drawRect(self.config['Rects']['Color'])
+    self.colorRect = self.drawRect(self.config['Dimensions']['Color'])
     self.drawBorder(self.colorRect, self.config['Colors']['Player'][playerNum], 5)
 
     # Draw the resources box
-    self.resourceRect = self.drawRect(self.config['Rects']['Resources'])
+    self.resourceRect = self.drawRect(self.config['Dimensions']['Resources'])
     self.drawBorder(self.resourceRect, 'cornsilk', 5)
 
     # Draw the shop border
-    self.shopRect = self.drawRect(self.config['Rects']['Shop'])
+    self.shopRect = self.drawRect(self.config['Dimensions']['Shop'])
     self.drawBorder(self.shopRect, 'white', 5)
 
   # Draws the Map
   def drawMap(self, playerNum):
     self.screen.blit(self.images['Map'], self.drawBorder(self.mapRect, 'white', 0))
 
-    info = self.config['Rects']['PlayerBoxes']
+    info = self.config['Dimensions']['PlayerBoxes']
 
     for i in range(playerNum):
       rect = self.drawRect(info[i+1])
@@ -109,8 +109,8 @@ class Drawer:
   def drawShop(self, playerNum, selectedUnit=None):
     self.drawBorder(self.shopRect, 'cornsilk2', 5)
 
-    for name in self.config['Rects']['ShopBoxes']:
-      rect = self.drawRect(self.config['Rects']['ShopBoxes'][name])
+    for name in self.config['Dimensions']['ShopBoxes']:
+      rect = self.drawRect(self.config['Dimensions']['ShopBoxes'][name])
 
       if name == selectedUnit:
         color = 'cornsilk'
@@ -183,6 +183,21 @@ class Drawer:
 
       rect.left += 25
 
-  # Flip the screen to the current drawn status
-  def flip(self):
+  # Draw the game state
+  def draw(self, turn, player, hov, playerCount):
+    # Draw the turn label
+    self.drawTurn(turn)
+
+    # Draw the resource bar
+    self.drawResources(player.stats)
+
+    # Draw the shop
+    self.drawShop(player.playerNum)
+
+    # Draw the info box
+    self.drawInfo(hov)
+
+    # Draw the map
+    self.drawMap(playerCount)
+
     pygame.display.flip()

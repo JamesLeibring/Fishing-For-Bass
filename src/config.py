@@ -1003,7 +1003,7 @@ config['Units'] = {
   },
 }
 
-config['Locations'] = {
+config['Territories'] = {
   'Alaska': {
     'neighbors': ['NW Territory', 'Alberta'],
     'sea_neighbors': ['NW Territory', 'Alberta', 'Kamchatka'],
