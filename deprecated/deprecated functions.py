@@ -9,433 +9,6 @@ def draw(self, screen, center, blink=False):
     circle = pygame.draw.circle(screen, color, center, 14)
     screen.blit(self.image, circle.topleft)
 
-class Warrior(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/warrior.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Warrior"
-        self.total_power = self.power = 1
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Horseman(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/horseman.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Horseman"
-        self.total_power = self.power = 1
-        self.total_movement = self.movement = 2
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Swordsman(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/swordsman.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Swordsman"
-        self.total_power = self.power = 2
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Knight(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/knight.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Knight"
-        self.total_power = self.power = 2
-        self.total_movement = self.movement = 2
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-        self.values = [self.power, self.movement]
-
-
-class Musketman(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/musketman.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Musketman"
-        self.total_power = self.power = 3
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Cavalry(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/cavalry.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Cavalry"
-        self.total_power = self.power = 3
-        self.total_movement = self.movement = 2
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Infantry(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/infantry.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Infantry"
-        self.total_power = self.power = 5
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Tank(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/tank.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Tank"
-        self.total_power = self.power = 10
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\power', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Archer(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/archer.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Archer"
-        self.total_power = self.power = 2
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.defensive = True
-        self.attributes = [r'\defense', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Cannon(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/cannon.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Cannon"
-        self.total_power = self.power = 4
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.defensive = True
-        self.attributes = [r'\defense', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class Artillery(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/artillery.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Artillery"
-        self.total_power = self.power = 7
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.defensive = True
-        self.attributes = [r'\defense', r'\movement']
-
-    def getValues(self):
-        return [self.power, self.movement]
-
-
-class AntiAircraft(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/anti-air gun.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Anti-Air Gun"
-        self.total_power = self.power = 4
-        self.total_movement = self.movement = 1
-        self.cost = [0, 0, 0, 0]
-        self.defensive = True
-        self.antiair = True
-        self.attributes = [r'\defense', r'\movement', r'\anti-air']
-
-    def getValues(self):
-        return [self.power, self.movement, None]
-
-
-class Ship(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.total_capacity = 0
-        self.capacity = 0
-        self.boarded_units = []
-        self.naval = False
-        self.aquatic = True
-
-    def getTotalCapacity(self):
-        return self.total_capacity
-
-    def getCapacity(self):
-        return self.capacity
-
-    def getBoarded(self):
-        return self.boarded_units
-
-    def isNaval(self):
-        return self.naval
-
-    # Embarks un into this object
-    def embark(self, un):
-        self.capacity -= un.getPower()
-        self.boarded_units.append(un)
-        un.embarked = True
-
-    def disembark(self, un):
-        self.capacity += un.getPower()
-        self.boarded_units.remove(un)
-        un.embarked = False
-
-
-class Trireme(Ship):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/trireme.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Trireme"
-        self.total_power = self.power = 1
-        self.total_movement = self.movement = 2
-        self.total_capacity = self.capacity = 2
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\aquatic', r'\movement', r'\capacity']
-
-    def getValues(self):
-        return [self.power, self.movement, self.capacity]
-
-
-class Caravel(Ship):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/caravel.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Caravel"
-        self.total_power = self.power = 2
-        self.total_movement = self.movement = 3
-        self.total_capacity = self.capacity = 5
-        self.naval = True
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\aquatic', r'\movement', r'\capacity', r'\naval']
-
-    def getValues(self):
-        return [self.power, self.movement, self.capacity, None]
-
-
-class Battleship(Ship):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/battleship.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Battleship"
-        self.total_power = self.power = 5
-        self.total_movement = self.movement = 4
-        self.total_capacity = self.capacity = 6
-        self.naval = True
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\aquatic', r'\movement', r'\capacity', r'\naval']
-
-    def getValues(self):
-        return [self.power, self.movement, self.capacity, None]
-
-
-class AircraftCarrier(Ship):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/aircraft carrier.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Aircraft Carrier"
-        self.total_power = self.power = 10
-        self.total_movement = self.movement = 2
-        self.total_capacity = self.capacity = 12
-        self.range = 2
-        self.carrier = True
-        self.defensive = True
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\aquadef', r'\movement', r'\capacity', r'\carrier']
-        
-    def getRange(self):
-        return self.range
-
-    def getValues(self):
-        return [self.power, self.movement, self.capacity, None]
-
-
-class Plane(Unit):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.range = 0
-        self.arial = True
-
-    def getRange(self):
-        return self.range
-
-
-class Fighter(Plane):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/fighter.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Fighter"
-        self.total_power = self.power = 1
-        self.total_movement = self.movement = 1
-        self.range = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\arial', r'\movement', r'\range']
-
-    def getValues(self):
-        return [self.power, self.movement, self.range]
-
-
-class Bomber(Plane):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/bomber.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Bomber"
-        self.total_power = self.power = 2
-        self.total_movement = self.movement = 1
-        self.range = 1
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\arial', r'\movement', r'\range']
-
-    def getValues(self):
-        return [self.power, self.movement, self.range]
-
-
-class JetFighter(Plane):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/jet fighter.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Jet Fighter"
-        self.total_power = self.power = 3
-        self.total_movement = self.movement = 1
-        self.range = 2
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\arial', r'\movement', r'\range']
-
-    def getValues(self):
-        return [self.power, self.movement, self.range]
-
-
-class Helicopter(Plane):
-    def __init__(self, owner, location):
-        super().__init__(owner, location)
-        self.image = pygame.image.load(os.getcwd() + "/images/helicopter.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))
-        self.name = "Helicopter"
-        self.total_power = self.power = 1
-        self.total_movement = self.movement = 1
-        self.total_capacity = self.capacity = 5
-        self.range = 2
-        self.boarded_units = []
-        self.cost = [0, 0, 0, 0]
-        self.attributes = [r'\arial', r'\movement', r'\range', r'\capacity']
-
-    def getValues(self):
-        return [self.power, self.movement, self.range, self.capacity]
-
-    def getTotalCapacity(self):
-        return self.total_capacity
-
-    def getCapacity(self):
-        return self.capacity
-
-    def getBoarded(self):
-        return self.boarded_units
-
-    # Embarks un into this object
-    def embark(self, un):
-        self.capacity -= un.getPower()
-        self.boarded_units.append(un)
-        un.embarked = True
-
-    def disembark(self, un):
-        self.capacity += un.getPower()
-        self.boarded_units.remove(un)
-        un.embarked = False
-
-
-def make_unit(name, owner=None, loc=None):
-    if name == "Warrior":
-        return Warrior(owner, loc)
-    elif name == "Horseman":
-        return Horseman(owner, loc)
-    elif name == "Swordsman":
-        return Swordsman(owner, loc)
-    elif name == "Knight":
-        return Knight(owner, loc)
-    elif name == "Musketman":
-        return Musketman(owner, loc)
-    elif name == "Cavalry":
-        return Cavalry(owner, loc)
-    elif name == "Infantry":
-        return Infantry(owner, loc)
-    elif name == "Tank":
-        return Tank(owner, loc)
-    elif name == "Archer":
-        return Archer(owner, loc)
-    elif name == "Cannon":
-        return Cannon(owner, loc)
-    elif name == "Artillery":
-        return Artillery(owner, loc)
-    elif name == "Anti-Air Gun":
-        return AntiAircraft(owner, loc)
-    elif name == "Trireme":
-        return Trireme(owner, loc)
-    elif name == "Caravel":
-        return Caravel(owner, loc)
-    elif name == "Battleship":
-        return Battleship(owner, loc)
-    elif name == "Aircraft Carrier":
-        return AircraftCarrier(owner, loc)
-    elif name == "Fighter":
-        return Fighter(owner, loc)
-    elif name == "Bomber":
-        return Bomber(owner, loc)
-    elif name == "Jet Fighter":
-        return JetFighter(owner, loc)
-    elif name == "Helicopter":
-        return Helicopter(owner, loc)
-    return None
-
 #------------------------------------------------------------------------------------
 
 def advanceTurn(self, turn):
@@ -614,3 +187,394 @@ def draw(self, screen, un=None, blink=False):
         un.draw(screen, self.center, blink)
     else:
         self.units[0].draw(screen, self.center)
+
+"""
+    # Called within a while loop, updates the game state and visual state for the user
+    def update(self, player_num, msg=None):
+        # The return value for the update function. This is not None when some significant occurs during the game tick
+        ret_val = None
+
+        # This parses your opponents turns! Anything they do will be run here :)
+        if msg is not None:
+            self.parseMessage(msg)
+
+        # Find how much time has lapsed so far
+        time_lapsed = time.time() - self.startTime
+
+        # Redraw the screens for the new game image
+        self.screen.blit(self.clear_screen, (0, 0))
+        self.clear_screen.blit(self.map, (20, 20))
+
+        # The hov variable represents the area of the map our mouse is located in
+        hov = self.hover(x, y)
+
+        # Check our users actions to determine changes in game state
+        for event in pygame.event.get():
+            # If we click the X button, then close the screen
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return 'exit'
+            # If we notice a left click and it is our turn, then determine what the click was
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                # If we clicked somewhere on the map go here
+                if self.mapRect.collidepoint(x, y) and not self.inInfo and player_num == self.playerNum:
+                    if self.gameStart(hov):
+                        ret_val = self.startGame(self.pc, hov)
+                    elif self.placeUnit(hov):
+                        ret_val = self.purchaseUnit(self.pc, hov, self.unitPurchased)
+                        self.drawShop(self.pc.getColor())
+                    elif self.canMove(hov):
+                        ret_val = self.move(self.pc, hov, self.unitQueue[0])
+                    elif self.canNavigate(hov):
+                        self.unitQueue.pop(0)
+                        tmp = self.unitQueue.pop(0)
+                        tmp.movement -= 2
+                        ret_val = self.move(self.pc, hov, self.unitQueue[0])
+                    elif self.canAttack(hov):
+                        ret_val = self.attack(self.pc, hov, self.unitQueue[0])
+                    elif self.canUnfortify(hov):
+                        self.unfortify(hov)
+                    elif self.wikiRect.collidepoint(x, y):
+                        self.inInfo = True
+                # If we clicked somewhere in the shop go here instead
+                elif self.shopRect.collidepoint(x, y) and not self.inInfo and player_num == self.playerNum:
+                    if self.canPurchase(hov):
+                        self.unitPurchased = hov
+                        self.drawShop(self.c["dark_grey"])
+                    elif self.canEmbark(hov):
+                        ret_val = self.embark(self.pc, hov, self.unitQueue[0])
+                        self.shopChoices = self.drawShop(self.pc.getColor())
+                    elif self.canDisembark(hov):
+                        ret_val = self.disembark(self.pc, self.unitQueue[0], hov)
+                        self.shopChoices = self.drawShop(self.pc.getColor())
+                # This controls us in the Game Info Page
+                elif self.mapRect.collidepoint(x, y) and self.inInfo:
+                    if self.wikiRect.collidepoint(x, y):
+                        self.inInfo = False
+            # If the event type is instead a right click (as used by arial units), handle actions hre instead
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
+                if self.mapRect.collidepoint(x, y) and not self.inInfo and player_num == self.playerNum:
+                    if self.canArialAttack(hov):
+                        ret_val = self.arialAttack(self.pc, hov, self.unitQueue[0])
+            # Handles key events like fortiy (f) and skip unit turn (space)
+            elif event.type == pygame.KEYDOWN and not self.inInfo and player_num == self.playerNum:
+                if event.key == pygame.K_SPACE:
+                    self.skipTurn()
+                elif event.key == pygame.K_f:
+                    self.fortify()
+                elif event.key == pygame.K_RETURN:
+                    ret_val = self.endTurn()
+                elif event.key == pygame.K_e:
+                    if self.canBoard():
+                        self.prepareEmbark()
+                        self.shopChoices = self.drawBoarding()
+                elif event.key == pygame.K_d:
+                    if self.canUnBoard():
+                        self.prepareDisembark()
+                        self.shopChoices = self.drawBoarding()
+        # Now we edit anything that may need to be drawn
+        if not self.inInfo:
+            self.drawGame(hov, time_lapsed, player_num)
+        else:
+            self.drawWiki()
+        self.drawWikiCirc()
+
+        # Update our computer screen with the newly created screen visuals
+        pygame.display.update()
+
+        # Return our action, weather it be None or something of importance
+        return ret_val
+
+    # BOOLEANS : Helper Booleans to determine what action the user is taking
+    # -----------------------------------------------------------------------
+
+    # This returns true so long as the player is not waiting on any specific actions to occur
+    # For example, when we but a unit we ned to place it before doing anything else
+    def notWaiting(self, hov):
+        return hov and not self.unitPurchased and not self.unitBoarding and self.turn > 0
+
+    # Returns true if the location given is owned by the enemy
+    def isEnemy(self, hov):
+        return hov.getOwner() != self.pc and hov.getOwner() is not None
+
+    # Returns true if the location given is owned by the pc
+    def isAlly(self, hov):
+        return hov.getOwner() == self.pc
+
+    # Returns true if the hovered location is neighboring the unit up
+    def isNeighbor(self, hov):
+        return hov and self.unitQueue and hov.getName() in self.unitQueue[0].getLocation().getNeighbors()
+
+    # Function to determine if the game start for this player has all of its conditions met
+    def gameStart(self, hov):
+        return self.turn == 0 and hov and not self.isEnemy(hov) and len(self.pc.getUnits()) == 0
+
+    # If the player can purchase the unit hovered, thn return True
+    def canPurchase(self, hov):
+        if self.notWaiting(hov) and hov in self.units and not self.boardableUnits:
+            return not (False in [x >= y for x, y in zip(self.pc.getResources(), hov.getCost())])
+        return False
+
+    # If the player places the unit purchased, returns True
+    def placeUnit(self, hov):
+        if hov and self.unitPurchased and not self.unitBoarding:
+            if self.unitPurchased.isAquatic():
+                return self.isAlly(hov.getCoast()) or (hov.getCoast().getOwner() is None and self.isAlly(hov))
+            else:
+                return self.isAlly(hov)
+
+    # If there are units fortified, returns True
+    def canUnfortify(self, hov):
+        return self.notWaiting(hov) and (self.isAlly(hov) or self.isAlly(hov.getCoast()))
+
+    # If the unit can move to the hovered territory, then do so
+    def canMove(self, hov):
+        if self.notWaiting(hov) and self.isNeighbor(hov):
+            if self.unitQueue[0].isAquatic():
+                return not self.isEnemy(hov.getCoast())
+            else:
+                return not self.isEnemy(hov)
+        return False
+
+    # If the unit can navigate now, returns True
+    def canNavigate(self, hov):
+        if self.notWaiting(hov) and not self.isEnemy(hov.getCoast()) and len(self.unitQueue) >= 3:
+            return self.unitQueue[0].isAquatic() and self.unitQueue[0] == self.unitQueue[1] == self.unitQueue[2]
+        return False
+
+    # Determines if the player is attacking another unit
+    def canAttack(self, hov):
+        if self.notWaiting(hov) and self.isNeighbor(hov) and not self.unitQueue[0].isDefensive():
+            if self.unitQueue[0].isAquatic():
+                return self.isEnemy(hov.getCoast())
+            else:
+                return self.isEnemy(hov)
+        return False
+
+    # Determines if the unit up can Arial Attack the hovered area
+    def canArialAttack(self, hov):
+        return self.notWaiting(hov) and self.isEnemy(hov) and self.unitQueue and self.inRange(hov)
+
+    # Determines if the territory is in range of an arial units attack!
+    def inRange(self, ter):
+        if not (self.unitQueue[0].isArial() or type(self.unitQueue[0]) == unit.AircraftCarrier):
+            return False
+        un = self.unitQueue[0]
+        rng = un.getRange()
+
+        if rng == 0:
+            return False
+
+        loc = un.getLocation()        
+        if type(loc) == location.Coast:
+            loc = loc.getTerritory()
+        neighbors = loc.getNeighbors() + loc.getCoast().getNeighbors()
+
+        if ter.getName() == loc.getName() and ter.getOwner() != self.pc:
+            return True
+        elif rng == 1:
+            return ter.getName() in neighbors
+        elif rng == 2:
+            for nei in neighbors:
+                if nei in ter.getNeighbors() + ter.getCoast().getNeighbors():
+                    return True
+        return False
+
+    # The board button prepares a unit to be boarded, if it works unitBoarded will be set
+    def canBoard(self):
+        if self.unitQueue and not self.unitPurchased and not self.unitBoarding:
+            loc = self.unitQueue[0].getLocation()
+            # Check for ships
+            if loc.getName() != "Irkutsk" and type(loc) == location.Territory and self.isAlly(loc.getCoast()):
+                return True in [self.canFit(x) for x in loc.getCoast().getUnits()]
+            # Check for helicopters
+            return True in [self.canFit(x) for x in loc.getUnits()]
+        return False
+
+    # Returns Tue if there is a unit that can disembark. Units require movement to disembark
+    def canUnBoard(self):
+        if self.unitQueue and not self.unitPurchased and not self.unitBoarding:
+            un = self.unitQueue[0]
+            loc = un.getLocation()
+            if type(un) == unit.Helicopter:
+                return un.getBoarded() and (True in [x.getMovement() > 0 for x in un.getBoarded()])
+            elif un.isAquatic() and not self.isEnemy(loc.getTerritory()) or un.isNaval():
+                return un.getBoarded() and (True in [x.getMovement() > 0 for x in un.getBoarded()])
+        return False
+
+    def canEmbark(self, hov):
+        return self.boardableUnits and hov in self.boardableUnits and self.unitBoarding and not self.unitPurchased
+
+    def canDisembark(self, hov):
+        return self.notWaiting(hov) and self.boardableUnits and hov in self.boardableUnits
+
+    # Can fit takes in two units and decides if the first could board the second
+    def canFit(self, ship):
+        un = self.unitQueue[0]
+        if type(ship) == unit.AircraftCarrier:
+            return not un.isAquatic() and ship.getCapacity() >= un.getPower()
+        elif ship.isAquatic():
+            return not un.isAquatic() and not un.isArial() and ship.getCapacity() >= un.getPower()
+        elif type(ship) == unit.Helicopter:
+            return not un.isAquatic() and not un.isArial() and ship.getCapacity() >= un.getPower() and not un.isDefensive()
+
+        return False
+
+    # ACTIONS : Helper functions to take the actual action specified
+    # -----------------------------------------------------------------------
+
+    # Advances all players turns, both granting them resources and making a unitQueue, which handles unit turns
+    def advanceTurn(self):
+        self.turn += 1
+        self.drawTurn(0)
+        for pl in self.players:
+            pl.advanceTurn(self.turn)
+        self.drawResources(self.resourceNames, self.pc.resources, self.resourceRect)
+
+    def createUnitQueue(self):
+        self.unitQueue = self.pc.createUnitQueue()
+
+    # Starts the game for the player mentioned, they will automatically be granted a Warrior on ter
+    def startGame(self, pl, ter):
+        pl.startGame(ter, unit.make_unit("Warrior", pl, ter))
+        if pl == self.pc:
+            return [0, self.playerNum, self.territories.index(ter)]
+
+    # Purchases the unit and places them in ter (NOTE : ter could be both a territory or coast)
+    def purchaseUnit(self, pl, ter, un):
+        if un.isAquatic():
+            un_ = unit.make_unit(un.getName(), pl, ter.getCoast())
+            pl.purchaseUnit(ter.getCoast(), un_, True)
+        else:
+            un_ = unit.make_unit(un.getName(), pl, ter)
+            pl.purchaseUnit(ter, un_, False)
+        if pl == self.pc:
+            self.unitPurchased = None
+            return [1, self.playerNum, self.territories.index(ter), self.units.index(un)]
+
+    # If the user presses the space bar, the current unit waives their turn
+    def skipTurn(self):
+        if self.unitQueue and not self.unitPurchased and not self.unitBoarding and self.turn > 0:
+            tmp = self.unitQueue.pop(0)
+            while self.unitQueue and tmp == self.unitQueue[0]:
+                tmp = self.unitQueue.pop(0)
+            tmp.movement = 0
+
+    # The fortify is like a more advanced space bar. It tells the game to waive your turn for all turns until unfortified
+    def fortify(self):
+        if self.unitQueue and not self.unitPurchased and not self.unitBoarding:
+            tmp = self.unitQueue.pop(0)
+            while self.unitQueue and tmp == self.unitQueue[0]:
+                tmp = self.unitQueue.pop(0)
+            tmp.fortified = True
+
+    # Unfortifies any units in the hovered territory/coast
+    def unfortify(self, hov):
+        if hov in self.pc.getTerritories():
+            for un in hov.getUnits():
+                if un.isFortified():
+                    for i in range(un.getMovement()):
+                        self.unitQueue.append(un)
+                    un.fortified = False
+        if hov.getCoast() in self.pc.getCoasts():
+            for un in hov.getCoast().getUnits():
+                if un.isFortified():
+                    for i in range(un.getMovement()):
+                        self.unitQueue.append(un)
+                    un.fortified = False
+
+    # The enter button waives our turn.
+    def endTurn(self):
+        if not self.unitPurchased and not self.unitBoarding:
+            return [7]
+
+    # Player moves un to ter (NOTE : ter could be both a territory or coast)
+    def move(self, pl, ter, un):
+        if un.isAquatic():
+            pl.move(ter.getCoast(), un, self.turn, True)
+        else:
+            pl.move(ter, un, self.turn, False)
+        if pl == self.pc:
+            tmp = self.unitQueue.pop(0)
+            tmp.movement -= 1
+            return [2, self.playerNum, self.territories.index(ter), self.pc.getUnits().index(un)]
+
+    # The attack function attacks ter with un owned by pl
+    def attack(self, pl, ter, un):
+        # player attack function returns true if the unit attacking defeated the ter and moves in
+        ret_val = [3, self.playerNum, self.territories.index(ter), pl.getUnits().index(un)]
+
+        if un.isAquatic():
+            ter = ter.getCoast()
+
+        # Do the attack, if the territory is destroyed and the unit survives, then this is True
+        conquered_ter = pl.attack(ter, un, self.turn, un.isAquatic())
+
+        # Attacking costs a movement, but if the unit died we should remove it from the unit queue
+        if pl == self.pc:
+            tmp = self.unitQueue.pop(0)
+            tmp.movement -= 1
+            if not conquered_ter:
+                while tmp.movement > 0:
+                    self.unitQueue.pop(0)
+                    tmp.movement -= 1
+            return ret_val
+
+    # Performs an Arial Attack!
+    def arialAttack(self, pl, ter, un):
+        ret_val = [4, self.playerNum, self.territories.index(ter), pl.getUnits().index(un)]
+
+        gunned_down = pl.arialAttack(ter, un, self.turn)
+
+        if pl == self.pc:
+            tmp = self.unitQueue.pop(0)
+            tmp.movement -= 1
+            if gunned_down:
+                while tmp.movement > 0:
+                    self.unitQueue.pop(0)
+                    tmp.movement -= 1
+            return ret_val
+
+    # Get our class variables ready to board
+    def prepareEmbark(self):
+        self.unitBoarding = self.unitQueue[0]
+        copters = [un_ for un_ in self.unitQueue[0].getLocation().getUnits() if type(un_) == unit.Helicopter]
+        self.boardableUnits = [ship for ship in copters + self.unitQueue[0].getLocation().getCoast().getUnits() if
+                               self.canFit(ship)]
+
+    def prepareDisembark(self):
+        self.boardableUnits = [un for un in self.unitQueue[0].getBoarded() if un.getMovement() > 0]
+
+    # Embarks un onto ship!
+    def embark(self, pl, ship, un):
+        ret_val = [5, self.playerNum, pl.getUnits().index(ship), pl.getUnits().index(un)]
+
+        pl.embark(ship, un)
+
+        if pl == self.pc:
+            tmp = self.unitQueue.pop(0)
+            tmp.movement -= 1
+            while self.unitQueue and self.unitQueue[0] == tmp:
+                self.unitQueue.pop(0)
+
+            self.boardableUnits = None
+            self.unitBoarding = None
+            return ret_val
+
+    def disembark(self, pl, ship, un):
+        ret_val = [6, self.playerNum, pl.getUnits().index(ship), pl.getUnits().index(un)]
+
+        # Returns True is the disembarking unit died while doing so
+        if ship.isAquatic():
+            dead = pl.disembark(ship, ship.getLocation().getTerritory(), un, self.turn)
+        else:
+            dead = pl.disembark(ship, ship.getLocation(), un, self.turn)
+
+        if pl == self.pc:
+            if not dead and un.movement > 0:
+                for mov in range(un.movement - 1):
+                    self.unitQueue.append(un)
+                un.movement -= 1
+            self.boardableUnits = None
+            return ret_val
+"""
