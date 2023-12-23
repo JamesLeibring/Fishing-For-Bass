@@ -5,7 +5,7 @@ config = configparser.ConfigParser()
 
 config['DEFAULT'] = {
   'border': '10',
-  'length': '50',
+  'size': '50',
   'color': 'black'
 }
 
@@ -84,65 +84,58 @@ config['SCREEN'] = {
 }
 
 config['MAP'] = {
-  'start': '10.10',
-  'width': '1140',
-  'height': '730',
+  'topleft': '10.10',
+  'bottomright': '1150.740',
   'color': 'white'
 }
 
 config['SIDEBAR'] = {
-  'start': '1140.10',
-  'width': '350',
-  'height': '730',
+  'topleft': '1140.10',
+  'bottomright': '1490.740',
   'color': 'brown'
 }
 
 config['TURNBOX'] = {
-  'start': '1160.30',
-  'width': '150',
-  'height': '60',
+  'topleft': '1160.30',
+  'bottomright': '1310.90',
   'border': '5',
   'color': 'cornsilk'
 }
 
 config['COLORBOX'] = {
-  'start': '1320.30',
-  'width': '150',
-  'height': '60',
+  'topleft': '1320.30',
+  'bottomright': '1470.90',
   'border': '5'
 }
 
 config['RESOURCEBOX'] = {
-  'start': '1160.100',
-  'width': '310',
-  'height': '60',
+  'topleft': '1160.100',
+  'bottomright': '1470.160',
   'border': '5',
   'color': 'cornsilk',
 }
 
 config['SHOPBOX'] = {
-  'start': '1160.170',
-  'width': '310',
-  'height': '410',
+  'topleft': '1160.170',
+  'bottomright': '1470.580',
   'border': '5',
   'color': 'cornsilk2'
 }
 
 config['INFOBOX'] = {
-  'start': '1150.590',
-  'width': '310',
-  'height': '140',
+  'topleft': '1150.590',
+  'bottomright': '1460.730',
   'color': 'cornsilk'
 }
 
 config['SHOP'] = {
-  'start': '1175.185',
-  'length': '60',
+  'topleft': '1175.185',
+  'size': '60',
   'border': '5',
 }
 
 config['PLAYERS'] = {
-  'start': '25.25',
+  'topleft': '25.25',
   'color1': 'skyblue',
   'color2': 'cobaltgreen',
   'color3': 'firebrick',
@@ -153,11 +146,11 @@ config['PLAYERS'] = {
 
 config['UNITS'] = {
   'Warrior': '''
-    power:1
+    power:1,
     movement:1
     ''',
   'Horseman': '''
-    power:1
+    power:1,
     movement:2
     ''',
   'Swordsman': '''
