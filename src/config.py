@@ -1,5 +1,6 @@
 import configparser
 
+# Config Object to bring static values into the game.
 config = configparser.ConfigParser()
 
 config['DEFAULT'] = {
@@ -142,8 +143,6 @@ config['SHOP'] = {
 
 config['PLAYERS'] = {
   'start': '25.25',
-  'lenth': '50',
-  'border': '5',
   'color1': 'skyblue',
   'color2': 'cobaltgreen',
   'color3': 'firebrick',
@@ -801,5 +800,6 @@ config['TERRITORIES'] = {
     ''',
 }
 
+# Create the config.ini file to be refferenced
 with open('config.ini', 'w') as config:
     config.write(config)
