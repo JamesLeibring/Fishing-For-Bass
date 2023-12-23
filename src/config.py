@@ -78,6 +78,13 @@ config['COLORS'] = {
   'opaque_purple': '213.110.218.5'
 }
 
+config['FONTS'] = {
+  'font': 'freesansbold.ttf',
+  'lrg': '33',
+  'med': '25',
+  'sml': '15',
+}
+
 config['SCREEN'] = {
   'width': '1500',
   'height': '750',
