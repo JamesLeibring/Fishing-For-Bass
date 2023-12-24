@@ -1,5 +1,4 @@
-import pygame
-import config as config_
+from classes import ConfigPygame
 
 from player import Player
 

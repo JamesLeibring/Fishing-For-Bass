@@ -35,26 +35,26 @@ config['IMAGES'] = {
   'pollutant': '${PATHS:attributes}pollutant.png',
   'power': '${PATHS:attributes}power.png',
   'range': '${PATHS:attributes}range.png',
-  'Warrior': '${PATHS:units}warrior.png',
-  'Horseman': '${PATHS:units}horseman.png',
-  'Swordsman': '${PATHS:units}swordsman.png',
-  'Knight': '${PATHS:units}knight.png',
-  'Musketman': '${PATHS:units}musketman.png',
-  'Cavalry': '${PATHS:units}cavalry.png',
-  'Infantry': '${PATHS:units}infantry.png',
-  'Tank': '${PATHS:units}tank.png',
-  'Archer': '${PATHS:units}archer.png',
-  'Cannon': '${PATHS:units}cannon.png',
-  'Artillery': '${PATHS:units}artillery.png',
-  'Anti-Air Gun': '${PATHS:units}anti-air_gun.png',
-  'Trireme': '${PATHS:units}trireme.png',
-  'Caravel': '${PATHS:units}caravel.png',
-  'Battleship': '${PATHS:units}battleship.png',
-  'Aircraft Carrier': '${PATHS:units}aircraft_carrier.png',
-  'Fighter': '${PATHS:units}fighter.png',
-  'Bomber': '${PATHS:units}bomber.png',
-  'Jet Fighter': '${PATHS:units}jet_fighter.png',
-  'Helicopter': '${PATHS:units}helicopter.png'
+  'warrior': '${PATHS:units}warrior.png',
+  'horseman': '${PATHS:units}horseman.png',
+  'swordsman': '${PATHS:units}swordsman.png',
+  'knight': '${PATHS:units}knight.png',
+  'musketman': '${PATHS:units}musketman.png',
+  'cavalry': '${PATHS:units}cavalry.png',
+  'infantry': '${PATHS:units}infantry.png',
+  'tank': '${PATHS:units}tank.png',
+  'archer': '${PATHS:units}archer.png',
+  'cannon': '${PATHS:units}cannon.png',
+  'artillery': '${PATHS:units}artillery.png',
+  'anti-air_gun': '${PATHS:units}anti-air_gun.png',
+  'trireme': '${PATHS:units}trireme.png',
+  'caravel': '${PATHS:units}caravel.png',
+  'battleship': '${PATHS:units}battleship.png',
+  'aircraft_carrier': '${PATHS:units}aircraft_carrier.png',
+  'fighter': '${PATHS:units}fighter.png',
+  'bomber': '${PATHS:units}bomber.png',
+  'jet_fighter': '${PATHS:units}jet_fighter.png',
+  'helicopter': '${PATHS:units}helicopter.png'
 }
 
 config['COLORS'] = {
@@ -164,92 +164,92 @@ config['PLAYERS'] = {
 }
 
 config['UNITS'] = {
-  'Warrior': '''
+  'warrior': '''
     power:1,
     movement:1
     ''',
-  'Horseman': '''
+  'horseman': '''
     power:1,
     movement:2
     ''',
-  'Swordsman': '''
+  'swordsman': '''
     power:2,
     movment:1
     ''',
-  'Knight': '''
+  'knight': '''
     power:2,
     movement:2
     ''',
-  'Musketman': '''
+  'musketman': '''
     power:3,
     movement:1
     ''',
-  'Cavalry': '''
+  'cavalry': '''
     power:3,
     movement:1
     ''',
-  'Infantry': '''
+  'infantry': '''
     power:5,
     movement:1
     ''',
-  'Tank': '''
+  'tank': '''
     power:10,
     movement:1
     ''',
-  'Archer': '''
+  'archer': '''
     defense:2,
     movement:1
     ''',
-  'Cannon': '''
+  'cannon': '''
     defense:2,
     movement:1
     ''',
-  'Artillery': '''
+  'artillery': '''
     defense:7,
-    'movement:1
+    movement:1
     ''',
-  'Anti-Air Gun': '''
+  'anti-air_gun': '''
     defense:4,
     movement:1,
     special:anti-air
     ''',
-  'Trireme': '''
+  'trireme': '''
     defense:1,
     movement:2,
     capacity:2
     ''',
-  'Caravel': '''
+  'caravel': '''
     power:2,
     movement:3,
     capacity:5
     ''',
-  'Battleship': '''
+  'battleship': '''
     power:5,
     movement:4,
     capacity:6
     ''',
-  'Aircraft Carrier': '''
+  'aircraft_carrier': '''
     defense:10,
     movement:2,
     capacity:12,
     special:carrier
     ''',
-  'Fighter': '''
+  'fighter': '''
     power:1,
     movement:1,
     range:1
     ''',
-  'Bomber': '''
+  'bomber': '''
     power:2,
     movement:1,
     range:1
     ''',
-  'Jet Fighter': '''
+  'jet_fighter': '''
     power:3,
     movement:1,
     range:2
     ''',
-  'Helicopter': '''
+  'helicopter': '''
     power:1,
     movement:1,
     range:2,
@@ -259,7 +259,7 @@ config['UNITS'] = {
 }
 
 config['TERRITORIES'] = {
-  'Alaska': '''
+  'alaska': '''
     yields:(1.0.3.5),
     land:[046.183|055.177|066.169|071.161|072.163|081.162|087.159|089.153|094.157|104.160|
       109.166|120.172|120.181|125.189|137.177|131.173|131.160|128.155|128.149|120.147|117.145|
@@ -267,10 +267,10 @@ config['TERRITORIES'] = {
       053.112|044.109|038.113|039.122|052.124|052.129|041.129|032.137|036.149|040.157|046.161|
       052.170|42.177],
     sea:(88.170),
-    boundaries:(Northwest Territory.Alberta),
-    maritimeboundaries:(Northwest Territory.Alberta.Kamchatka)
+    boundaries:(northwest_territory.alberta),
+    maritimeboundaries:(northwest_territory.alberta.kamchatka)
     ''',
-  'Northwest Territory': '''
+  'northwest_territory': '''
     yields:(5.0.1.3),
     land:[118.098|118.114|115.117|114.143|118.147|165.147|168.149|244.149|251.151|264.138|
       273.137|275.134|276.127|279.125|287.125|297.117|299.111|299.103|298.099|294.097|288.097|
@@ -278,26 +278,26 @@ config['TERRITORIES'] = {
       243.099|242.102|236.102|223.098|217.103|217.109|204.109|188.096|182.097|179.088|173.089|
       173.090|169.089|156.096|135.099|135.095|118.098],
     sea:(207.90),
-    boundaries:(Alaska.Alberta.Ontario),
-    maritimeboundaries:(Alaska.Greenland.Ontario)
+    boundaries:(alaska.alberta.ontario),
+    maritimeboundaries:(alaska.greenland.ontario)
     ''',
-  'Alberta': '''
+  'alberta': '''
     yields:(1.3.0.5),
     land:[127.148|128.154|130.156|131.167|132.175|135.176|134.183|127.190|135.206|138.221|
       215.221|217.178|221.174|222.148|127.146],
     sea:(120.210),
-    boundaries:(Alaska.Northwest Territory.Ontario.Western US),
-    maritimeboundaries:(Alaska.Northwest Territory)
+    boundaries:(alaska.northwest_territory.ontario.western_us),
+    maritimeboundaries:(alaska.northwest_territory)
     ''',
-  'Ontario': '''
+  'ontario': '''
     yields:(1.5.3.0),
     land:[244.150|250.153|252.172|261.178|270.183|282.187|286.205|287.215|285.238|283.243|
       276.236|272.232|270.226|264.221|257.221|252.226|248.221|217.221|218.177|222.173|220.149],
     sea:(271.165),
-    boundaries:(Northwest Territory.Alberta.Western US.Eastern US.Quebec),
-    maritimeboundaries:(Northwest Territory.Greenland.Quebec)
+    boundaries:(northwest_territory.alberta.western_us.eastern_us.quebec),
+    maritimeboundaries:(northwest_territory.greenland.quebec)
     ''',
-  'Quebec': '''
+  'quebec': '''
     yields:(3.1.5.0),
     land:[287.240|286.210|287.205|291.204|289.187|299.182|302.178|298.165|300.156|304.153|
       306.142|325.144|331.146|335.154|333.166|336.166|342.157|349.157|353.165|356.168|359.179|
@@ -305,20 +305,20 @@ config['TERRITORIES'] = {
       340.261|335.263|330.256|334.248|333.240|327.234|322.237|317.242|310.245|303.243|297.241|
       292.239|285.241],
     sea:(367.231),
-    boundaries:(Ontario.Eastern US),
-    maritimeboundaries:(Ontario.Eastern US.Greenland)
+    boundaries:(ontario.eastern_us),
+    maritimeboundaries:(ontario.eastern_us.greenland)
     ''',
-  'Western US': '''
-    yields:(1.0.5.3,
+  'western_us': '''
+    yields:(1.0.5.3),
     land:[139.222|142.229|132.234|137.236|134.254|136.259|131.266|131.274|132.285|137.298|
       142.302|149.306|155.306|159.313|177.315|181.315|188.322|197.324|196.313|203.307|202.299|
       206.294|207.290|215.288|215.278|231.279|235.274|236.221|138.221],
     sea:(120.257),
-    boundaries:(Alberta.Ontario.Eastern US.Central America),
-    maritimeboundaries:(Alberta.Central America)
+    boundaries:(alberta.ontario.eastern_us.central_america),
+    maritimeboundaries:(alberta.central_america)
     ''',
-  'Eastern US': '''
-    yields:(3.5.1.0,
+  'eastern_us': '''
+    yields:(3.5.1.0),
     land:[237.223|248.223|249.224|246.231|261.235|257.244|255.258|262.257|263.246|267.242|
       271.254|287.240|295.239|297.239|301.244|310.244|319.241|320.235|325.234|330.237|331.251|
       329.253|325.254|324.262|320.271|317.276|312.279|307.285|306.287|306.294|305.301|300.305|
@@ -326,11 +326,11 @@ config['TERRITORIES'] = {
       248.324|242.324|234.326|226.326|217.329|209.337|203.331|199.324|196.312|202.308|204.300|
       206.296|209.291|214.289|217.278|230.279|236.276|237.221],
     sea:(313.316),
-    boundaries:(Western US.Ontario.Quebec.Central America),
-    maritimeboundaries:(Quebec.Central America)
+    boundaries:(western_us.ontario.quebec.central_america),
+    maritimeboundaries:(quebec.central_america)
     ''',
-  'Greenland': '''
-    yields:(5.3.0.1,
+  'greenland': '''
+    yields:(5.3.0.1),
     land:[381.174|366.161|363.147|360.140|359.133|362.127|363.123|360.121|357.118|359.115|
       360.112|357.105|354.100|340.086|331.087|316.088|314.087|314.082|316.080|319.080|320.078|
       318.074|318.071|325.070|328.059|336.059|342.052|349.048|359.045|363.050|372.044|378.043|
@@ -341,10 +341,10 @@ config['TERRITORIES'] = {
       390.165|385.170|383.171],
     sea:(342.117),
     boundaries:(),
-    maritimeboundaries:(Northwest Territory.Iceland.Ontario.Quebec)
+    maritimeboundaries:(northwest_territory.iceland.ontario.quebec)
     ''',
-  'Central America': '''
-    yields:(1.3.5.0,,
+  'central_america': '''
+    yields:(1.3.5.0),
     land:[140.301|146.305|156.309|162.316|174.316|183.316|187.323|198.325|206.335|207.346|
       203.349|203.360|207.362|214.362|216.362|218.358|223.355|227.354|234.353|233.368|227.371|
       225.374|231.377|234.381|234.387|229.390|223.401|238.402|233.409|224.418|224.420|218.420|
@@ -352,11 +352,11 @@ config['TERRITORIES'] = {
       153.320|157.335|165.350|166.359|164.360|161.359|158.356|157.350|146.331|145.320|145.313|
       140.300],
     sea:(182.389),
-    boundaries:(Eastern US.Western US.Venezuela),
-    maritimeboundaries:(Eastern US.Western US.Venezuela)
+    boundaries:(eastern_us.western_us.venezuela),
+    maritimeboundaries:(eastern_us.western_us.venezuela)
     ''',
-  'Venezuela': '''
-    yields:(1.5.3.0,
+  'venezuela': '''
+    yields:(1.5.3.0),
     land:[219.439|222.438|225.434|225.428|225.417|229.415|234.409|236.404|238.401|247.398|
       253.396|257.392|260.389|266.396|276.400|284.402|294.402|301.402|308.403|313.411|321.417|
       328.420|334.421|342.421|349.422|352.427|346.433|341.437|333.440|323.442|315.443|309.442|
@@ -364,11 +364,11 @@ config['TERRITORIES'] = {
       279.447|276.443|273.442|265.444|265.451|265.459|263.461|258.462|253.462|246.457|238.453|
       231.450|225.446|218.439],
     sea:(329.402),
-    boundaries:(Central America.Peru.Brazil),
-    maritimeboundaries:(Central America.Peru.Brazil)
+    boundaries:(central_america.peru.brazil),
+    maritimeboundaries:(central_america.peru.brazil)
     ''',
-  'Peru': '''
-    yields:(3.1.5.0,
+  'peru': '''
+    yields:(3.1.5.0),
     land:[220.439|222.443|231.449|243.454|253.459|255.462|252.466|244.473|243.477|243.480|
       248.485|254.489|257.488|262.488|262.491|260.493|258.496|263.499|274.498|284.492|290.499|
       299.506|307.508|311.508|317.519|323.526|325.532|326.539|326.542|333.545|336.552|339.558|
@@ -377,11 +377,11 @@ config['TERRITORIES'] = {
       261.534|254.526|246.521|237.518|233.514|229.509|226.504|222.499|221.494|218.490|214.486|
       210.481|206.478|205.473|207.463|207.456|209.451|210.447|216.441|220.438],
     sea:(207.501),
-    boundaries:(Venezuela.Brazil.Argentina),
-    maritimeboundaries:(Venezuela.Argentina)
+    boundaries:(venezuela.brazil.argentina),
+    maritimeboundaries:(venezuela.argentina)
     ''',
-  'Brazil': '''
-    yields:(3.5.0.1,
+  'brazil': '''
+    yields:(3.5.0.1),
     land:[352.426|348.432|347.435|342.438|337.440|334.441|325.442|319.442|314.442|310.439|
       310.436|308.432|305.431|300.433|299.435|295.435|291.434|290.442|290.444|285.446|281.445|
       275.442|271.442|266.445|265.451|265.460|264.461|256.461|244.472|243.482|247.484|253.490|
@@ -392,11 +392,11 @@ config['TERRITORIES'] = {
       408.521|410.513|410.504|421.495|426.490|429.484|430.473|425.468|417.461|408.457|389.455|
       382.449|369.449|363.440|351.423],
     sea:(376.438),
-    boundaries:(Venezuela.Peru.Argentina),
-    maritimeboundaries:(Venezuela.North Africa.Argentina)
+    boundaries:(venezuela.peru.argentina),
+    maritimeboundaries:(venezuela.north_africa.argentina)
     ''',
-  'Argentina': '''
-    yields:(5.1.0.3,
+  'argentina': '''
+    yields:(5.1.0.3),
     land:[261.536|262.556|265.574|261.582|262.588|266.597|266.605|259.614|256.619|258.632|
       263.647|263.647|268.652|267.661|264.671|260.676|269.681|268.692|273.702|279.707|284.712|
       287.718|297.720|306.717|309.712|301.709|296.704|298.694|300.686|302.683|307.680|307.677|
@@ -405,20 +405,20 @@ config['TERRITORIES'] = {
       338.586|337.582|333.581|332.581|335.577|338.572|339.566|326.573|323.573|323.570|323.559|
       314.556|309.553|306.549|296.548|291.545|287.544|284.548|281.550|262.534],
     sea:(319.653),
-    boundaries:(Peru.Brazil),
-    maritimeboundaries:(Peru.Brazil)
+    boundaries:(peru.brazil),
+    maritimeboundaries:(peru.brazil)
     ''',
-  'Iceland': '''
-    yields:(0.5.1.3,
+  'iceland': '''
+    yields:(0.5.1.3),
     land:[466.136|463.142|455.150|459.154|458.158|457.162|464.164|465.165|464.171|464.176|
       471.177|479.179|488.183|493.183|497.179|503.175|516.169|521.157|524.154|520.147|512.141|
       506.135|503.135|497.139|493.142|486.142|478.142|478.146|475.145|473.141|468.138],
     sea:(483.129),
     boundaries:(),
-    maritimeboundaries:(Greenland.Great Britain.Scandinavia)
+    maritimeboundaries:(greenland.great_britain.scandinavia)
     ''',
-  'Great Britain': '''
-    yields:(3.1.5.0,
+  'great_britain': '''
+    yields:(3.1.5.0),
     land:[469.185|466.188|458.189|453.195|450.202|450.209|450.215|450.220|448.221|455.224|
       458.228|458.231|451.226|445.224|440.226|436.230|429.235|424.240|425.246|424.253|425.257|
       417.261|413.265|412.271|417.275|423.278|431.280|436.280|443.280|447.269|450.260|453.252|
@@ -428,10 +428,10 @@ config['TERRITORIES'] = {
       475.197|472.190|470.186],
     sea:(435.214),
     boundaries:(),
-    maritimeboundaries:(Greenland.Western Europe.Northern Europe.Scandinavia.Iceland)
+    maritimeboundaries:(greenland.western_europe.northern_europe.scandinavia.iceland)
     ''',
-  'Western Europe': '''
-    yields:(5.3.0.1,
+  'western_europe': '''
+    yields:(5.3.0.1),
     land:[517.272|515.274|507.275|503.277|502.286|491.284|486.291|485.291|474.294|468.295|
       467.298|470.305|473.310|479.317|478.325|477.330|473.331|467.331|464.331|457.330|453.330|
       448.335|447.340|448.347|453.353|454.359|453.366|450.371|448.375|449.381|453.384|454.387|
@@ -440,11 +440,11 @@ config['TERRITORIES'] = {
       528.340|533.337|534.335|531.331|530.325|529.320|526.318|529.314|530.306|532.299|530.296|
       530.289|525.285|519.279|517.275|509.278|504.279|503.286],
     sea:(438.358),
-    boundaries:(Northern Europe.Southern Europe.North Africa),
-    maritimeboundaries:(Northern Europe.Southern Europe.North Africa.Great Britain)
+    boundaries:(northern_europe.southern_europe.north_africa),
+    maritimeboundaries:(northern_europe.southern_europe.north_africa.great_britain)
     ''',
-  'Northern Europe': '''
-    yields:(3.1.5.0,
+  'northern_europe': '''
+    yields:(3.1.5.0),
     land:[545.232|546.225|547.217|548.208|550.204|554.202|558.205|561.212|561.216|561.219|
       566.220|576.218|585.218|597.216|605.219|612.224|614.226|617.235|618.241|621.244|621.248|
       621.252|619.258|618.263|617.267|614.270|610.270|606.270|606.273|605.276|607.276|605.278|
@@ -454,11 +454,11 @@ config['TERRITORIES'] = {
       519.269|520.264|521.259|521.256|527.251|530.248|537.242|541.239|545.235|549.229|550.220|
       549.215|548.209|549.205|550.204],
     sea:(528.227),
-    boundaries:(Western Europe.Southern Europe.Ukraine),
-    maritimeboundaries:(Western Europe.Great Britain.Ukraine.Scandinavia)
+    boundaries:(western_europe.southern_europe.ukraine),
+    maritimeboundaries:(western_europe.great_britain.ukraine.scandinavia)
     ''',
-  'Southern Europe': '''
-    yields:(0.3.5.1,
+  'southern_europe': '''
+    yields:(0.3.5.1),
     land:[536.298|540.298|546.299|552.297|557.297|560.294|563.287|571.286|578.286|582.288|
       580.294|582.301|597.301|596.296|594.289|600.283|603.279|605.277|607.275|611.276|615.283|
       619.287|621.297|623.305|624.309|627.311|630.315|627.325|619.331|615.337|614.342|611.355|
@@ -468,11 +468,11 @@ config['TERRITORIES'] = {
       537.367|544.367|549.366|551.366|552.363|553.358|545.348|543.344|540.344|540.336|537.334|
       532.330|530.328|530.322|527.318|530.314|530.308|532.300],
     sea:(576.371),
-    boundaries:(Western Europe.Northern Europe.Ukraine.Middle East),
-    maritimeboundaries:(Western Europe.Egypt.North Africa.Ukraine.Middle East)
+    boundaries:(western_europe.northern_europe.ukraine.middle_east),
+    maritimeboundaries:(western_europe.egypt.north_africa.ukraine.middle_east)
     ''',
-  'Ukraine': '''
-    yields:(3.0.5.1,
+  'ukraine': '''
+    yields:(3.0.5.1),
     land:[630.103|640.103|651.103|663.108|667.108|672.121|664.124|654.125|643.126|641.126|
       641.127|650.134|653.141|658.141|657.138|655.135|660.133|663.134|668.137|668.137|672.132|
       672.131|677.127|680.127|680.125|676.119|676.112|676.109|682.108|686.110|688.112|691.119|
@@ -491,11 +491,11 @@ config['TERRITORIES'] = {
       610.191|606.187|605.182|611.179|616.179|620.178|620.175|624.171|629.168|629.166|627.160|
       626.150|625.141|625.117|626.110|629.104],
     sea:(696.97),
-    boundaries:(Scandinavia.Northern Europe.Southern Europe.Middle East.Afghanistan.Ural),
-    maritimeboundaries:(Scandinavia.Northern Europe.Southern Europe.Middle East.Afghanistan.Ural)
+    boundaries:(scandinavia.northern_europe.southern_europe.middle_east.afghanistan.ural),
+    maritimeboundaries:(scandinavia.northern_europe.southern_europe.middle_east.afghanistan.ural)
     ''',
-  'Scandinavia': '''
-    yields:(1.3.0.5,
+  'scandinavia': '''
+    yields:(1.3.0.5),
     land:[535.185|535.179|531.174|530.166|533.158|538.153|543.148|551.144|556.140|558.136|
       560.133|562.129|565.127|567.124|571.122|570.117|570.113|574.109|577.109|581.113|581.111|
       587.110|589.110|590.103|599.099|604.098|608.100|612.100|619.099|625.101|627.104|626.111|
@@ -503,11 +503,11 @@ config['TERRITORIES'] = {
       597.152|594.160|592.165|590.167|589.168|591.172|594.179|593.185|587.191|584.192|585.197|
       584.204|580.208|575.210|571.213|564.211|561.202|554.194|549.197|540.197|536.193],
     sea:(576.97),
-    boundaries:(Ukraine),
-    maritimeboundaries:(Ukraine.Western Europe.Iceland.Northern Europe)
+    boundaries:(ukraine),
+    maritimeboundaries:(ukraine.western_europe.iceland.northern_europe)
     ''',
-  'North Africa': '''
-    yields:(0.5.3.1,
+  'north_africa': '''
+    yields:(0.5.3.1),
     land:[549.382|555.384|564.390|568.386|574.386|581.385|584.387|583.398|580.403|575.407|
       571.412|566.418|566.426|568.433|572.442|575.449|580.454|587.457|593.457|599.459|605.462|
       612.469|617.474|620.480|621.488|622.491|618.496|618.504|617.511|596.526|595.542|594.545|
@@ -517,32 +517,32 @@ config['TERRITORIES'] = {
       463.440|466.435|470.423|476.419|478.412|484.399|486.397|493.396|502.394|512.389|515.385|
       521.385|525.387|529.383|541.382|551.382],
     sea:(453.433),
-    boundaries:(Western Europe.Egypt.East Africa.Congo),
-    maritimeboundaries:(Western Europe.Egypt.Southern Europe.Brazil.Congo)
+    boundaries:(western_europe.egypt.east_africa.congo),
+    maritimeboundaries:(western_europe.egypt.southern_europe.brazil.congo)
     ''',
-  'Egypt': '''
-    yields:(3.1.5.0,
+  'egypt': '''
+    yields:(3.1.5.0),
     land:[613.407|619.408|625.410|634.417|641.418|646.418|652.415|652.415|659.426|661.430|
       659.435|661.440|665.446|671.455|655.456|646.458|633.458|626.461|621.465|618.473|610.468|
       606.464|601.461|595.457|592.455|582.455|579.450|573.444|570.436|567.426|571.417|574.408|
       578.407|585.407|589.407|594.413|602.418|610.419|610.410|613.410],
     sea:(628.397),
-    boundaries:(North Africa.Middle East.East Africa),
-    maritimeboundaries:(North Africa.Middle East.East Africa.Southern Europe)
+    boundaries:(north_africa.middle_east.east_africa),
+    maritimeboundaries:(north_africa.middle_east.east_africa.southern_europe)
     ''',
-  'Congo': '''
-    yields:(1.3.5.0,
+  'congo': '''
+    yields:(1.3.5.0),
     land:[649.592|642.595|642.600|645.605|645.610|640.611|638.611|633.607|622.606|620.604|
       614.603|614.594|611.591|607.587|599.589|597.590|594.586|594.583|591.582|586.581|582.578|
       576.577|572.579|566.570|562.563|562.553|576.550|580.549|591.549|593.546|597.525|620.508|
       626.523|632.529|632.536|639.539|642.540|663.542|666.542|666.545|653.560|647.571|645.575|
       646.587|648.589|648.590],
     sea:(552.573),
-    boundaries:(North Africa.South Africa.East Africa),
-    maritimeboundaries:(North Africa.South Africa)
+    boundaries:(north_africa.south_africa.east_africa),
+    maritimeboundaries:(north_africa.south_africa)
     ''',
-  'East Africa': '''
-    yields:(5.0.1.3,
+  'east_africa': '''
+    yields:(5.0.1.3),
     land:[679.474|679.463|670.455|651.457|632.458|621.466|619.470|619.477|620.493|617.494|
       618.507|618.510|625.518|629.524|633.528|633.534|639.538|643.539|663.541|668.544|662.552|
       648.571|645.575|646.589|651.594|650.598|655.600|658.606|659.614|658.621|661.627|666.627|
@@ -550,11 +550,11 @@ config['TERRITORIES'] = {
       715.557|723.545|728.536|734.525|736.512|737.508|730.507|721.509|709.511|704.510|703.504|
       703.501|696.496|690.493|688.490|688.482|683.478|678.476],
     sea:(735.553),
-    boundaries:(Congo.Egypt.North Africa.South Africa),
-    maritimeboundaries:(Middle East.Egypt.Madagascar.South Africa)
+    boundaries:(congo.egypt.north_africa.south_africa),
+    maritimeboundaries:(middle_east.egypt.madagascar.south_africa)
     ''',
-  'South Africa': '''
-    yields:(1.5.0.3,
+  'south_africa': '''
+    yields:(1.5.0.3),
     land:[574.578|582.578|586.583|592.583|597.589|602.588|609.590|613.593|613.601|615.605|
       620.604|621.607|628.607|633.608|637.612|643.611|644.608|646.604|643.604|641.596|644.592|
       648.591|651.592|652.598|655.601|656.606|658.612|658.621|661.625|664.627|666.625|668.613|
@@ -564,11 +564,11 @@ config['TERRITORIES'] = {
       592.692|584.681|582.677|582.653|572.642|572.627|576.624|577.615|583.611|582.609|579.606|
       579.602|579.599|582.598|581.595|576.590|574.580],
     sea:(568.662),
-    boundaries:(Congo.East Africa),
-    maritimeboundaries:(Congo.East Africa.Madagascar)
+    boundaries:(congo.east_africa),
+    maritimeboundaries:(congo.east_africa.madagascar)
     ''',
-  'Madagascar': '''
-    yields:(5.5.5.5,
+  'madagascar': '''
+    yields:(5.5.5.5),
     land:[711.641|717.633|726.632|731.629|733.624|735.617|741.615|743.611|744.607|750.606|
       754.616|759.620|759.628|756.637|752.640|748.645|750.650|747.657|739.672|730.685|728.686|
       727.694|722.700|719.699|715.696|713.696|710.698|707.700|702.696|701.691|699.689|700.685|
@@ -576,10 +576,10 @@ config['TERRITORIES'] = {
       713.638],
     sea:(762.658),
     boundaries:(),
-    maritimeboundaries:(South Africa.East Africa)
+    maritimeboundaries:(south_africa.east_africa)
     ''',
-  'Middle East': '''
-    yields:(1.0.3.5,
+  'middle_east': '''
+    yields:(1.0.3.5),
     land:[696.465|684.454|680.446|672.434|663.430|660.422|653.414|655.408|661.400|662.392|
       663.379|663.377|660.373|657.373|656.378|646.377|644.375|628.376|616.371|615.354|613.354|
       614.347|615.337|622.332|626.334|629.339|636.339|639.339|652.334|657.332|666.335|666.334|
@@ -591,11 +591,11 @@ config['TERRITORIES'] = {
       773.445|771.452|767.457|760.467|756.473|754.475|745.479|736.484|730.488|726.491|709.489|
       706.488|702.480|696.469],
     sea:(764.480),
-    boundaries:(Egypt.Southern Europe.India.Afghanistan.Ukraine),
-    maritimeboundaries:(Egypt.Southern Europe.India.Afghanistan.Ukraine.East Africa)
+    boundaries:(egypt.southern_europe.india.afghanistan.ukraine),
+    maritimeboundaries:(egypt.southern_europe.india.afghanistan.ukraine.east_africa)
     ''',
-  'India': '''
-    yields:(3.0.5.1,
+  'india': '''
+    yields:(3.0.5.1),
     land:[770.346|775.345|778.336|787.335|791.328|797.328|806.333|815.326|817.322|823.321|
       825.326|836.329|835.343|834.345|832.347|831.352|839.357|845.360|846.363|858.363|860.367|
       870.369|872.373|883.371|890.371|892.374|895.381|891.391|883.403|881.406|876.406|874.408|
@@ -605,11 +605,11 @@ config['TERRITORIES'] = {
       817.420|811.423|810.425|807.424|802.420|802.415|802.413|798.413|795.410|794.408|790.403|
       786.400|783.399|781.397|780.393|778.390|778.383|777.378|773.375|770.368|769.357|769.345],
     sea:(803.437),
-    boundaries:(Middle East.Siam.China.Afghanistan),
-    maritimeboundaries:(Middle East.Siam)
+    boundaries:(middle_east.siam.china.afghanistan),
+    maritimeboundaries:(middle_east.siam)
     ''',
-  'Siam': '''
-    yields:(3.5.1.0,
+  'siam': '''
+    yields:(3.5.1.0),
     land:[953.471|950.475|943.461|934.457|930.449|929.455|930.463|935.464|936.470|936.474|
       939.479|941.483|943.487|938.488|931.487|927.482|924.477|923.473|918.471|917.464|917.453|
       919.449|916.444|912.441|909.439|900.438|896.436|892.428|883.413|878.406|886.396|892.388|
@@ -617,11 +617,11 @@ config['TERRITORIES'] = {
       939.388|946.393|949.397|949.400|946.402|945.406|945.410|950.419|958.425|960.430|962.437|
       964.437|965.443|965.453|964.461|962.465|958.468],
     sea:(904.452),
-    boundaries:(India.China),
-    maritimeboundaries:(India.China.Indonesia)
+    boundaries:(india.china),
+    maritimeboundaries:(india.china.indonesia)
     ''',
-  'China': '''
-    yields:(1.5.3.0,
+  'china': '''
+    yields:(1.5.3.0),
     land:[816.319|815.318|812.313|810.312|810.302|815.298|820.293|824.288|826.284|827.277|
       825.272|826.266|828.264|829.257|832.252|832.250|839.249|839.247|839.243|843.242|847.246|
       853.248|858.247|863.249|864.256|867.262|874.264|878.268|879.275|882.279|885.281|890.288|
@@ -633,11 +633,11 @@ config['TERRITORIES'] = {
       860.364|850.362|842.358|834.354|831.353|832.348|834.347|835.330|835.327|825.328|824.322|
       818.321],
     sea:(1004.377),
-    boundaries:(India.Siam.Mongolia.Siberia.Ural.Afghanistan),
-    maritimeboundaries:(Siam.Mongolia)
+    boundaries:(india.siam.mongolia.siberia.ural.afghanistan),
+    maritimeboundaries:(siam.mongolia)
     ''',
-  'Afghanistan': '''
-    yields:(5.0.1.3,
+  'afghanistan': '''
+    yields:(5.0.1.3),
     land:[713.278|709.270|705.265|704.259|703.247|705.244|708.235|713.235|717.232|721.230|
       729.232|729.226|739.227|747.230|752.224|759.220|760.218|766.219|769.226|773.228|776.232|
       780.234|782.243|791.244|793.250|797.251|808.254|811.257|816.255|821.260|826.267|825.270|
@@ -646,11 +646,11 @@ config['TERRITORIES'] = {
       760.337|750.333|745.333|739.333|738.326|738.323|735.323|735.319|735.315|731.313|730.308|
       731.302|723.299|722.283|726.279|727.272|725.271|722.271|716.276],
     sea:(724.309),
-    boundaries:(Middle East.India.China.Ural.Ukraine),
-    maritimeboundaries:(Middle East.Ukraine)
+    boundaries:(middle_east.india.china.ural.ukraine),
+    maritimeboundaries:(middle_east.ukraine)
     ''',
-  'Ural': '''
-    yields:(3.1.0.5,
+  'ural': '''
+    yields:(3.1.0.5),
     land:[826.268|824.263|817.255|812.256|808.252|796.251|792.248|790.243|782.243|781.238|
       779.234|776.230|772.228|769.226|768.220|761.218|759.210|757.207|757.203|761.202|762.197|
       762.195|757.193|752.190|750.187|754.182|756.179|756.176|754.171|753.167|755.160|756.158|
@@ -664,11 +664,11 @@ config['TERRITORIES'] = {
       836.223|841.228|844.235|844.239|844.241|840.243|839.245|841.249|835.251|834.254|829.265|
       828.266],
     sea:(740.73),
-    boundaries:(Ukraine.Afghanistan.China.Siberia),
-    maritimeboundaries:(Ukraine.Siberia)
+    boundaries:(ukraine.afghanistan.china.siberia),
+    maritimeboundaries:(ukraine.siberia)
     ''',
-  'Siberia': '''
-    yields:(3.0.1.5,
+  'siberia': '''
+    yields:(3.0.1.5),
     land:[875.265|866.263|864.254|859.247|857.246|853.249|849.248|843.242|843.232|841.229|
       838.226|834.220|829.218|829.211|826.207|819.207|817.204|817.200|821.200|821.195|824.192|
       825.181|821.175|819.174|820.170|821.165|819.162|804.143|805.134|801.134|801.128|798.127|
@@ -683,11 +683,11 @@ config['TERRITORIES'] = {
       878.188|875.189|873.196|866.197|868.202|869.209|867.214|864.223|870.227|874.231|873.237|
       873.241|875.244|876.251|877.255|875.259|875.262],
     sea:(800.45),
-    boundaries:(Ural.China.Mongolia.Irkutsk.Yakutsk),
-    maritimeboundaries:(Ural.Yakutsk)
+    boundaries:(ural.china.mongolia.irkutsk.yakutsk),
+    maritimeboundaries:(ural.yakutsk)
     ''',
-  'Yakutsk': '''
-    yields:(1.5.3.0,
+  'yakutsk': '''
+    yields:(1.5.3.0),
     land:[944.139|926.140|923.143|919.143|917.141|915.152|910.153|906.156|904.156|902.152|
       900.146|901.142|899.140|897.139|897.130|893.126|896.121|890.114|883.113|884.108|889.105|
       893.100|895.103|903.103|905.102|908.082|910.081|911.076|907.074|904.072|904.064|904.064|
@@ -696,11 +696,11 @@ config['TERRITORIES'] = {
       985.121|981.121|977.120|973.122|970.120|970.115|962.115|961.118|956.122|953.123|951.133|
       949.137|944.139],
     sea:(936.56),
-    boundaries:(Siberia.Irkutsk.Kamchatka),
-    maritimeboundaries:(Siberia.Kamchatka)
+    boundaries:(siberia.irkutsk.kamchatka),
+    maritimeboundaries:(siberia.kamchatka)
     ''',
-  'Irkutsk': '''
-    yields:(5.1.0.3,
+  'irkutsk': '''
+    yields:(5.1.0.3),
     land:[945.139|944.172|948.174|957.184|960.185|960.193|965.193|972.190|974.190|979.194|
       985.200|986.208|983.215|983.229|978.228|974.223|969.218|957.204|955.204|944.208|944.216|
       944.221|939.229|938.230|933.230|926.230|924.233|919.235|901.234|896.231|893.234|890.235|
@@ -709,11 +709,11 @@ config['TERRITORIES'] = {
       897.170|899.166|900.159|902.156|906.156|911.153|914.153|916.145|916.140|917.140|921.143|
       925.140|944.141],
     sea:(),
-    boundaries:(Yakutsk.Siberia.Mongolia.Kamchatka),
+    boundaries:(yakutsk.siberia.mongolia.kamchatka),
     maritimeboundaries:()
     ''',
-  'Kamchatka': '''
-    yields:(0.3.5.1,
+  'kamchatka': '''
+    yields:(0.3.5.1),
     land:[1012.215|1009.204|1005.197|1005.186|1002.185|1001.182|1000.179|993.177|986.179|
       986.175|980.175|980.168|980.166|984.164|986.157|986.154|993.150|999.150|1009.151|1011.148|
       1013.148|1014.151|1022.151|1025.148|1024.144|1021.137|1020.134|1027.132|1027.136|1032.144|
@@ -729,11 +729,11 @@ config['TERRITORIES'] = {
       984.200|985.209|983.215|984.227|985.229|986.232|983.236|981.239|985.243|990.243|991.245|
       992.250|994.252|1003.254|1009.249|1011.239|1012.231|1011.232],
     sea:(1028.65),
-    boundaries:(Yakutsk.Irkutsk.Mongolia),
-    maritimeboundaries:(Yakutsk.Japan.Mongolia.Alaska)
+    boundaries:(yakutsk.irkutsk.mongolia),
+    maritimeboundaries:(yakutsk.japan.mongolia.alaska)
     ''',
-  'Mongolia': '''
-    yields:(0.1.5.3,
+  'mongolia': '''
+    yields:(0.1.5.3),
     land:[993.275|993.269|998.267|1001.255|994.253|991.246|981.243|981.237|984.234|984.233|
       982.230|977.229|974.225|958.205|956.205|944.210|944.218|944.226|938.232|935.233|932.231|
       927.231|923.234|920.235|902.234|895.230|893.234|889.235|884.231|874.231|874.236|874.239|
@@ -742,11 +742,11 @@ config['TERRITORIES'] = {
       972.296|968.292|973.282|976.282|976.289|978.291|980.290|982.286|986.287|988.294|996.295|
       997.306|1003.307|1007.301|1007.296|1008.292|1007.291|997.282|994.276],
     sea:(1005.273),
-    boundaries:(Kamchatka.Irkutsk.Siberia.China),
-    maritimeboundaries:(Kamchatka.Japan.China)
+    boundaries:(kamchatka.irkutsk.siberia.china),
+    maritimeboundaries:(kamchatka.japan.china)
     ''',
-  'Japan': '''
-    yields:(5.0.3.1,
+  'japan': '''
+    yields:(5.0.3.1),
     land:[1043.260|1042.255|1037.251|1042.240|1042.236|1039.234|1039.225|1042.218|1042.213|
       1040.212|1039.205|1049.202|1051.205|1066.207|1067.206|1073.208|1074.214|1072.218|1067.221|
       1067.226|1064.228|1054.230|1053.233|1062.239|1066.244|1068.246|1067.253|1066.260|1069.265|
@@ -756,10 +756,10 @@ config['TERRITORIES'] = {
       1041.268|1041.263],
     sea:(1057.313),
     boundaries:(),
-    maritimeboundaries:(Mongolia.Kamchatka)
+    maritimeboundaries:(mongolia.kamchatka)
     ''',
-  'Indonesia': '''
-    yields:(3.1.5.0,
+  'indonesia': '''
+    yields:(3.1.5.0),
     land:[878.515|883.513|895.519|908.529|920.547|927.544|924.536|926.528|929.528|935.523|
       941.512|946.509|950.503|951.497|962.497|968.506|968.512|966.515|965.525|964.536|964.542|
       967.542|972.532|981.532|985.530|989.525|993.529|995.534|991.538|987.541|985.546|986.551|
@@ -771,10 +771,10 @@ config['TERRITORIES'] = {
       876.522|876.518|877.514],
     sea:(916.518),
     boundaries:(),
-    maritimeboundaries:(Siam.New Guinea.Western Australia)
+    maritimeboundaries:(siam.new_guinea.western_australia)
     ''',
-  'New Guinea': '''
-    yields:(5.1.3.0,
+  'new_guinea': '''
+    yields:(5.1.3.0),
     land:[993.496|995.491|997.487|1003.483|1007.483|1007.488|1017.488|1016.498|1021.500|
     1021.500|1020.488|1029.485|1036.485|1046.488|1050.495|1056.500|1061.502|1066.503|1068.513|
     1073.516|1078.518|1078.524|1075.525|1075.527|1077.530|1079.532|1078.535|1079.537|1082.539|
@@ -783,10 +783,10 @@ config['TERRITORIES'] = {
     997.504|994.500|994.497|990.496|992.494|994.490|1000.486],
     sea:(1060.485),
     boundaries:(),
-    maritimeboundaries:(Western Australia.Eastern Australia.Indonesia)
+    maritimeboundaries:(western_australia.eastern_australia.indonesia)
     ''',
-  'Western Australia': '''
-    yields:(3.5.0.1,
+  'western_australia': '''
+    yields:(3.5.0.1),
     land:[1013.575|1013.593|1016.598|1016.639|1062.639|1062.649|1061.673|1063.684|1061.693|
       1057.701|1053.700|1052.694|1047.696|1046.697|1046.690|1041.695|1038.693|1035.686|1031.682|
       1023.681|1017.681|1010.681|1004.687|993.694|991.696|982.698|974.699|971.705|960.709|955.707|
@@ -794,11 +794,11 @@ config['TERRITORIES'] = {
       931.641|930.634|936.632|945.626|968.614|969.610|970.599|974.598|976.600|977.603|979.602|
       979.595|984.589|990.581|996.580|1001.584|1003.587|1005.584|1007.576|1011.573],
     sea:(925.664),
-    boundaries:(Eastern Australia),
-    maritimeboundaries:(Eastern Australia.Indonesia.New Guinea)
+    boundaries:(eastern_australia),
+    maritimeboundaries:(eastern_australia.indonesia.new_guinea)
     ''',
-  'Eastern Australia': '''
-    yields:(1.3.0.5,
+  'eastern_australia': '''
+    yields:(1.3.0.5),
     land:[1014.574|1022.569|1032.567|1041.570|1048.571|1047.578|1040.582|1040.588|1049.591|
       1053.593|1062.602|1065.597|1066.584|1067.577|1069.575|1071.560|1076.562|1080.574|1082.588|
       1088.595|1092.599|1094.600|1096.607|1102.612|1110.617|1112.629|1116.631|1117.633|1118.640|
@@ -807,11 +807,11 @@ config['TERRITORIES'] = {
       1061.695|1064.690|1062.683|1060.678|1063.670|1063.660|1062.639|1017.637|1017.600|1015.594|
       1014.594|1012.574|1019.569|1024.568],
     sea:(1096.585),
-    boundaries:(Western Australia),
-    maritimeboundaries:(Western AustraliaNew Guinea)
+    boundaries:(western_australia),
+    maritimeboundaries:(western_australianew_guinea)
     ''',
 }
 
 # Create the config.ini file to be refferenced
-with open('config.ini', 'w') as config:
-    config.write(config)
+with open('config.ini', 'w') as configfile:
+    config.write(configfile)

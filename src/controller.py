@@ -1,13 +1,13 @@
-import config
-import drawer
-import player
-import location
-import unit
+from classes import ConfigPygame
 import pygame
+
+import drawer
+
+import player, location, unit
 
 class Controller:
     def __init__(self, playerNames, pc):
-        self.config = config.config
+        self.config = ConfigPygame()
 
         # The Drawer draws everything we need on the screen
         self.drawer = drawer.Drawer()
