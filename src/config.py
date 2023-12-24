@@ -143,22 +143,22 @@ config['SHOP'] = {
 
 config['PLAYERS'] = {
   'topleft': '25.25',
-  'player1': '''
+  '0': '''
     color:skyblue
     ''',
-  'player2': '''
+  '1': '''
     color:cobaltgreen
     ''',
-  'player3': '''
+  '2': '''
     color:firebrick
     ''',
-  'player4': '''
+  '3': '''
     color:darkorange
     ''',
-  'player5': '''
+  '4': '''
     color:yellow
     ''',
-  'player6': '''
+  '5': '''
     color:gray
     ''',
 }

@@ -2,10 +2,11 @@ from classes import ConfigPygame
 
 from player import Player
 
+import pygame
+
 class Drawer:
-  def __init__(self):
+  def __init__(self, config:ConfigPygame) -> None:
     # Config Information
-    self.config = config_.config['Drawer']
 
     # Start up pygame
     pygame.init()

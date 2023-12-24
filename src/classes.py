@@ -3,7 +3,7 @@ import configparser, pygame
 # A config object is simply an object that uses values from the config
 class ConfigPygame:
   def __init__(self, config:configparser.ConfigParser) -> None:
-    # The actual config object
+    # The config object
     self.config = config
 
   # Returns a pygame surface of the image requested
@@ -34,8 +34,8 @@ class ConfigPygame:
     return pygame.Rect(topleft, width_height)
   
   # Returns player 
-  def player(self, player:str) -> dict:
-    return self.getdict('PLAYERS', player)
+  def player(self, player:int) -> dict:
+    return self.getdict('PLAYERS', str(player))
   
   # Returns a dictionary with unit information
   def unit(self, unit:str) -> dict:
@@ -57,7 +57,7 @@ class ConfigPygame:
   def getdict(self, section:str, option:str) -> dict:
     d = dict()
 
-    pairs = self.config[section][option].split(',')
+    pairs = self.config[section][option][1:].split(',')
 
     for pair in pairs:
       key, value = pair.split(':')

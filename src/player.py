@@ -1,32 +1,26 @@
-import pygame
-
-import config as config_
+# The Player Class: This holds all information for the player
 
 class Player:
-    def __init__(self, player, name):
-        # Config Objects
-        self.config = config_.config['Buttons']['Players']
+  def __init__(self, name, number, color) -> None:
+    # The Players Name
+    self.name = name
 
-        self.name = name
+    # The order within the turn the player goes
+    self.number = number
 
-        # The player number    
-        self.playerNum = player
+    # The color associated with the player
+    self.color = color
 
-        # The territories and costs owned by the player
-        self.territories = []
-        self.coasts = []
+    # The territories and costs owned by the player
+    self.territories = []
+    self.coasts = []
 
-        # The resources of the player
-        self.stats = {
-            'Food': 0,
-            'Wood': 0,
-            'Metal': 0,
-            'Oil': 0
-        }
-
-        # The button for the player
-        self.button = pygame.Rect(self.config['start'][self.playerNum][0], self.config['start'][self.playerNum][1], self.config['width'], self.config['height'])
-    
-    # Returns true if the point is on the button
-    def inside(self, x, y):
-        return self.button.collidepoint(x, y)
+    # Player resources
+    self.food = 0
+    self.wood = 0
+    self.metal = 0
+    self.oil = 0
+  
+  # Returns a list of stats for the player
+  def stats(self) -> list[int]:
+    return [self.food, self.wood, self.metal, self.oil]
