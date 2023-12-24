@@ -1,4 +1,4 @@
-import configparser, logging, pygame
+import configparser, pygame
 
 # A config object is simply an object that uses values from the config
 class ConfigPygame:
