@@ -20,7 +20,7 @@ class Drawer:
   def drawRect(self, name:str) -> None:
     rect = self.config.getrect(name)
 
-    pygame.draw.rect(self.screen, self.config.color('black'), rect)
+    pygame.draw.rect(self.screen, self.config.getcolor('black'), rect)
 
     border = self.config.getint(name, 'border')
 
@@ -66,9 +66,13 @@ class Drawer:
     rect = pygame.Rect(self.config.gettuple('SHOP', 'topleft'), (self.config.getint('SHOP', 'size'), self.config.getint('SHOP', 'size')))
 
     for i, unit in enumerate(self.config['UNITS']):
-      print(i, unit)
+      pygame.draw.rect(self.screen, self.config.getcolor('black'), rect)
 
-    pygame.draw.rect(self.screen, self.config.getcolor('black'), rect)
+      self.screen.blit(self.config.getimage(unit), rect)
+
+      if i + 1 % 4 == 0:
+        rect.move(-200, 70)
+
 
   # Draw the game state
   def draw(self) -> None:

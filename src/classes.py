@@ -1,11 +1,12 @@
-import configparser, pygame
+from configparser import ConfigParser, ExtendedInterpolation
+import pygame
 
 import player, location, unit
 
 # A config object is simply an object that uses values from the config
-class ConfigPygame(configparser.ConfigParser):
+class ConfigPygame(ConfigParser):
   def __init__(self) -> None:
-    super().__init__()
+    super().__init__(interpolation=ExtendedInterpolation())
 
   # Returns a pygame surface of the image requested
   def getimage(self, image:str) -> pygame.Surface:

@@ -1,4 +1,4 @@
-from classes import ConfigPygame, configparser
+from classes import ConfigPygame
 
 import pygame, drawer
 import player, location, unit
@@ -6,11 +6,8 @@ import player, location, unit
 class Controller:
   def __init__(self, playerNames:set[str], pcName:str) -> None:
     # The config object
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    
-    # A special config object that reads and converts to pygame objects
-    self.config = ConfigPygame(config)
+    self.config = ConfigPygame()
+    self.config.read('config.ini')
 
     # The amount of players in the game
     self.playerNum = len(playerNames)
