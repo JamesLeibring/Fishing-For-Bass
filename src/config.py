@@ -86,8 +86,7 @@ config['FONTS'] = {
 }
 
 config['SCREEN'] = {
-  'width': '1500',
-  'height': '750',
+  'width_height': '1500.750'
 }
 
 config['MAP'] = {
@@ -130,8 +129,9 @@ config['SHOPBOX'] = {
 }
 
 config['INFOBOX'] = {
-  'topleft': '1150.590',
-  'bottomright': '1460.730',
+  'topleft': '1160.590',
+  'bottomright': '1470.720',
+  'border': '5',
   'color': 'cornsilk'
 }
 

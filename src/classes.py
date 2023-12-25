@@ -1,31 +1,32 @@
 import configparser, pygame
 
+import player, location, unit
+
 # A config object is simply an object that uses values from the config
-class ConfigPygame:
-  def __init__(self, config:configparser.ConfigParser) -> None:
-    # The config object
-    self.config = config
+class ConfigPygame(configparser.ConfigParser):
+  def __init__(self) -> None:
+    super().__init__()
 
   # Returns a pygame surface of the image requested
-  def image(self, image:str) -> pygame.Surface:
-    url = self.config['IMAGES'][image]
+  def getimage(self, image:str) -> pygame.Surface:
+    url = self.get('IMAGES', image)
 
     size = self.getint('IMAGES', 'size')
 
     return pygame.transform.scale(pygame.image.load(url), (size, size))
 
   # Returns a pygame Color object given a color to retrieve
-  def color(self, color:str) -> pygame.Color:
+  def getcolor(self, color:str) -> pygame.Color:
     rgb = self.gettuple('COLORS', color)
 
     return pygame.Color(rgb[0], rgb[1], rgb[2], rgb[3] if len(rgb) == 4 else 255)
   
   # Returns a pygame Font object given a font size
-  def font(self, size:str) -> pygame.font.Font:
-    return pygame.font.Font(self.config['FONTS']['font'], self.getint('FONTS', size))
+  def getfont(self, size:str) -> pygame.font.Font:
+    return pygame.font.Font(self.get('FONTS', 'font'), self.getint('FONTS', size))
   
   # Returns a pygame rectangle given name
-  def rect(self, rect:str) -> pygame.Rect:
+  def getrect(self, rect:str) -> pygame.Rect:
     topleft = self.gettuple(rect, 'topleft')
     bottomright = self.gettuple(rect, 'bottomright')
 
@@ -33,31 +34,21 @@ class ConfigPygame:
 
     return pygame.Rect(topleft, width_height)
   
-  # Returns player 
-  def player(self, player:int) -> dict:
-    return self.getdict('PLAYERS', str(player))
-  
-  # Returns a dictionary with unit information
-  def unit(self, unit:str) -> dict:
-    return self.getdict('UNITS', unit)
-  
-  # Returns a dictionary with territory information
-  def territory(self, territory:str) -> dict:
-    return self.getdict('TERRITORIES', territory)
+  # Returns a player object from the information
+  def getplayer(self, name:str, number:int) -> dict:
+    data = self.getdict('PLAYERS', str(number))
 
-  # Parses a string in form '1-9' into an int
-  def getint(self, section:str, option:str) -> int:
-    return self.config.getint(section, option)
+    return player.Player(name, number, self.getcolor(data['color']))
 
   # Parses a string in form 'x.y' into a tuple of form (x, y)
   def gettuple(self, section:str, option:str) -> tuple:
-    return tuple(int(x) for x in self.config[section][option].split('.'))
-  
+    return tuple(int(x) for x in self.get(section, option).split('.'))
+
   # Parses a dictionary in form 'key:value, key:a|b|c|d, key:a.b'
   def getdict(self, section:str, option:str) -> dict:
     d = dict()
 
-    pairs = self.config[section][option][1:].split(',')
+    pairs = self.get(section, option)[1:].split(',')
 
     for pair in pairs:
       key, value = pair.split(':')
