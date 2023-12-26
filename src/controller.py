@@ -4,20 +4,19 @@ import pygame, drawer
 import player, location, unit
 
 class Controller:
-  def __init__(self, playerNames:set[str], pcName:str) -> None:
+  def __init__(self, playerNames:list[str], pcName:str) -> None:
     # The config object
     self.config = ConfigPygame()
     self.config.read('config.ini')
-
-    # The amount of players in the game
-    self.playerNum = len(playerNames)
 
     # The Drawer draws everything needed on the screen
     self.drawer = drawer.Drawer(self.config)
 
     # The players in the game
-    self.players = [self.config.getplayer(playerNames[i], i) for i in range(self.playerNum)]
-    self.pc = [plyr for plyr in self.players if plyr.name == pcName][0]
+    self.players = [self.config.getplayer(i, name) for i, name in enumerate(playerNames)]
+    self.pc = self.players[playerNames.index(pcName)]
+
+    # The territories in the game
 
     # The turn the game is on
     self.turn = 0
@@ -41,7 +40,16 @@ class Controller:
     return True
 
   # Hover function determines if you are hovering a unit or territory and returns it
-  def hover(self, loc:tuple[int,int]) -> tuple[int,int]:
-    x, y = loc[0], loc[1]
+  def hover(self, mouse:tuple[int,int]) -> player.Player | None:
+    # Determine if the mouse is hovering over a player
+    for player in self.players:
+      if player.inside(mouse):
+        return player
 
-    return (x, y)
+    return None
+  
+  # Draw the screen
+  def draw(self) -> None:
+    self.drawer.drawMap(self.players)
+
+    self.drawer.drawSide()

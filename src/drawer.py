@@ -2,6 +2,8 @@ from classes import ConfigPygame
 
 import pygame
 
+import player, location, unit
+
 class Drawer:
   def __init__(self, config:ConfigPygame) -> None:
     # Config Information
@@ -17,18 +19,12 @@ class Drawer:
     self.surface = pygame.Surface(self.config.gettuple('SCREEN', 'width_height'), pygame.SRCALPHA)
 
   # Draws a rectangle given a name
-  def drawRect(self, name:str) -> None:
-    rect = self.config.getrect(name)
-
+  def drawRect(self, rect:pygame.Rect, color:pygame.Color, border:int) -> None:
     pygame.draw.rect(self.screen, self.config.getcolor('black'), rect)
-
-    border = self.config.getint(name, 'border')
 
     rect = pygame.Rect(rect.left + border, rect.top + border, rect.width - border*2, rect.height - border*2)
 
-    color = self.config.getcolor(self.config.get(name, 'color'))
-
-    pygame.draw.rect(self.screen, color, rect)
+    return pygame.draw.rect(self.screen, color, rect)
 
   # Draws the background for the game (1 time draw)
   def drawBackground(self) -> None:
@@ -38,44 +34,23 @@ class Drawer:
     # Fill the screen
     self.screen.fill(self.config.getcolor('burntsienna'))
 
-    # Draw the border
-    self.drawRect('MAP')
+    objects = ['MAP', 'SIDEBAR', 'TURN', 'COLOR', 'RESOURCE', 'SHOP', 'INFO']
 
-    # Draw the sidebar
-    self.drawRect('SIDEBAR')
+    for obj in objects:
+      rect = self.config.getrect(obj)
+      color = self.config.getcolor(self.config.get(obj, 'color'))
+      border = self.config.getint(obj, 'border')
 
-    # Draw the turn box
-    self.drawRect('TURNBOX')
-
-    # Draw the color box
-    self.drawRect('COLORBOX')
-
-    # Draw the resource box
-    self.drawRect('RESOURCEBOX')
-
-    # Draw the shop background
-    self.drawRect('SHOPBOX')
-
-    # Draw the info box
-    self.drawRect('INFOBOX')
+      self.drawRect(rect, color, border)
   
     pygame.display.flip()
-  
-  # Draw the shop options
-  def drawShop(self) -> None:
-    rect = pygame.Rect(self.config.gettuple('SHOP', 'topleft'), (self.config.getint('SHOP', 'size'), self.config.getint('SHOP', 'size')))
 
-    for i, unit in enumerate(self.config['UNITS']):
-      pygame.draw.rect(self.screen, self.config.getcolor('black'), rect)
-
-      self.screen.blit(self.config.getimage(unit), rect)
-
-      if i + 1 % 4 == 0:
-        rect.move(-200, 70)
+  # Draws the player icons
+  def drawMap(self, players:list[player.Player]) -> None:
+    for plyr in players:
+      self.drawRect(plyr.rect, plyr.color, 5)
 
 
   # Draw the game state
-  def draw(self) -> None:
-    self.drawShop()
-
+  def drawSide(self) -> None:
     pygame.display.flip()
