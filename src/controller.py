@@ -18,6 +18,9 @@ class Controller:
 
     # The territories in the game
 
+    # The units in the game
+    self.units = [self.config.getunit(0, name) for name in self.config['UNITS']]
+
     # The turn the game is on
     self.turn = 0
 
@@ -26,7 +29,7 @@ class Controller:
 
   # Get the game ready for play
   def startGame(self) -> None:
-    self.drawer.drawBackground()
+    self.drawer.drawBackground(self.pc)
 
   def gameLoop(self) -> bool:
     # Get the position of our mouse for this frame
@@ -40,7 +43,7 @@ class Controller:
     return True
 
   # Hover function determines if you are hovering a unit or territory and returns it
-  def hover(self, mouse:tuple[int,int]) -> player.Player | None:
+  def hover(self, mouse:tuple[int,int]) -> player.Player | unit.Unit | None:
     # Determine if the mouse is hovering over a player
     for player in self.players:
       if player.inside(mouse):
@@ -52,4 +55,4 @@ class Controller:
   def draw(self) -> None:
     self.drawer.drawMap(self.players)
 
-    self.drawer.drawSide()
+    self.drawer.drawSide(self.units)

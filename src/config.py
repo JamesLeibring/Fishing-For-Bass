@@ -84,84 +84,91 @@ config['SCREEN'] = {
 }
 
 config['MAP'] = {
-  'topleft': '(10.10)',
-  'bottomright': '(1150.740)',
-  'border': '10',
-  'color': 'white'
+  'topleft': '(20.20)',
+  'bottomright': '(1140.730)'
 }
 
-config['SIDEBAR'] = {
-  'topleft': '(1140.10)',
-  'bottomright': '(1490.740)',
-  'border': '10',
-  'color': 'brown'
-}
-
-config['TURN'] = {
-  'topleft': '(1160.30)',
-  'bottomright': '(1310.90)',
-  'border': '5',
-  'color': 'cornsilk'
-}
-
-config['COLOR'] = {
-  'topleft': '(1320.30)',
-  'bottomright': '(1470.90)',
-  'border': '5',
-  'color': 'black'
-}
-
-config['RESOURCE'] = {
-  'topleft': '(1160.100)',
-  'bottomright': '(1470.160)',
-  'border': '5',
-  'color': 'cornsilk',
-}
-
-config['SHOP'] = {
-  'topleft': '(1160.170)',
-  'bottomright': '(1470.580)',
-  'border': '5',
-  'color': 'cornsilk2'
-}
-
-config['INFO'] = {
-  'topleft': '(1160.590)',
-  'bottomright': '(1470.720)',
-  'border': '5',
-  'color': 'cornsilk'
+config['BACKGROUND'] = {
+  'map': '''
+    topleft:(10.10),
+    bottomright:(1150.740),
+    color:white,
+    border:10
+    ''',
+  'sidebar': '''
+    topleft:(1140.10),
+    bottomright:(1490.740),
+    color:brown,
+    border:10
+    ''',
+  'turn': '''
+    topleft:(1160.30),
+    bottomright:(1310.90),
+    color:cornsilk,
+    border:5
+    ''',
+  'color': '''
+    topleft:(1320.30),
+    bottomright:(1470.90),
+    color:black,
+    border:5
+    ''',
+  'resource': '''
+    topleft:(1160.100),
+    bottomright:(1470.160),
+    color:cornsilk,
+    border:5
+    ''',
+  'shop': '''
+    topleft:(1160.170),
+    bottomright:(1470.580),
+    color:cornsilk2,
+    border:5
+    ''',
+  'info': '''
+    topleft:(1160.590),
+    bottomright:(1470.720),
+    color:cornsilk,
+    border:5
+    '''
 }
 
 config['PLAYERS'] = {
   '0': '''
     topleft:(25.25),
-    bottomright:(75.75),
-    color:skyblue
+    bottomright:(65.65),
+    color:skyblue,
+    border:5
     ''',
   '1': '''
-    topleft:(80.25),
-    bottomright:(130.75),
-    color:cobaltgreen
+    topleft:(70.25),
+    bottomright:(110.65),
+    color:cobaltgreen,
+    border:5
     ''',
   '2': '''
-    topleft:(135.25),
-    bottomright:(185.75),
-    color:firebrick
+    topleft:(115.25),
+    bottomright:(155.65),
+    color:firebrick,
+    border:5
     ''',
   '3': '''
-    topleft:(190.25),
-    bottomright:(240.75),
-    color:darkorange
+    topleft:(160.25),
+    bottomright:(200.65),
+    color:darkorange,
+    border:5
     ''',
   '4': '''
-    topleft:(245.25),
-    bottomright:(295.75),
-    color:yellow
+    topleft:(205.25),
+    bottomright:(245.65),
+    color:yellow,
+    border:5
     ''',
   '5': '''
-    topleft:(300.25),
-    bottomright:(350.75),
-    color:gray
+    topleft:(250.25),
+    bottomright:(290.65),
+    color:gray,
+    border:5
     '''
 }
 
@@ -171,6 +178,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'horseman': '''
@@ -178,6 +186,7 @@ config['UNITS'] = {
     movement:2,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'swordsman': '''
@@ -185,6 +194,7 @@ config['UNITS'] = {
     movment:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'knight': '''
@@ -192,6 +202,7 @@ config['UNITS'] = {
     movement:2,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'musketman': '''
@@ -199,6 +210,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'cavalry': '''
@@ -206,6 +218,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'infantry': '''
@@ -213,6 +226,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'tank': '''
@@ -220,6 +234,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'archer': '''
@@ -227,6 +242,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'cannon': '''
@@ -234,6 +250,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'artillery': '''
@@ -241,6 +258,7 @@ config['UNITS'] = {
     movement:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'anti-air_gun': '''
@@ -249,6 +267,7 @@ config['UNITS'] = {
     special:anti-air,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'trireme': '''
@@ -257,6 +276,7 @@ config['UNITS'] = {
     capacity:2,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'caravel': '''
@@ -265,6 +285,7 @@ config['UNITS'] = {
     capacity:5,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'battleship': '''
@@ -273,6 +294,7 @@ config['UNITS'] = {
     capacity:6,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'aircraft_carrier': '''
@@ -282,6 +304,7 @@ config['UNITS'] = {
     special:carrier,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'fighter': '''
@@ -290,6 +313,7 @@ config['UNITS'] = {
     range:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'bomber': '''
@@ -298,6 +322,7 @@ config['UNITS'] = {
     range:1,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'jet_fighter': '''
@@ -306,6 +331,7 @@ config['UNITS'] = {
     range:2,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
   'helicopter': '''
@@ -316,6 +342,7 @@ config['UNITS'] = {
     capacity:5,
     topleft:(1175.185),
     bottomright:(1235.245),
+    color:burntsienna,
     border:5
     ''',
 }

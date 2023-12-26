@@ -2,18 +2,21 @@
 import pygame
 
 class Player:
-  def __init__(self, name:str, number:int, color:pygame.Color, rect:pygame.Rect) -> None:
+  def __init__(self, name:str, number:int, rect:pygame.Rect, color:pygame.Color, border:int) -> None:
     # The Players Name
     self.name = name
 
     # The order within the turn the player goes
     self.number = number
 
+    # The player box for this player (when hovered, updates info box)
+    self.rect = rect
+
     # The color associated with the player
     self.color = color
 
-    # The player box for this player (when hovered, updates info box)
-    self.rect = rect
+    # The border for the rect of the player object
+    self.border = border
 
     # The territories and costs owned by the player
     self.territories = []

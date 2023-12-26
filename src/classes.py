@@ -9,10 +9,10 @@ class ConfigPygame(ConfigParser):
     super().__init__(interpolation=ExtendedInterpolation())
 
   # Returns a pygame surface (image) from the config
-  def getimage(self, image:str, size:int) -> pygame.Surface:
+  def getimage(self, image:str, width:int, height:int=None) -> pygame.Surface:
     url = self.get('IMAGES', image)
 
-    return pygame.transform.scale(pygame.image.load(url), (size, size))
+    return pygame.transform.scale(pygame.image.load(url), (width, width if height is None else height))
 
   # Returns a pygame Color object from the config
   def getcolor(self, color:str) -> pygame.Color:
@@ -40,8 +40,20 @@ class ConfigPygame(ConfigParser):
 
     color = self.getcolor(data['color'])
     rect = self.parserect(data['topleft'], data['bottomright'])
+    border = data['border']
 
-    return player.Player(name, number, color, rect)
+    return player.Player(name, number, rect, color, border)
+  
+  # Returns a unit object from the config
+  def getunit(self, id:int, name:str) -> unit.Unit:
+    data = self.getdict('UNITS', name)
+
+    color = self.getcolor(data['color'])
+    rect = self.parserect(data['topleft'], data['bottomright'])
+    image = self.getimage(name, rect.width)
+    border = data['border']
+
+    return unit.Unit(id, rect, color, image, border)
   
   # Returns a tuple object from the config
   def gettuple(self, section:str, option:str) -> tuple:
