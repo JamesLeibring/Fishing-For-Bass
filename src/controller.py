@@ -31,23 +31,29 @@ class Controller:
   def startGame(self) -> None:
     self.drawer.drawBackground(self.pc)
 
-  def gameLoop(self) -> bool:
+  def gameLoop(self):
     # Get the position of our mouse for this frame
     self.hov = self.hover(pygame.mouse.get_pos())
 
+    # Tests all events that occured this frame
     for event in pygame.event.get():
       match event.type:
         case pygame.QUIT:
           return False
     
     return True
-
+    
   # Hover function determines if you are hovering a unit or territory and returns it
   def hover(self, mouse:tuple[int,int]) -> player.Player | unit.Unit | None:
     # Determine if the mouse is hovering over a player
     for player in self.players:
       if player.inside(mouse):
         return player
+    
+    # Determine if the mouse is hovering over a unit
+    for unit in self.units:
+      if unit.inside(mouse):
+        return unit
 
     return None
   
@@ -55,4 +61,4 @@ class Controller:
   def draw(self) -> None:
     self.drawer.drawMap(self.players)
 
-    self.drawer.drawSide(self.units)
+    self.drawer.drawSide(self.units, self.hov)

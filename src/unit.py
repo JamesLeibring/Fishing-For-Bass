@@ -3,7 +3,9 @@ import config
 import pygame
 
 class Unit:
-  def __init__(self, id:int, rect:pygame.Rect, color:pygame.Color, image:pygame.Surface, border:int):
+  def __init__(self, name:str, id:int, rect:pygame.Rect, color:pygame.Color, image:pygame.Surface, border:int):
+    # The name of this unit
+    self.name = name
     # The unique unit id for this unit
     self.id = id
 

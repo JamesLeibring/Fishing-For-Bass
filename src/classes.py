@@ -53,7 +53,7 @@ class ConfigPygame(ConfigParser):
     image = self.getimage(name, rect.width)
     border = data['border']
 
-    return unit.Unit(id, rect, color, image, border)
+    return unit.Unit(name, id, rect, color, image, border)
   
   # Returns a tuple object from the config
   def gettuple(self, section:str, option:str) -> tuple:

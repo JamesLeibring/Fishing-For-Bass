@@ -64,11 +64,17 @@ class Drawer:
 
 
   # Draw the game state
-  def drawSide(self, units:list[unit.Unit]) -> None:
-    for unit in units:
+  def drawSide(self, units:list[unit.Unit], hov:player.Player|unit.Unit|None) -> None:
+    for un in units:
       # Draws the unit shop box for the shop
-      self.drawRect(unit.rect, unit.color, unit.border)
+      self.drawRect(un.rect, un.color, un.border)
       # Draws the image of the unit for each box
-      self.screen.blit(unit.image, unit.rect)
+      self.screen.blit(un.image, un.rect)
     
+    match type(hov):
+      case player.Player:
+        print(hov.name)
+      case unit.Unit:
+        print(hov.name)
+
     pygame.display.flip() 
