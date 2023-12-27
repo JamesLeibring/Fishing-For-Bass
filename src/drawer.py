@@ -75,9 +75,17 @@ class Drawer:
     
     match type(hov):
       case territory.Territory:
+        # Highlight the selected territory
         pygame.draw.polygon(self.surface, hov.color, hov.border)
     
         # Draw the surface atop the screen
+        self.screen.blit(self.surface, (0,0))
+      case player.Player:
+        # Highlight each territory the player owns
+        for ter in hov.territories:
+          pygame.draw.polygon(self.surface, ter.color, ter.border)
+        
+        #Draw the surface atop the screen
         self.screen.blit(self.surface, (0,0))
       case _:
         # Draws the map of the game
