@@ -68,11 +68,7 @@ class Drawer:
     pygame.display.flip()
 
   # Draws the player icons
-  def drawMap(self, players:list[player.Player], hov:player.Player|territory.Territory|unit.Unit|None) -> None:
-    for plyr in players:
-      # Draws the player box on the map
-      self.drawRect(plyr.rect, plyr.color, plyr.border)
-    
+  def drawMap(self, players:list[player.Player], hov:player.Player|territory.Territory|unit.Unit|None) -> None:    
     match type(hov):
       case territory.Territory:
         # Highlight the selected territory
@@ -91,9 +87,14 @@ class Drawer:
         # Draws the map of the game
         self.screen.blit(self.map, self.maprect)
 
-        self.surface.fill([0,0,0,0])
+    # Draw the player boxes on the map
+    for plyr in players:
+      self.drawRect(plyr.rect, plyr.color, plyr.border)
 
     pygame.display.flip()
+
+    # Clears the surface for the next frame
+    self.surface.fill([0,0,0,0])
 
   # Draw the sideboard
   def drawSide(self, units:list[unit.Unit], hov:player.Player|territory.Territory|unit.Unit|None) -> None:
