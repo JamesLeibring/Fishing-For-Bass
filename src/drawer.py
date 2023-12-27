@@ -68,18 +68,27 @@ class Drawer:
     pygame.display.flip()
 
   # Draws the player icons
-  def drawMap(self, players:list[player.Player]) -> None:
-    # Draws the map of the game
-    self.screen.blit(self.map, self.maprect)
-
+  def drawMap(self, players:list[player.Player], hov:player.Player|territory.Territory|unit.Unit|None) -> None:
     for plyr in players:
       # Draws the player box on the map
       self.drawRect(plyr.rect, plyr.color, plyr.border)
+    
+    match type(hov):
+      case territory.Territory:
+        pygame.draw.polygon(self.surface, hov.color, hov.border)
+    
+        # Draw the surface atop the screen
+        self.screen.blit(self.surface, (0,0))
+      case _:
+        # Draws the map of the game
+        self.screen.blit(self.map, self.maprect)
+
+        self.surface.fill([0,0,0,0])
 
     pygame.display.flip()
 
   # Draw the sideboard
-  def drawSide(self, units:list[unit.Unit], hov:player.Player|unit.Unit|None) -> None:
+  def drawSide(self, units:list[unit.Unit], hov:player.Player|territory.Territory|unit.Unit|None) -> None:
     for un in units:
       # Draws the unit shop box for the shop
       self.drawRect(un.rect, un.color, un.border)

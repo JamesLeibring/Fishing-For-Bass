@@ -65,6 +65,6 @@ class Controller:
   
   # Draw the screen
   def draw(self) -> None:
-    self.drawer.drawMap(self.players)
+    self.drawer.drawMap(self.players, self.hov)
 
     self.drawer.drawSide(self.units, self.hov)
