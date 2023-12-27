@@ -1,16 +1,13 @@
 from classes import ConfigPygame
 
 import pygame, drawer
-import player, location, unit
+import player, territory, unit
 
 class Controller:
   def __init__(self, playerNames:list[str], pcName:str) -> None:
     # The config object
     self.config = ConfigPygame()
     self.config.read('config.ini')
-
-    # The Drawer draws everything needed on the screen
-    self.drawer = drawer.Drawer(self.config)
 
     # The players in the game
     self.players = [self.config.getplayer(i, name) for i, name in enumerate(playerNames)]
@@ -20,6 +17,9 @@ class Controller:
 
     # The units in the game
     self.units = [self.config.getunit(0, name) for name in self.config['UNITS']]
+
+    # The Drawer draws everything needed on the screen
+    self.drawer = drawer.Drawer(self.config, self.pc)
 
     # The turn the game is on
     self.turn = 0

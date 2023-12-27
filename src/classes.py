@@ -1,7 +1,7 @@
 from configparser import ConfigParser, ExtendedInterpolation
 import pygame
 
-import player, location, unit
+import player, territory, unit
 
 # An extension from the config parser object
 class ConfigPygame(ConfigParser):
@@ -43,6 +43,14 @@ class ConfigPygame(ConfigParser):
     border = data['border']
 
     return player.Player(name, number, rect, color, border)
+  
+  # Returns a territory object from the config
+  def getterritory(self, name:str) -> territory.Territory:
+    data = self.getdict('TERRITORIES', name)
+
+    color = self.getcolor(data['color'])
+
+    return territory.Territory(name, color)
   
   # Returns a unit object from the config
   def getunit(self, id:int, name:str) -> unit.Unit:
