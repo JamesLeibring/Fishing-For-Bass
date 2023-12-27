@@ -14,6 +14,7 @@ class Controller:
     self.pc = self.players[playerNames.index(pcName)]
 
     # The territories in the game
+    self.territories = [self.config.getterritory(name) for name in self.config['TERRITORIES']]
 
     # The units in the game
     self.units = [self.config.getunit(0, name) for name in self.config['UNITS']]
@@ -44,12 +45,17 @@ class Controller:
     return True
     
   # Hover function determines if you are hovering a unit or territory and returns it
-  def hover(self, mouse:tuple[int,int]) -> player.Player | unit.Unit | None:
+  def hover(self, mouse:tuple[int,int]) -> player.Player | territory.Territory | unit.Unit | None:
     # Determine if the mouse is hovering over a player
     for player in self.players:
       if player.inside(mouse):
         return player
-    
+
+    # Determine if the mouse is hovering over a territory
+    for ter in self.territories:
+      if ter.inside(mouse):
+        return ter
+
     # Determine if the mouse is hovering over a unit
     for unit in self.units:
       if unit.inside(mouse):

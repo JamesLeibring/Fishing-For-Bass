@@ -1,5 +1,3 @@
-# The Unit Class : Describes a unit in its entirity
-import config
 import pygame
 
 class Unit:

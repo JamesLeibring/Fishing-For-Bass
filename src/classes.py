@@ -49,8 +49,9 @@ class ConfigPygame(ConfigParser):
     data = self.getdict('TERRITORIES', name)
 
     color = self.getcolor(data['color'])
+    rect = self.parserect(data['topleft'], data['bottomright'])
 
-    return territory.Territory(name, color)
+    return territory.Territory(name, data['land'], rect, color)
   
   # Returns a unit object from the config
   def getunit(self, id:int, name:str) -> unit.Unit:

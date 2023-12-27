@@ -104,12 +104,15 @@ class Drawer:
     pygame.draw.line(self.screen, self.config.getcolor('black'), (rect.left + 10, rect.centery), (rect.right - 10, rect.centery), 5)
 
     # Draw the name
-    self.drawText(string.capwords(hov.name.replace('_', ' ')), 'lrg', (rect.right - 10, icon.centery))
+    self.drawText(string.capwords(hov.name.replace('_', ' ')), 'med', (rect.right - 10, icon.centery))
 
     match type(hov):
       case player.Player:
         # Draw the icon
         self.drawRect(icon, hov.color, hov.border)
+      case territory.Territory:
+        # Draw the territory icon
+        self.drawRect(icon, hov.color, 5)
       case unit.Unit:
         # Draw the icon
         self.drawRect(icon, hov.color, hov.border)
