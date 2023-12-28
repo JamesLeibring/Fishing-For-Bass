@@ -30,7 +30,7 @@ class Controller:
 
   # Get the game ready for play
   def startGame(self) -> None:
-    self.drawer.drawBackground(self.pc)
+    self.drawer.drawBackground()
 
   def gameLoop(self):
     # Get the position of our mouse for this frame
@@ -65,6 +65,4 @@ class Controller:
   
   # Draw the screen
   def draw(self) -> None:
-    self.drawer.drawMap(self.players, self.hov)
-
-    self.drawer.drawSide(self.units, self.hov)
+    self.drawer.draw(self.players, self.units, self.hov, self.turn)

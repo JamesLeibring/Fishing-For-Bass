@@ -1,5 +1,6 @@
-# The Player Class: This holds all information for the player
 import pygame
+
+import territory
 
 class Player:
   def __init__(self, name:str, number:int, rect:pygame.Rect, color:pygame.Color, border:int) -> None:
@@ -19,19 +20,20 @@ class Player:
     self.border = border
 
     # The territories and costs owned by the player
-    self.territories = []
-    self.coasts = []
+    self.territories:list[territory.Territory] = []
 
     # Player resources
     self.food = 0
     self.wood = 0
     self.metal = 0
     self.oil = 0
+
+    self.power = 0
   
   # Returns a list of stats for the player
   def stats(self) -> list[int]:
-    return [self.food, self.wood, self.metal, self.oil]
+    return [self.food, self.wood, self.metal, self.oil, self.power]
   
   # Determines if the mouse is hovering this player object
-  def inside(self, mouse:tuple[int,int]) -> bool:
+  def inside(self, mouse:tuple[int]) -> bool:
     return self.rect.collidepoint(mouse[0], mouse[1])

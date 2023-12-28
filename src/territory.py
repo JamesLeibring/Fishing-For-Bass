@@ -2,7 +2,7 @@ import pygame
 
 # The Location Class
 class Territory:
-  def __init__(self, name:str, border:list[tuple[int,int]], rect:pygame.Rect, color:pygame.Color) -> None:
+  def __init__(self, name:str, border:list[tuple[int]], rect:pygame.Rect, color:pygame.Color, yields:tuple[int]) -> None:
     # The name of the territory
     self.name = name
 
@@ -14,9 +14,21 @@ class Territory:
 
     # The color for the territory when highlighted
     self.color = color
-  
+
+    # Territory resources
+    self.food = yields[0]
+    self.wood = yields[1]
+    self.metal = yields[2]
+    self.oil = yields[3]
+
+    self.power = 0
+
+  # Returns a list of stats for the territory
+  def stats(self) -> list[int]:
+    return [self.food, self.wood, self.metal, self.oil, self.power]
+
   # Determines if the mouse is hovering this territory object
-  def inside(self, mouse:tuple[int,int]) -> bool:
+  def inside(self, mouse:tuple[int]) -> bool:
     return self.rect.collidepoint(mouse[0], mouse[1])
 
 # Turn a integer into a Roman Numeral
