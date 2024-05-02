@@ -1,12 +1,12 @@
-from configparser import ConfigParser, ExtendedInterpolation
 import pygame
+import configparser
 
 import player, territory, unit
 
 # An extension from the config parser object
-class ConfigPygame(ConfigParser):
+class ConfigParser(configparser.ConfigParser):
   def __init__(self) -> None:
-    super().__init__(interpolation=ExtendedInterpolation())
+    super().__init__(interpolation=configparser.ExtendedInterpolation())
 
   # Returns a pygame surface (image) from the config
   def getimage(self, image:str, width:int, height:int=None) -> pygame.Surface:
