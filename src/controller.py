@@ -1,12 +1,14 @@
-from classes import ConfigPygame
+from classes import ConfigParser
 
 import pygame, drawer
 import player, territory, unit
 
+type GameObject = player.Player | territory.Territory | unit.Unit
+
 class Controller:
   def __init__(self, playerNames:list[str], pcName:str) -> None:
     # The config object
-    self.config = ConfigPygame()
+    self.config = ConfigParser()
     self.config.read('config.ini')
 
     # The players in the game
@@ -45,7 +47,7 @@ class Controller:
     return True
     
   # Hover function determines if you are hovering a unit or territory and returns it
-  def hover(self, mouse:tuple[int,int]) -> player.Player | territory.Territory | unit.Unit | None:
+  def hover(self, mouse:tuple[int,int]) -> GameObject | None:
     # Determine if the mouse is hovering over a player
     for player in self.players:
       if player.inside(mouse):
@@ -65,4 +67,4 @@ class Controller:
   
   # Draw the screen
   def draw(self) -> None:
-    self.drawer.draw(self.players, self.units, self.hov, self.turn)
+    self.drawer.draw(self.players, self.units, self.pc, self.hov, self.turn)

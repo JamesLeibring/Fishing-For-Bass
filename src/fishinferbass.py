@@ -1,5 +1,5 @@
 # Fishin Fer Bass
-import controller, time
+import controller
 
 if __name__ == "__main__":
   names = ['Tyler', 'Matt', 'James', 'Zack', 'Tedsta', 'Dopeguy13']

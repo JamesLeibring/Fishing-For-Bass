@@ -1,17 +1,14 @@
-from classes import ConfigPygame
+from classes import ConfigParser
 
 import pygame
-
 import player, territory, unit
-
 import string
 
-# Custom types
 type GameObject = player.Player | territory.Territory | unit.Unit
-type Coord = tuple[int]
 
 class Drawer:
-  def __init__(self, config:ConfigPygame, pc:player.Player) -> None:
+
+  def __init__(self, config:ConfigParser, pc:player.Player) -> None:
     # Config Information
     self.config = config
 
@@ -86,18 +83,29 @@ class Drawer:
 
     pygame.display.flip()
   
-  # Draws a 
-  def drawResources(self, stats:list[int], rect:pygame.Rect):
-    pass
+  # Draws a line of resources
+  def drawResources(self, values:list[int], rect:pygame.Rect):
+    rect = pygame.Rect(rect.move(10,10).topleft, (rect.h - 20, rect.h - 20))
+    
+    for stat, value in zip(self.background['resource']['yields'], values):
+      # The image for the stat
+      self.screen.blit(self.config.getimage(stat, rect.w), rect)
+
+      rect = rect.move(70,0)
 
   # Draws the player icons
-  def draw(self, players:list[player.Player], units:list[unit.Unit], hov:GameObject|None, turn:int) -> None:        
+  def draw(self, players:list[player.Player], units:list[unit.Unit], pc:player.Player, hov:GameObject|None, turn:int) -> None:        
     info:dict = self.background['info']
     inforect:pygame.Rect = info['rect']
     iconrect:pygame.Rect = info['iconrect']
+    turnrect:pygame.Rect = self.background['turn']['rect']
+    resourcerect:pygame.Rect = self.background['resource']['rect']
 
     # Draw the turn
-    self.drawText('Turn ' + str(turn), 'lrg', self.background['turn']['rect'].center, 'middle')
+    self.drawText('Turn ' + str(turn), 'lrg', turnrect.center, 'middle')
+
+    # Draw the player resources
+    self.drawResources(pc.stats(), resourcerect)
 
     match type(hov):
       case player.Player:

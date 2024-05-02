@@ -5,7 +5,7 @@ config = configparser.ConfigParser()
 
 config['PATHS'] = {
   'images': '..\\lib\\images\\',
-  'attributes': '${PATHS:image}attributes\\',
+  'attributes': '${PATHS:images}attributes\\',
   'resources': '${PATHS:images}resources\\',
   'units': '${PATHS:images}units\\'
 }
@@ -114,6 +114,7 @@ config['BACKGROUND'] = {
     border:5
     ''',
   'resource': '''
+    yields:(food.wood.metal.oil.power),
     topleft:(1160.100),
     bottomright:(1470.160),
     color:cornsilk,
