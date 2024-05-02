@@ -32,7 +32,7 @@ class Player:
   
   # Returns a list of stats for the player
   def stats(self) -> list[int]:
-    return [self.food, self.wood, self.metal, self.oil, self.power]
+    return [self.food, self.wood, self.metal, self.oil]
   
   # Determines if the mouse is hovering this player object
   def inside(self, mouse:tuple[int]) -> bool:

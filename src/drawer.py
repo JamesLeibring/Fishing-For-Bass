@@ -91,7 +91,12 @@ class Drawer:
       # The image for the stat
       self.screen.blit(self.config.getimage(stat, rect.w), rect)
 
-      rect = rect.move(70,0)
+      rect = rect.move(15, 0)
+
+      # The text for the stat
+      self.drawText(str(value), 'med', rect.center, 'left')
+
+      rect = rect.move(57, 0)
 
   # Draws the player icons
   def draw(self, players:list[player.Player], units:list[unit.Unit], pc:player.Player, hov:GameObject|None, turn:int) -> None:        
