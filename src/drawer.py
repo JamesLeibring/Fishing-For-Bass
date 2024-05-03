@@ -96,7 +96,7 @@ class Drawer:
       # The text for the stat
       self.drawText(str(value), 'med', rect.center, 'left')
 
-      rect = rect.move(57, 0)
+      rect = rect.move(57.5, 0)
 
   # Draws the player icons
   def draw(self, players:list[player.Player], units:list[unit.Unit], pc:player.Player, hov:GameObject|None, turn:int) -> None:        
@@ -127,7 +127,7 @@ class Drawer:
         for ter in hov.territories:
           pygame.draw.polygon(self.surface, ter.color, ter.border)
         
-        #Draw the surface atop the screen
+        # Draw the surface atop the screen
         self.screen.blit(self.surface, (0,0))
 
       case territory.Territory:
