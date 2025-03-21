@@ -1,34 +1,31 @@
-from classes import ConfigParser
-
 import pygame, drawer
-import player, territory, unit
 
-type GameObject = player.Player | territory.Territory | unit.Unit
+from classes import Config, Player, Territory, Unit
+
+type GameObject = Player | Territory | Unit
 
 class Controller:
   def __init__(self, playerNames:list[str], pcName:str) -> None:
+    # Start up pygame
+    pygame.init()
+
     # The config object
-    self.config = ConfigParser()
-    self.config.read('config.ini')
+    self.config = Config(playerNames)
 
-    # The players in the game
-    self.players = [self.config.getplayer(i, name) for i, name in enumerate(playerNames)]
+    self.players = self.config.players
+    self.territories = self.config.territories
+    self.units = self.config.units
+
+    # Set the player character
     self.pc = self.players[playerNames.index(pcName)]
-
-    # The territories in the game
-    self.territories = [self.config.getterritory(name) for name in self.config['TERRITORIES']]
-
-    # The units in the game
-    self.units = [self.config.getunit(0, name) for name in self.config['UNITS']]
+    self.config.rects['color'].color = self.pc.rect.color
 
     # The Drawer draws everything needed on the screen
-    self.drawer = drawer.Drawer(self.config, self.pc)
-
-    # The turn the game is on
-    self.turn = 0
+    self.drawer = drawer.Drawer(self.config)
 
     # The item the users mouse is hovering over
     self.hov = None
+    self.turn = 0
 
   # Get the game ready for play
   def startGame(self) -> None:
