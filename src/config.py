@@ -11,44 +11,150 @@ SCREEN = {
 }
 
 IMAGES = {
-  'image': images + 'map.jpg',
-  'food': resources + 'food.png',
-  'metal': resources + 'metal.png',
-  'oil': resources + 'oil.png',
-  'wood': resources + 'wood.png',
-  'anti-air': attributes + 'anti-air.png',
-  'aquadef': attributes + 'aquadef.png',
-  'aquatic': attributes + 'aquatic.png',
-  'arial': attributes + 'arial.png',
-  'capacity': attributes + 'capacity.png',
-  'carrier': attributes + 'carrier.png',
-  'defense': attributes + 'defense.png',
-  'hover': attributes + 'hover.png',
-  'movement': attributes + 'movement.png',
-  'naval': attributes + 'naval.png',
-  'pollutant': attributes + 'pollutant.png',
-  'power': attributes + 'power.png',
-  'range': attributes + 'range.png',
-  'warrior': units + 'warrior.png',
-  'horseman': units + 'horseman.png',
-  'swordsman': units + 'swordsman.png',
-  'knight': units + 'knight.png',
-  'musketman': units + 'musketman.png',
-  'cavalry': units + 'cavalry.png',
-  'infantry': units + 'infantry.png',
-  'tank': units + 'tank.png',
-  'archer': units + 'archer.png',
-  'cannon': units + 'cannon.png',
-  'artillery': units + 'artillery.png',
-  'anti-air_gun': units + 'anti-air_gun.png',
-  'trireme': units + 'trireme.png',
-  'caravel': units + 'caravel.png',
-  'battleship': units + 'battleship.png',
-  'aircraft_carrier': units + 'aircraft_carrier.png',
-  'fighter': units + 'fighter.png',
-  'bomber': units + 'bomber.png',
-  'jet_fighter': units + 'jet_fighter.png',
-  'helicopter': units + 'helicopter.png'
+  'map': {
+    'image': images + 'map.jpg',
+    'dimensions': (1120, 710)
+  },
+  'food': {
+    'image': resources + 'food.png',
+    'dimensions': (50, 50)
+  },
+  'metal': {
+    'image': resources + 'metal.png',
+    'dimensions': (50, 50)
+  },
+  'oil': {
+    'image': resources + 'oil.png',
+    'dimensions': (50, 50)
+  },
+  'wood': {
+    'image': resources + 'wood.png',
+    'dimensions': (50, 50)
+  },
+  'anti-air': {
+    'image': attributes + 'anti-air.png',
+    'dimensions': (38, 38)
+  },
+  'aquadef': {
+    'image': attributes + 'aquadef.png',
+    'dimensions': (38, 38)
+  },
+  'arial': {
+    'image': attributes + 'arial.png',
+    'dimensions': (38, 38)
+  },
+  'capacity': {
+    'image': attributes + 'capacity.png',
+    'dimensions': (38, 38)
+  },
+  'carrier': {
+    'image': attributes + 'carrier.png',
+    'dimensions': (38, 38)
+  },
+  'defense': {
+    'image': attributes + 'defense.png',
+    'dimensions': (38, 38)
+  },
+  'airlift': {
+    'image': attributes + 'airlift.png',
+    'dimensions': (38, 38)
+  },
+  'movement': {
+    'image': attributes + 'movement.png',
+    'dimensions': (38, 38)
+  },
+  'naval': {
+    'image': attributes + 'naval.png',
+    'dimensions': (38, 38)
+  },
+  'power': {
+    'image': attributes + 'power.png',
+    'dimensions': (38, 38)
+  },
+  'range': {
+    'image': attributes + 'range.png',
+    'dimensions': (38, 38)
+  },
+  'warrior': {
+    'image': units + 'warrior.png',
+    'dimensions': (50, 50)
+  },
+  'horseman': {
+    'image': units + 'horseman.png',
+    'dimensions': (50, 50)
+  },
+  'swordsman': {
+    'image': units + 'swordsman.png',
+    'dimensions': (50, 50)
+  },
+  'knight': {
+    'image': units + 'knight.png',
+    'dimensions': (50, 50)
+  },
+  'musketman': {
+    'image': units + 'musketman.png',
+    'dimensions': (50, 50)
+  },
+  'cavalry': {
+    'image': units + 'cavalry.png',
+    'dimensions': (50, 50)
+  },
+  'infantry': {
+    'image': units + 'infantry.png',
+    'dimensions': (50, 50)
+  },
+  'tank': {
+    'image': units + 'tank.png',
+    'dimensions': (50, 50)
+  },
+  'archer': {
+    'image': units + 'archer.png',
+    'dimensions': (50, 50)
+  },
+  'cannon': {
+    'image': units + 'cannon.png',
+    'dimensions': (50, 50)
+  },
+  'artillery': {
+    'image': units + 'artillery.png',
+    'dimensions': (50, 50)
+  },
+  'anti-air_gun': {
+    'image': units + 'anti-air_gun.png',
+    'dimensions': (50, 50)
+  },
+  'trireme': {
+    'image': units + 'trireme.png',
+    'dimensions': (50, 50)
+  },
+  'caravel': {
+    'image': units + 'caravel.png',
+    'dimensions': (50, 50)
+  },
+  'battleship': {
+    'image': units + 'battleship.png',
+    'dimensions': (50, 50)
+  },
+  'aircraft_carrier': {
+    'image': units + 'aircraft_carrier.png',
+    'dimensions': (50, 50)
+  },
+  'fighter': {
+    'image': units + 'fighter.png',
+    'dimensions': (50, 50)
+  },
+  'bomber': {
+    'image': units + 'bomber.png',
+    'dimensions': (50, 50)
+  },
+  'jet_fighter': {
+    'image': units + 'jet_fighter.png',
+    'dimensions': (50, 50)
+  },
+  'helicopter': {
+    'image': units + 'helicopter.png',
+    'dimensions': (50, 50)
+  }
 }
 
 COLORS = {
@@ -64,6 +170,7 @@ COLORS = {
   'firebrick': (205, 38, 38),
   'darkorange': (238, 118, 0),
   'yellow': (238, 238, 0),
+  'clear': (0, 0, 0, 0),
   'opaque_orange': (230, 150, 80, 3),
   'opaque_yellow': (215, 175, 80, 5),
   'opaque_blue': (160, 155, 245, 5),
@@ -75,8 +182,8 @@ COLORS = {
 FONTS = {
   'font': 'freesansbold.ttf',
   'lrg': 32,
-  'med': 25,
-  'sml': 15
+  'med': 26,
+  'sml': 20
 }
 
 RECTANGLES = {
@@ -85,6 +192,12 @@ RECTANGLES = {
     'bottomright': (1150, 740),
     'color': 'white',
     'border': 10
+  },
+  'player': {
+    'topleft': (25, 25),
+    'bottomright': (65, 65),
+    'color': 'black',
+    'border': 5
   },
   'gamebar': {
     'topleft': (1140, 10),
@@ -104,11 +217,17 @@ RECTANGLES = {
     'color': 'black',
     'border': 5
   },
-  'yields': {
+  'resource': {
     'topleft': (1160, 100),
     'bottomright': (1470, 160),
     'color': 'cornsilk',
     'border': 5
+  },
+  'resource_stat': {
+    'topleft': (1170, 110),
+    'bottomright': (1210, 150),
+    'color': 'black',
+    'border': 0
   },
   'shop': {
     'topleft': (1160, 170),
@@ -116,225 +235,136 @@ RECTANGLES = {
     'color': 'cornsilk2',
     'border': 5
   },
+  'unit': {
+    'topleft': (0, 0),
+    'bottomright': (50, 50),
+    'color': 'burntsienna',
+    'border': 5
+  },
   'info': {
     'topleft': (1160, 590),
     'bottomright': (1470, 720),
     'color': 'cornsilk',
     'border': 5
+  },
+  'info_name': {
+    'topleft': (1170, 600),
+    'bottomright': (1385, 647.5),
+    'color': 'black',
+    'border': 0
+  },
+  'info_power': {
+    'topleft': (1392.5, 600),
+    'bottomright': (1432.5, 647.5),
+    'color': 'black',
+    'border': 0
+  },
+  'info_line': {
+    'topleft': (1170, 652.5),
+    'bottomright': (1460, 657.5),
+    'color': 'black',
+    'border': 0
+  },
+  'info_stat': {
+    'topleft': (1170, 662.5),
+    'bottomright': (1210, 710),
+    'color': 'black',
+    'border': 0
   }
 }
-
-PLAYERS = [
-  {
-    'topleft': (25, 25),
-    'bottomright': (65, 65),
-    'color': 'skyblue',
-    'border': 5
-  },
-  {
-    'topleft': (70, 25),
-    'bottomright': (110, 65),
-    'color': 'cobaltgreen',
-    'border': 5
-  },
-  {
-    'topleft': (115, 25),
-    'bottomright': (155, 65),
-    'color': 'firebrick',
-    'border': 5
-  },
-  {
-    'topleft': (160, 25),
-    'bottomright': (200, 65),
-    'color': 'darkorange',
-    'border': 5
-  },
-  {
-    'topleft': (205, 25),
-    'bottomright': (245, 65),
-    'color': 'yellow',
-    'border': 5
-  },
-  {
-    'topleft': (250, 25),
-    'bottomright': (290, 65),
-    'color': 'gray',
-    'border': 5
-  }
-]
 
 UNITS = {
   'warrior': {
     'power': 1,
-    'movement': 1,
-    'topleft': (1175, 185),
-    'bottomright': (1235, 245),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'horseman': {
     'power': 1,
-    'movement': 2,
-    'topleft': (1245, 185),
-    'bottomright': (1305, 245),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 2
   },
   'swordsman': {
     'power': 2,
-    'movment': 1,
-    'topleft': (1325, 185),
-    'bottomright': (1385, 245),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'knight': {
     'power': 2,
-    'movement': 2,
-    'topleft': (1395, 185),
-    'bottomright': (1455, 245),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 2
   },
   'musketman': {
     'power': 3,
-    'movement': 1,
-    'topleft': (1175, 255),
-    'bottomright': (1235, 315),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'cavalry': {
     'power': 3,
-    'movement': 1,
-    'topleft': (1245, 255),
-    'bottomright': (1305, 315),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'infantry': {
     'power': 5,
-    'movement': 1,
-    'topleft': (1325, 255),
-    'bottomright': (1385, 315),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'tank': {
     'power': 10,
-    'movement': 1,
-    'topleft': (1395, 255),
-    'bottomright': (1455, 315),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'archer': {
     'defense': 2,
-    'movement': 1,
-    'topleft': (1175, 325),
-    'bottomright': (1235, 385),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'cannon': {
     'defense': 2,
-    'movement': 1,
-    'topleft': (1245, 325),
-    'bottomright': (1305, 385),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'artillery': {
     'defense': 7,
-    'movement': 1,
-    'topleft': (1325, 325),
-    'bottomright': (1385, 385),
-    'color': 'burntsienna',
-    'border': 5
+    'movement': 1
   },
   'anti-air_gun': {
     'defense': 4,
     'movement': 1,
-    'special': 'anti-air',
-    'topleft': (1395, 325),
-    'bottomright': (1455, 385),
-    'color': 'burntsienna',
-    'border': 5
+    'special': 'anti-air'
   },
   'trireme': {
     'defense': 1,
     'movement': 2,
-    'capacity': 2,
-    'topleft': (1175, 415),
-    'bottomright': (1235, 475),
-    'color': 'burntsienna',
-    'border': 5
+    'capacity': 2
   },
   'caravel': {
     'power': 2,
     'movement': 3,
-    'capacity': 5,
-    'topleft': (1245, 415),
-    'bottomright': (1305, 475),
-    'color': 'burntsienna',
-    'border': 5
+    'capacity': 5
   },
   'battleship': {
     'power': 5,
     'movement': 4,
-    'capacity': 6,
-    'topleft': (1325, 415),
-    'bottomright': (1385, 475),
-    'color': 'burntsienna',
-    'border': 5
+    'capacity': 6
   },
   'aircraft_carrier': {
     'defense': 10,
     'movement': 2,
     'capacity': 12,
-    'special': 'carrier',
-    'topleft': (1395, 415),
-    'bottomright': (1455, 475),
-    'color': 'burntsienna',
-    'border': 5
+    'special': 'carrier'
   },
   'fighter': {
     'power': 1,
     'movement': 1,
-    'range': 1,
-    'topleft': (1175, 505),
-    'bottomright': (1235, 565),
-    'color': 'burntsienna',
-    'border': 5
+    'range': 1
   },
   'bomber': {
     'power': 2,
     'movement': 1,
-    'range': 1,
-    'topleft': (1245, 505),
-    'bottomright': (1305, 565),
-    'color': 'burntsienna',
-    'border': 5
+    'range': 1
   },
   'jet_fighter': {
     'power': 3,
     'movement': 1,
-    'range': 2,
-    'topleft': (1325, 505),
-    'bottomright': (1385, 565),
-    'color': 'burntsienna',
-    'border': 5
+    'range': 2
   },
   'helicopter': {
     'power': 1,
     'movement': 1,
     'range': 2,
     'special': 'chopper',
-    'capacity': 5,
-    'topleft': (1395, 505),
-    'bottomright': (1455, 565),
-    'color': 'burntsienna',
-    'border': 5
+    'capacity': 5
   },
 }
 

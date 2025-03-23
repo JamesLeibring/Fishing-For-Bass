@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pygame
 import string
 
@@ -7,7 +9,7 @@ type GameObject = Player | Territory | Unit
 
 class Drawer:
 
-  def __init__(self, config:Config) -> None:
+  def __init__(self:Drawer, config:Config) -> None:
     # Create our initial screens, the first is normal, the second has the ability to create opaque objects
     self.screen = pygame.display.set_mode(config.screen)
 
@@ -22,141 +24,175 @@ class Drawer:
     self.fonts = config.fonts
     self.rects = config.rects
 
+    self.resources = ['food', 'wood', 'metal', 'oil']
+
+    self.shop = config.units
+
   # Draws the background for the game (1 time draw)
-  def drawBackground(self) -> None:
+  def drawBackground(self:Drawer) -> None:
     # Caption the game
     pygame.display.set_caption('Fishing For Bass')
 
     # Fill the screen
     self.screen.fill(self.fill)
 
-    background = ['map', 'gamebar', 'turn', 'color', 'yields', 'shop', 'info']
+    background = ['map', 'gamebar', 'turn', 'color', 'resource', 'shop', 'info']
 
     for feature in background:
-      self.drawRect(feature)
+      self.drawRect(self.rects[feature])
 
     pygame.display.flip()
 
   # Draws a rectangle given rectangle, its color, and the width of the border
-  def drawRect(self, name:str) -> None:
-    rect = self.rects[name]
-
+  def drawRect(self:Drawer, rect:Rect) -> None:
     pygame.draw.rect(self.screen, self.colors['black'], rect.border)
     pygame.draw.rect(self.screen, rect.color, rect.rect)
   
   # Draws text in the given spot
-  def drawText(self, text:str, size:str, coordinates:tuple[int, int], alignment:str='left') -> None:
+  def drawText(self:Drawer, text:str, size:str, rect:Rect, align_left:bool=False) -> None:
     # Format the text
     text = string.capwords(text.replace('_', ' '))
 
-    # Render the text
+    # Render the text and center it on the rect given
     format_text = self.fonts[size].render(text, 0, self.colors['black'])
+    text_rect = format_text.get_rect()
 
-    # Frame the text
-    rect = format_text.get_rect()
-
-    # Align the rendered text
-    match alignment:
-      case 'left':
-        rect.midleft = coordinates
-      case 'middle':
-        rect.center = coordinates
-      case 'right':
-        rect.midright = coordinates
+    if align_left:
+      text_rect.midleft = rect.rect.midleft
+    else:
+      text_rect.center = rect.rect.center
 
     # Draw the text on the screen
-    self.screen.blit(format_text, rect)
+    self.screen.blit(format_text, text_rect)
   
   # Draws a line of resources
-  def drawResources(self, values:list[int], rect:pygame.Rect):
-    rect = pygame.Rect(rect.move(10,10).topleft, (rect.h - 20, rect.h - 20))
+  def drawResources(self:Drawer, resources:list[str], yields:list[int], rect:Rect):
+    images = [self.images[resource] for resource in resources]
 
-    yields = [self.config.image(x) for x in ['food', 'wood', 'metal', 'oil', 'power']]
-    
-    for stat, value in zip(yields, values):
+    rect = rect.copy()
+
+    for stat, value in zip(images, yields):
+      image_rect = stat.get_rect()
+      image_rect.center = rect.rect.center
+      
       # The image for the stat
-      self.screen.blit(stat, rect)
+      self.screen.blit(stat, image_rect)
 
-      rect = rect.move(15, 0)
+      rect.move(37.5, 0)
 
       # The text for the stat
-      self.drawText(str(value), 'med', rect.center, 'left')
+      if value >= 0:
+        self.drawText(str(value), 'sml', rect)
 
-      rect = rect.move(57.5, 0)
+      rect.move(37.5, 0) 
 
   # Draws the player icons
-  def draw(self, players:list[Player], units:list[Unit], pc:Player, hov:GameObject|None, turn:int) -> None:        
-    info:dict = self.background['info']
-    inforect:pygame.Rect = info['rect']
-    iconrect:pygame.Rect = info['iconrect']
-    turnrect:pygame.Rect = self.background['turn']['rect']
-    resourcerect:pygame.Rect = self.background['resource']['rect']
-
+  def draw(self:Drawer, players:list[Player], pc:Player, hov:GameObject|None, turn:int) -> None:        
     # Draw the turn
-    self.drawText('Turn ' + str(turn), 'lrg', turnrect.center, 'middle')
+    self.drawText('Turn ' + str(turn), 'lrg', self.rects['turn'])
 
     # Draw the player resources
-    self.drawResources(pc.stats(), resourcerect)
+    self.drawResources(self.resources, pc.stats(), self.rects['resource_stat'])
 
-    match type(hov):
-      case Player.__class__:
+    match hov:
+      case Player():
         # Draw the icon
-        self.drawRect(iconrect, hov.color, 5)
+        self.drawRect(self.rects['info'])
 
-        # Draw the name
-        self.drawText(hov.name, 'med', iconrect.move(50,0).midleft, 'left')
+        # Draw the name and power symbol
+        self.drawText(hov.name, 'med', self.rects['info_name'], align_left=True)
+        self.drawResources(['power'], [hov.power], self.rects['info_power'])
 
         # Draws the divider line
-        pygame.draw.line(self.screen, self.colors['black'], inforect.move(10,0).midleft, inforect.move(-10,0).midright, 5)
+        self.drawRect(self.rects['info_line'])
+
+        # Draws the Per Turn Resources
+        self.drawResources(self.resources, hov.stats_per_turn(), self.rects['info_stat'])
 
         # Highlight each territory the player owns
         for ter in hov.territories:
-          pygame.draw.polygon(self.surface, ter.color, ter.border)
-        
+          pygame.draw.polygon(self.surface, ter.rect.color, ter.border)
+
         # Draw the surface atop the screen
         self.screen.blit(self.surface, (0,0))
-
-      case Territory.__class__:
+      case Territory():
         # Draw the icon
-        self.drawRect(iconrect, hov.color, 5)
+        self.drawRect(self.rects['info'])
 
-        # Draw the name
-        self.drawText(hov.name, 'med', iconrect.move(50,0).midleft, 'left')
+        # Draw the name and power symbol
+        self.drawText(hov.name, 'med', self.rects['info_name'], align_left=True)
+        self.drawResources(['power'], [hov.power], self.rects['info_power'])
 
         # Draws the divider line
-        pygame.draw.line(self.screen, self.colors['black'], inforect.move(10,0).midleft, inforect.move(-10,0).midright, 5)
+        self.drawRect(self.rects['info_line'])
+
+        # Draws the Per Turn Resources
+        self.drawResources(self.resources, hov.stats(), self.rects['info_stat'])
 
         # Highlight the selected territory
-        pygame.draw.polygon(self.surface, hov.color, hov.border)
-    
+        pygame.draw.polygon(self.surface, hov.rect.color, hov.border)
+
         # Draw the surface atop the screen
         self.screen.blit(self.surface, (0,0))
-
-      case Unit.__class__:
+      case Unit():
         # Draw the icon
-        self.drawRect(iconrect, hov.color, 5)
-        self.screen.blit(pygame.transform.scale(hov.image, (iconrect.w, iconrect.h)), iconrect)
+        self.drawRect(self.rects['info'])
+
+        # Draw the name
+        self.drawText(hov.name, 'med', self.rects['info_name'], align_left=True)
+
+        # Draw the units image
+        rect = hov.image.get_rect()
+        rect.center = (self.rects['info_power'].rect.centerx + 20, self.rects['info_power'].rect.centery)
+        self.screen.blit(hov.image, rect)
 
         # Draws the divider line
-        pygame.draw.line(self.screen, self.colors['black'], inforect.move(10,0).midleft, inforect.move(-10,0).midright, 5)
+        self.drawRect(self.rects['info_line'])
+
+        # Draws the Per Turn Resources
+        self.drawResources(hov.stat_names(), hov.stats(), self.rects['info_stat'])
 
       case _:
         # Clears the surface for the next frame
-        self.surface.fill([0,0,0,0])
+        self.surface.fill(self.colors['clear'])
 
         # Redraws the map of the game
         self.screen.blit(self.images['map'], self.rects['map'])
 
         # Redraw the player boxes
         for plyr in players:
-          self.drawRect(plyr.rect, plyr.color, plyr.border)
+          self.drawRect(plyr.rect)
     
         # Redraws the units in the shop
-        for un in units:
-          self.drawRect(un.rect, un.color, un.border)
-          self.screen.blit(un.image, un.rect)
+        for item in self.shop:
+          self.drawRect(item.rect)
+
+          rect = item.image.get_rect()
+          rect.center = item.rect.rect.center
+
+          self.screen.blit(item.image, rect)
 
         # Redraw the info box to clear the slate
-        self.drawRect(inforect, info['color'], info['border'])
+        self.drawRect(self.rects['info'])
 
     pygame.display.flip()
+
+# Turn a integer into a Roman Numeral
+def roman(number):
+  ret_val = ""
+
+  num = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
+  sym = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"]
+
+  i = 12
+
+  while number:
+    div = number // num[i]
+    number %= num[i]
+  
+    while div:
+      ret_val += sym[i]
+      div -= 1
+  
+    i -= 1
+  return ret_val

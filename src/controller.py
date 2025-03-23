@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pygame, drawer
 
 from classes import Config, Player, Territory, Unit
@@ -5,7 +7,7 @@ from classes import Config, Player, Territory, Unit
 type GameObject = Player | Territory | Unit
 
 class Controller:
-  def __init__(self, playerNames:list[str], pcName:str) -> None:
+  def __init__(self:Controller, playerNames:list[str], pcName:str) -> None:
     # Start up pygame
     pygame.init()
 
@@ -28,10 +30,10 @@ class Controller:
     self.turn = 0
 
   # Get the game ready for play
-  def startGame(self) -> None:
+  def startGame(self:Controller) -> None:
     self.drawer.drawBackground()
 
-  def gameLoop(self):
+  def gameLoop(self:Controller):
     # Get the position of our mouse for this frame
     self.hov = self.hover(pygame.mouse.get_pos())
 
@@ -44,18 +46,18 @@ class Controller:
     return True
     
   # Hover function determines if you are hovering a unit or territory and returns it
-  def hover(self, mouse:tuple[int,int]) -> GameObject | None:
+  def hover(self:Controller, mouse:tuple[int,int]) -> GameObject | None:
     # Determine if the mouse is hovering over a player
     for player in self.players:
       if player.inside(mouse):
         return player
 
     # Determine if the mouse is hovering over a territory
-    for ter in self.territories:
+    for ter in self.territories.values():
       if ter.inside(mouse):
         return ter
 
-    # Determine if the mouse is hovering over a unit
+    # Determine if the mouse is hovering over a unit in the shop
     for unit in self.units:
       if unit.inside(mouse):
         return unit
@@ -63,5 +65,5 @@ class Controller:
     return None
   
   # Draw the screen
-  def draw(self) -> None:
-    self.drawer.draw(self.players, self.units, self.pc, self.hov, self.turn)
+  def draw(self:Controller) -> None:
+    self.drawer.draw(self.players, self.pc, self.hov, self.turn)
