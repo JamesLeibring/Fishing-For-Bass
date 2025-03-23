@@ -28,10 +28,11 @@ class Controller:
     # The item the users mouse is hovering over
     self.hov = None
     self.turn = 0
+    self.player_turn = 0
 
   # Get the game ready for play
   def startGame(self:Controller) -> None:
-    self.drawer.drawBackground()
+    self.drawer.drawBackground(self.pc.name)
 
   def gameLoop(self:Controller):
     # Get the position of our mouse for this frame
@@ -66,4 +67,4 @@ class Controller:
   
   # Draw the screen
   def draw(self:Controller) -> None:
-    self.drawer.draw(self.players, self.pc, self.hov, self.turn)
+    self.drawer.draw(self.players, self.pc, self.hov, self.turn, self.player_turn)

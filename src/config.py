@@ -181,6 +181,7 @@ COLORS = {
 
 FONTS = {
   'font': 'freesansbold.ttf',
+  'hge': 50,
   'lrg': 32,
   'med': 26,
   'sml': 20

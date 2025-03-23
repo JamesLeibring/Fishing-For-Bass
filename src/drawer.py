@@ -29,7 +29,7 @@ class Drawer:
     self.shop = config.units
 
   # Draws the background for the game (1 time draw)
-  def drawBackground(self:Drawer) -> None:
+  def drawBackground(self:Drawer, pc_name:str) -> None:
     # Caption the game
     pygame.display.set_caption('Fishing For Bass')
 
@@ -40,6 +40,9 @@ class Drawer:
 
     for feature in background:
       self.drawRect(self.rects[feature])
+
+    # Draw the players name
+    self.drawText(pc_name, 'med', self.rects['color'])
 
     pygame.display.flip()
 
@@ -87,7 +90,7 @@ class Drawer:
       rect.move(37.5, 0) 
 
   # Draws the player icons
-  def draw(self:Drawer, players:list[Player], pc:Player, hov:GameObject|None, turn:int) -> None:        
+  def draw(self:Drawer, players:list[Player], pc:Player, hov:GameObject|None, turn:int, player_turn:int) -> None:        
     # Draw the turn
     self.drawText('Turn ' + str(turn), 'lrg', self.rects['turn'])
 
@@ -162,7 +165,12 @@ class Drawer:
         # Redraw the player boxes
         for plyr in players:
           self.drawRect(plyr.rect)
-    
+
+        # Draw a star over the player who's turn it is
+        centered_star = players[player_turn].rect.copy()
+        centered_star.move(0, 12.5)
+        self.drawText('*', 'hge', centered_star)
+
         # Redraws the units in the shop
         for item in self.shop:
           self.drawRect(item.rect)
