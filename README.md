@@ -1,5 +1,8 @@
 Welcome to Fishing For Bass! A turn based strategy game similar to Risk that has literally nothing to do with fishing, or bass...
 
+**Requirements**
+Pygame: To install, run "pip3 install pygame"
+
 **How to Use:**
 To run Fishing For Bass, whoever chooses to host your game runs "python src/fishinferbass.py" and chooses to play as a host. This player will also need to input how many players
 they are hosting for. A server will be made on their machine to host all players. Players who do not set themselves as the host will automatically act as a client and connect. Once
