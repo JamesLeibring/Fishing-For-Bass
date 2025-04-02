@@ -1,9 +1,9 @@
-lib = 'lib\\'
+lib = 'lib/'
 
-images = lib + 'images\\'
-resources = images + 'resources\\'
-attributes = images + 'attributes\\'
-units = images + 'units\\'
+images = lib + 'images/'
+resources = images + 'resources/'
+attributes = images + 'attributes/'
+units = images + 'units/'
 
 SCREEN = {
   'dimensions': (1500, 750),
