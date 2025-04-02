@@ -1,4 +1,4 @@
-lib = '..\\lib\\'
+lib = 'lib\\'
 
 images = lib + 'images\\'
 resources = images + 'resources\\'

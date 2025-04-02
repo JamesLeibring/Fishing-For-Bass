@@ -1,8 +1,9 @@
 Welcome to Fishing For Bass! A turn based strategy game similar to Risk that has literally nothing to do with fishing, or bass...
 
 **How to Use:**
-To run Fishing For Bass, the host of your game first runs server.py (located within the src folder). Once running, this file will query how many players are in this game and create a server to run upon. Once complete, each player
-runs fishinferbass.py (also located within the src folder). This will automatically create a client and once all players connect, beginning the game.
+To run Fishing For Bass, whoever chooses to host your game runs "python src/fishinferbass.py" and chooses to play as a host. This player will also need to input how many players
+they are hosting for. A server will be made on their machine to host all players. Players who do not set themselves as the host will automatically act as a client and connect. Once
+all players connect, the game launches.
 
 **How To Win:**
 The world is divided into 42 territories spread amongst 6 continents. Each territory grants resources to feul your armies. Grow your army and take control of all 42 territories to win!

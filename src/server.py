@@ -87,7 +87,7 @@ class Server:
     # Close down the connection to this socket
     sock.close()
 
-    print(f'Connection closed with Server at {address}')
+    print(f'Connection closed with Client at {address}')
 
     if self.connections == 1:
       self.queue_cmd(THREAD_KILL)
@@ -165,11 +165,3 @@ class Client:
     # Kill the TX queue read
     self.commands_tx.put(THREAD_KILL)
     self.sock.close()
-
-
-if __name__ == '__main__':
-  # The amount of players in this game
-  num_players = int(input('How many players? Enter an integer (1-6): '))
-
-  # Create a server handling the players
-  Server(num_players)
