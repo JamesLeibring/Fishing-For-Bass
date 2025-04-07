@@ -1,70 +1,68 @@
-Welcome to Fishing For Bass! A turn based strategy game similar to Risk that has literally nothing to do with fishing, or bass...
+# Fishing For Bass
 
-**Requirements**
-Pygame: To install, run "pip3 install pygame"
+A risk-like strategy game played with 3-6 friends!
 
-**How to Use:**
-To run Fishing For Bass, whoever chooses to host your game runs "python src/fishinferbass.py" and chooses to play as a host. This player will also need to input how many players
-they are hosting for. A server will be made on their machine to host all players. Players who do not set themselves as the host will automatically act as a client and connect. Once
-all players connect, the game launches.
+## Description
 
-**How To Win:**
-The world is divided into 42 territories spread amongst 6 continents. Each territory grants resources to feul your armies. Grow your army and take control of all 42 territories to win!
+### Basics
 
-**How to Play:**
+In Fishing For Bass, there are four core resources. Food, Wood, Metal, and Oil. These resources are acrued by your territories and spent to grow your armies. During your turn, move each unit to attack or defend territories as you choose. If you own every territory, you win! Some units occupy the seas or the skies of your territories, but if you run out of boots on the ground, you lose.
 
-**Territories & Resources:**
-In Fishing For Bass, there are four major resources you can acrue. Food, Wood, Metal, and Oil. These resources can be used to purchase units and conquer your opponents. Resources are gained from territories you own each turn, and can be
-spent on units. Your resource totals are displayed in the top right just under your name and turn number. Feel free also to hover over a territory to see how many of each resource it yields per turn. You should see these stats in the
-bottom right below its name. Similarly, if you hover over a player box (top left of the screen, color coordinated per player), a players total resources per turn, as well as their total power should appear in the same location. Each
-turn, you may spend resources to place units on territories you own. Naval units can only be placed on coasts of territories and coasts you own. More on these later.
+To learn more about each territory, unit, or player, hover over them on the map or in the shop (player boxes are color coded at the top left of the map) and check the info box on the bottom right of your screen! You should see a variety of stats like who claims ownership, yields/cost, or total power.
 
-The more territories you control, the more resources per turn you acrue, the more powerful (or plentiful) the units you can afford. To control a territory, simply have units there. Only one player can own a territory.
+### Gameplay
 
-**Units:**
-In Fishing For Bass, there are 20 unique units. Each unit has a unique resource coast. Units make up your army and have two essential stats. Power (Star) and Movement (Arrow). One movement is spent to move from a territory to an adjacent one.
-That is to say, one that shares a land border. Each unit can move an amount of times each turn equal to their movement. If the unit moves into an opposing players territory, it is considered an attack. When this occurs, the unit will trade its power
-with the units within the opponents territory until it dies, or all units in the territory do. Units of a territory defend in order of the most recently moved/placed there. So the longest standing units in a territory defend last. A unit is
-destroyed if its power is reduced to 0. To view a units statistics, hover over the item in the shop on the right hand panel of the screen.
+To start the game, each player receives one free Warrior (the simplest unit) in their chosen starting territory. Turn order is first come first serve, so act fast and good luck!
 
-Examples:
-- A 10 power unit attacks a 2 power territory -> The 10 power unit will be reduced to 8 power, but will defeat all units in the defending territory, claiming the territory for the attacking player with an 8 power unit there.
-- A 3 power unit attacks a 5 power territoy (a 2 power unit and 3 power unit, where the 2 power was placed more recently) -> The 3 power unit is reduced to 1 after defeating the 2 power unit, and hen defeated itself by the 3 power defending
-  unit, reducing its power (and the territories total power) to 2.
-- A 1 power unit attacks a 1 power territory (another 1 power unit) -> Both units die, and the defending territory is left unclaimed.
+At the start of your turn, territories you own will acrue resources. Buy and move units as you please, but be careful, moving units into enemy territory is an attack that will trade power until the unit dies or the territory is left undefended. Each unit you own may make moves or attacks until their movement is spent. Its worth noting that a territories coast can be occupied by
+a different player than on the territory itself. Dominating the seas is a great way to take control of many of the less land-locked territories and control the flow of your opponents armies.
 
-**Defender:**
-Units with defender (Denoted by a shield) often have very high power, but cannot use the attack action and have priority to defend your territories. Use these units to keep your territories safe!
+### Units
 
-**Naval:**
-These units do not operate on land, but rather on the coast of each territory. Movement can be used to go to adjacent coasts (territories that share adjacent water) or across the pinned lines on map. Only one player can occupy a given coast, but
-not necassarily the player who ones the territory associated with it. Naval units trade power much like land ones do, although they cannot directly attack land.
+In Fishing For Bass, there are 20 unique units, each available for purchase in the shop (midright of the screen) for a unique resource coast. Units make up your army and have two essential stats. Power (Star) and Movement (Arrow). One movement is spent to move from a territory to an adjacent one. That is to say, one that shares a border. Each unit can move an amount of times each turn equal to their movement. If the unit moves into an opposing players territory, it is considered an attack. When this occurs, the unit will trade its power with the units in the opponents territory until it dies, or all units in the territory do. Power reduction is permanent, and a unit is destroyed if its power is reduced to 0. See the following example below...
 
-**Capacity:**
-Typically a stat bound to Naval units, a unit with capacity can board and carry land units so long as the total power does not exceed the units capacity (Denoted by a plus symbol) and they are on the same territory as the coast the unit with
-capacity is on. It takes the land unit 1 movement to embark a unit with capacity, but it will move with the unit once embarked. Units can also use one movement to disembark the unit boarded from the coast, potentially as an attack towards the territory
-being disembarked onto, if it is owned by another player. If a unit with capacity is destroyed, all units currently embarked are destroyed as well.
+- A 10 power unit attacks a 2 power territory containing a single 2 power unit -> The 10 power unit will be reduced to 8 power, but will defeat all units in the defending territory, claiming the territory for the attacking player with an 8 power unit moving there.
+- A 3 power unit attacks a 5 power territoy containing a 1 power unit and 4 power unit -> The 3 power unit is reduced to 2 power after defeating the 1 power unit defending. Next, the now 2 power unit is defeated by the 4 power unit defending, reducing the defending units power (and the territories total power) to 2. It remains under control of the defending player.
+- A 1 power unit attacks a 1 power territory containing a 1 power unit -> Both units die, and the defending territory is left unclaimed.
 
-**Arial & Range:**
-These units operate in the air. Rather than attacking in standard fashion, they perform ariel strikes. Ariel strikes only diminish ONLY the power of the defending territories units, but do not cause the ariel unit to move into the territory formally. Ariel units
-can also attack coasts if they are in range. A territory (or coast) is in range if a land or naval unit could move there with movement equal to the Ariel units range category (Denoted by a target).
+**Defender:** Units with defender (Shield) often have very high power, but cannot use the attack action and have priority to defend your territories. Use these units to keep your territories safe!
 
-**Special Abilities:**
-Some units have special abilities unique to themselves.
+**Naval:** Naval units (Anchor) do not operate on land, but rather on the coast of each territory. Movement is used to go to adjacent coasts (territories that share a border over water water) or across the pinned lines on map. A player can only place Naval units on the coast of a territory they own not containing enemy Naval units. Naval units trade power much like land units, although they attack the coasts of territories rather than the territory itself.
 
-Anti-Air Gun:
-Defensive special unit. Anti-Air Guns, unlike other units, trade power with ariel units during ariel attacks. They have the lowest priority amongst to defend territories, but the highest priority for defending ariel attacks.
+**Capacity:** Typically a stat bound to Naval units, a unit with capacity (Plus) can board and carry land units so long as the total power does not exceed the units capacity. It takes the embarking unit 1 movement to board a unit with capacity, but it will move with the boarding unit free of charge once embarked. Units can also use one movement to disembark the unit boarded from the coast, potentially as an attack towards the territory disembarked onto, if it is owned by another player. If a unit with capacity is destroyed, all units currently embarked are destroyed as well.
 
-Aircraft Carrier:
-Naval special unit. Aircraft Carriers, unlike other units with capacity, can hold Ariel units. Ariel units can also make ariel attacks from Carriers as they would a territory.
+**Aerial & Range:** Aerial Units (Plane) operate in the air. Rather than attacking in standard fashion, they perform aeriel strikes, which diminish ONLY the power of the defending territories units, not itself. Aeriel units can perform an aerial attack against any territory or coast within range (Bullseye). A territory or coast is in range if a land or naval unit could move there with movement equal to the aeriel units range category, ignoring attacking and land ownership rules.
 
-Helicopter:
-Ariel special unit. Helicopters are the only non-Naval unit with a capacity. Units the embark are automatically disembarked attacking during ariel strikes against territories.
+**Special Abilities:** The following units have unique special abilities.
+* **Anti-Air Gun:** Defensive special unit. Anti-Air Guns, unlike other units, trade power with aeriel units during aeriel attacks.
+* **Aircraft Carrier:** Naval special unit. Aircraft Carriers, unlike other units with capacity, can hold aeriel units. Aeriel units can make aeriel attacks from Carriers as they would a territory.
+* **Helicopter:** Ariel special unit. Helicopters are the only non-Naval unit with a capacity. Units that embark are automatically disembarked without spending movement during aeriel strikes against territories.
 
-**Start of Game:**
-Each player receives one Warrior (the simplest land unit) and chooses their starting territory.
+## Getting Started
 
-**Gameplay:**
-At the start of your turn, acrue resources from each territory you own and units you own regain movement. On your turn, you may choose to buy any amount of units you can afford, and each unit you own may make moves or attacks until their movement is spent.
+### Dependencies
 
-Turn order is first come first serve, so act fast and good luck!
+* Python 3.12
+* Pygame 2.5.2
+
+### Installing
+
+* Clone the repository onto your machine and ensure pygame is installed by running the command below.
+```
+pip3 install pygame
+```
+
+### Executing program
+
+* Navigate to the 'Fishing-For-Bass' folder and run the command below.
+* Enter if you are the host machine. The host should run their game before other players.  
+  * If you are hosting, a server should start automatically after querying player count.
+* Enter your name. You should connect to the server automatically once complete.
+* Once all players have connected, the game begins! Look for a pygame window.
+```
+python .\src\fishinferbass.py
+```
+
+## Acknowledgments
+
+Created and Developed by James Leibring with inspiration from a board game created by Matthew Pusateri and Alan Lingle.
